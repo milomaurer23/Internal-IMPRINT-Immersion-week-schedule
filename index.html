@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIA REDI — Bay Area Immersion Week, July 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+      max-width: 480px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      padding: 36px 32px 28px;
+      color: #fff;
+      text-align: center;
+    }
+    .header-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .header-sub {
+      font-size: 13px;
+      color: #bfdbfe;
+    }
+    .cohorts {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cohort-btn {
+      display: block;
+      text-decoration: none;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .cohort-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+    }
+    .cohort-inner {
+      padding: 20px 24px;
+      color: #fff;
+    }
+    .c1 { background: linear-gradient(135deg, #1a1a2e, #0f3460); }
+    .c2 { background: linear-gradient(135deg, #064e3b, #047857); }
+    .cohort-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 6px;
+    }
+    .cohort-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .cohort-dates {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+    .cohort-arrow {
+      float: right;
+      font-size: 20px;
+      margin-top: -2px;
+      opacity: 0.7;
+    }
+    .footer {
+      text-align: center;
+      padding: 16px 24px 24px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="header-eyebrow">NIA REDI Program</div>
+      <h1>Bay Area Immersion Week</h1>
+      <div class="header-sub">July 2026 · Berkeley &amp; South San Francisco</div>
+    </div>
+    <div class="cohorts">
+      <a class="cohort-btn" href="Cohort #1 outgoing/cohort1_week.html">
+        <div class="cohort-inner c1">
+          <span class="cohort-arrow">→</span>
+          <div class="cohort-label">Cohort 1 · Outgoing</div>
+          <div class="cohort-title">Week 1 Schedule</div>
+          <div class="cohort-dates">July 20 – 26, 2026</div>
+        </div>
+      </a>
+      <a class="cohort-btn" href="Cohort #2 incoming/cohort2_week.html">
+        <div class="cohort-inner c2">
+          <span class="cohort-arrow">→</span>
+          <div class="cohort-label">Cohort 2 · Incoming</div>
+          <div class="cohort-title">Week 2 Schedule</div>
+          <div class="cohort-dates">July 27 – August 2, 2026</div>
+        </div>
+      </a>
+    </div>
+    <div class="footer">Select your cohort to view the full itinerary</div>
+  </div>
+</body>
+</html>

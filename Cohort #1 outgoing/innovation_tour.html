@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innovation Labs Tour — July 21, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 40px rgba(0,0,0,0.08);
+    max-width: 620px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .card-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    padding: 28px 32px 24px;
+    color: white;
+  }
+  .card-header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 6px;
+  }
+  .card-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .card-header .date {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 400;
+  }
+  .card-header .route {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ── Summary Bar ── */
+  .summary-bar {
+    background: #f8f9fb;
+    border-bottom: 1px solid #eaedf0;
+    padding: 14px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    align-items: center;
+  }
+  .summary-bar .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #444;
+  }
+  .summary-bar .chip .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-uber  { background: #111; }
+  .dot-bart  { background: #CC0000; }
+  .dot-labs  { background: #7c3aed; }
+  .dot-depart { background: #f59e0b; }
+
+  /* ── Timeline body ── */
+  .timeline {
+    padding: 28px 32px 24px;
+  }
+
+  .stop-row {
+    display: flex;
+    gap: 16px;
+    position: relative;
+  }
+
+  /* left column: icon + line */
+  .stop-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+  }
+  .stop-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .icon-home  { background: #fff7ed; border: 2px solid #fed7aa; }
+  .icon-bart  { background: #fff1f2; border: 2px solid #fecdd3; }
+  .icon-lab   { background: #f5f3ff; border: 2px solid #ddd6fe; }
+  .icon-lab-anchored { background: #ecfdf5; border: 2px solid #a7f3d0; }
+  .icon-lab-pending  { background: #fff1f2; border: 2px solid #fecdd3; }
+
+  .stop-connector {
+    flex: 1;
+    width: 2px;
+    background: #e5e7eb;
+    margin: 4px 0;
+    min-height: 12px;
+  }
+
+  /* right column: content */
+  .stop-content {
+    flex: 1;
+    padding-bottom: 4px;
+  }
+  .stop-time {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .stop-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .stop-address {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .badge-duration {
+    background: #f3f0ff; color: #6d28d9;
+    border: 1px solid #ddd6fe;
+  }
+  .badge-anchor {
+    background: #ecfdf5; color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+  .badge-pending {
+    background: #fff1f2; color: #9f1239;
+    border: 1px solid #fecdd3;
+  }
+
+  /* ── Alert callouts ── */
+  .callout {
+    border-radius: 10px;
+    padding: 9px 13px;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .callout-green {
+    background: #f0fdf4;
+    border-left: 3px solid #22c55e;
+    color: #15803d;
+  }
+  .callout-red {
+    background: #fff1f2;
+    border-left: 3px solid #f43f5e;
+    color: #9f1239;
+  }
+  .callout-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── Transport pill (between stops) ── */
+  .transport-block {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  .transport-line-col {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .transport-vline {
+    width: 2px;
+    background: #e5e7eb;
+    flex: 1;
+    min-height: 8px;
+  }
+  .transport-pill-col {
+    flex: 1;
+    padding: 10px 0 10px;
+  }
+  .transport-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.2px;
+  }
+  .pill-uber  { background: #111111; }
+  .pill-bart  { background: #CC0000; }
+  .pill-walk  { background: #16a34a; }
+  .pill-icon  { font-size: 14px; }
+
+  /* ── Spacer between stop content and transport ── */
+  .stop-spacer { margin-bottom: 0; }
+
+  /* ── Section Headers ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 20px;
+  }
+  .section-header .section-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .section-berkeley {
+    color: #92400e;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+  }
+  .section-ssf {
+    color: #1e3a8a;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+  }
+  .section-return {
+    color: #374151;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+  }
+  .section-header .section-line {
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+  }
+
+  /* ── Return placeholder ── */
+  .return-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+  .return-placeholder-icon-col {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .return-placeholder-content {
+    flex: 1;
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .return-placeholder-content strong {
+    color: #374151;
+    font-weight: 600;
+  }
+
+  /* ── Cost Summary ── */
+  .cost-summary {
+    margin: 0 32px 24px;
+  }
+  .cost-summary-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .cost-summary-header .cs-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+  }
+  .cost-summary-header .cs-line {
+    flex: 1; height: 1px; background: #e5e7eb;
+  }
+  .cost-summary-header .cs-badge {
+    font-size: 11px;
+    font-weight: 700;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 2px 9px;
+    color: #374151;
+    white-space: nowrap;
+  }
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .cost-table thead tr th {
+    text-align: left;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #9ca3af;
+    padding: 0 8px 8px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .cost-table thead tr th:last-child { text-align: right; }
+  .cost-table tbody tr td {
+    padding: 9px 8px;
+    border-bottom: 1px solid #f9fafb;
+    color: #374151;
+    vertical-align: top;
+  }
+  .cost-table tbody tr td:last-child {
+    text-align: right;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+  }
+  .cost-table tbody tr:last-child td { border-bottom: none; }
+  .cost-table .leg-name { font-weight: 500; }
+  .cost-table .leg-note {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 1px;
+  }
+  .cost-table .mode-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .cost-divider td {
+    padding: 0 !important;
+    border-bottom: 2px solid #e5e7eb !important;
+  }
+  .cost-total-row td {
+    padding-top: 11px !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    color: #111827 !important;
+    border-bottom: none !important;
+  }
+  .cost-total-row td:last-child {
+    color: #111827 !important;
+  }
+  .cost-per-person {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 14px;
+  }
+  .cpp-left .cpp-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #16a34a;
+    margin-bottom: 2px;
+  }
+  .cpp-left .cpp-note {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  .cpp-right {
+    font-size: 22px;
+    font-weight: 800;
+    color: #15803d;
+    letter-spacing: -0.5px;
+  }
+  .clipper-rec {
+    margin-top: 14px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 13px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .clipper-rec-icon { font-size: 20px; flex-shrink: 0; }
+  .clipper-rec-body { font-size: 13px; color: #1e3a8a; line-height: 1.5; }
+  .clipper-rec-body strong { font-weight: 700; }
+  .clipper-rec-body .clipper-amount {
+    display: inline-block;
+    background: #003DA5;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 1px 8px;
+    margin: 0 2px;
+  }
+
+  /* ── Pro Tip ── */
+  .pro-tip {
+    margin: 0 32px 28px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 13px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .pro-tip-icon { font-size: 18px; flex-shrink: 0; }
+  .pro-tip-text { font-size: 13px; color: #78350f; line-height: 1.5; }
+  .pro-tip-text strong { font-weight: 700; }
+
+  /* ── Footer ── */
+  .card-footer {
+    background: #f8f9fb;
+    border-top: 1px solid #eaedf0;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-footer .footer-label {
+    font-size: 11px;
+    color: #9ca3af;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .card-footer .footer-val {
+    font-size: 12px;
+    color: #374151;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- ── HEADER ── -->
+  <div class="card-header">
+    <div class="label">Day Trip Itinerary</div>
+    <h1>Innovation Labs Tour</h1>
+    <div class="date">Tuesday, July 21, 2026</div>
+    <div class="route">
+      <span>📍</span>
+      <span>Berkeley → South San Francisco</span>
+      <span style="opacity:.5">·</span>
+      <span>Uber + BART</span>
+    </div>
+  </div>
+
+  <!-- ── SUMMARY BAR ── -->
+  <div class="summary-bar">
+    <div class="chip"><div class="dot dot-depart"></div> Depart 7:50 AM</div>
+    <div class="chip"><div class="dot dot-labs"></div> 3 Labs</div>
+    <div class="chip"><div class="dot dot-uber"></div> ~$35 est. Uber</div>
+    <div class="chip"><div class="dot dot-bart"></div> ~$6 BART</div>
+  </div>
+
+  <!-- ── TIMELINE ── -->
+  <div class="timeline">
+
+    <!-- ── SECTION: BERKELEY ── -->
+    <div class="section-header">
+      <span class="section-label section-berkeley">📍 Berkeley</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- STOP 1: Sigma House -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-home">🏠</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content stop-spacer">
+        <div class="stop-time">Depart 7:50 AM</div>
+        <div class="stop-name">Sigma House</div>
+        <div class="stop-address">2311 Prospect St, Berkeley, CA</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: Uber to Downtown Berkeley BART -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-uber">
+          <span class="pill-icon">🚗</span> Uber · ~7 min · ~$12
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 2: Downtown Berkeley BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚇</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content stop-spacer">
+        <div class="stop-time">Arrive ~7:57 AM</div>
+        <div class="stop-name">Downtown Berkeley BART</div>
+        <div class="stop-address">2160 Shattuck Ave, Berkeley, CA</div>
+        <div class="badges">
+          <span class="badge badge-duration">🔴 Red Line southbound · Millbrae/SFO</span>
+        </div>
+        <div style="font-size:12px; color:#6b7280; margin-bottom:8px;">Board ~8:00 AM · No transfers</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: BART -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-bart">
+          <span class="pill-icon">🚇</span> BART · ~48 min · ~$5–7
+        </span>
+      </div>
+    </div>
+
+    <!-- ── SECTION: SOUTH SAN FRANCISCO ── -->
+    <div class="section-header" style="margin-top:16px;">
+      <span class="section-label section-ssf">🔬 South San Francisco</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- STOP 3: SSF BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚇</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content stop-spacer">
+        <div class="stop-time">Arrive ~8:48 AM</div>
+        <div class="stop-name">South San Francisco BART</div>
+        <div class="stop-address">1333 Mission Rd, South San Francisco, CA</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: Uber to AbbVie -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-uber">
+          <span class="pill-icon">🚗</span> Uber · ~7 min · ~$10
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 4: AbbVie -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-lab">💊</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content stop-spacer">
+        <div class="stop-time">9:00 AM – 10:45 AM</div>
+        <div class="stop-name"><a href="https://www.abbvie.com/" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">AbbVie</a></div>
+        <div class="stop-address">1000 Gateway Blvd, South San Francisco, CA</div>
+        <div class="badges">
+          <span class="badge badge-duration">⏱ 1h 45min</span>
+          <span class="badge badge-pending">⚠ Pending</span>
+        </div>
+        <div class="callout callout-red">
+          <span class="callout-icon">⏳</span>
+          <span><strong>Pending confirmation</strong> — target window 9:00–10:45 AM. Confirm before finalizing schedule.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: Walk to JLABS -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-walk">
+          <span class="pill-icon">🚶</span> Walk · ~12 min
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 5: JLABS SSF -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-lab-anchored">🧬</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content stop-spacer">
+        <div class="stop-time">11:00 AM – 2:00 PM</div>
+        <div class="stop-name"><a href="https://jlabs.jnjinnovation.com/locations/jlabs-ssf" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">JLABS SSF</a></div>
+        <div class="stop-address">329 Oyster Point Blvd, 3rd Floor, South San Francisco, CA</div>
+        <div class="badges">
+          <span class="badge badge-duration">⏱ 3 hours</span>
+          <span class="badge badge-anchor">⚓ Anchored</span>
+        </div>
+        <div class="callout callout-green">
+          <span class="callout-icon">📌</span>
+          <span><strong>Anchored window</strong> — fixed point of the day. All other stops are scheduled around this.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: Uber to Eli Lilly -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-uber">
+          <span class="pill-icon">🚗</span> Uber · ~10 min · ~$13
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 6: Eli Lilly -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-lab-pending">🔬</div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">2:15 PM – 5:00 PM</div>
+        <div class="stop-name"><a href="https://www.lilly.com/gateway-labs" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Eli Lilly Gateway Lab</a></div>
+        <div class="stop-address">201 Haskins Way, South San Francisco, CA</div>
+        <div class="badges">
+          <span class="badge badge-duration">⏱ ~2h 45min</span>
+          <span class="badge badge-pending">⚠ Pending</span>
+        </div>
+        <div class="callout callout-red">
+          <span class="callout-icon">⏳</span>
+          <span><strong>Pending confirmation</strong> — target window 2:15–5:00 PM. Confirm before finalizing schedule.</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .timeline -->
+
+  <!-- ── RETURN SECTION (below timeline, above pro tip) ── -->
+  <div style="padding: 0 32px 24px;">
+    <div class="section-header">
+      <span class="section-label section-return">🏠 Return to Berkeley</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="return-placeholder">
+      <div class="return-placeholder-icon-col">
+        <span style="font-size:20px;">🔄</span>
+      </div>
+      <div class="return-placeholder-content">
+        <strong>After ~5:00 PM</strong> — Reverse route back to Berkeley.<br>
+        Uber to SSF BART → Red Line northbound → Downtown Berkeley BART → Uber/walk home.<br>
+        <span style="font-size:12px; color:#9ca3af; margin-top:4px; display:block;">Est. ~55 min · ~$17–22 total</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GROUP COST SUMMARY ── -->
+  <div class="cost-summary">
+    <div class="cost-summary-header">
+      <span class="cs-title">💰 Group Cost Estimate</span>
+      <div class="cs-line"></div>
+      <span class="cs-badge">👥 10 Travelers</span>
+    </div>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Leg</th>
+          <th style="text-align:center;">Cars</th>
+          <th>Est. per car</th>
+          <th>Leg total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Sigma House → Berkeley BART</div>
+            <div class="leg-note">Uber XL · ~7 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">×2</td>
+          <td style="color:#6b7280;">~$20–25</td>
+          <td>~$40–50</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>SSF BART → AbbVie</div>
+            <div class="leg-note">Uber XL · ~7 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">×2</td>
+          <td style="color:#6b7280;">~$18–22</td>
+          <td>~$36–44</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>JLABS → Eli Lilly</div>
+            <div class="leg-note">Uber XL · ~10 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">×2</td>
+          <td style="color:#6b7280;">~$20–26</td>
+          <td>~$40–52</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Eli Lilly → SSF BART <span style="font-size:11px;color:#9ca3af;">(return)</span></div>
+            <div class="leg-note">Uber XL · ~7 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">×2</td>
+          <td style="color:#6b7280;">~$18–22</td>
+          <td>~$36–44</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">
+            Uber XL subtotal &nbsp;<span style="font-size:11px;">(2 cars × 4 legs · surge not included)</span>
+          </td>
+          <td style="font-weight:700; color:#111827; padding-top:5px; padding-bottom:7px;">~$152–190</td>
+        </tr>
+        <tr class="cost-divider"><td colspan="4"></td></tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>Berkeley BART → SSF BART</div>
+            <div class="leg-note">10 riders · outbound</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
+          <td style="color:#6b7280;">~$6–7 / person</td>
+          <td>~$60–70</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>SSF BART → Berkeley BART</div>
+            <div class="leg-note">10 riders · return</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
+          <td style="color:#6b7280;">~$6–7 / person</td>
+          <td>~$60–70</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">BART subtotal (round trip · 10 riders)</td>
+          <td style="font-weight:700; color:#003DA5; padding-top:5px; padding-bottom:7px;">~$120–140</td>
+        </tr>
+        <tr class="cost-divider"><td colspan="4"></td></tr>
+        <tr class="cost-total-row">
+          <td colspan="3">🧾 Grand Total (group)</td>
+          <td>~$272–330</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cost-per-person">
+      <div class="cpp-left">
+        <div class="cpp-label">Per Person</div>
+        <div class="cpp-note">Uber XL share ÷ 10 + round-trip BART</div>
+      </div>
+      <div class="cpp-right">~$27–33</div>
+    </div>
+
+    <div class="clipper-rec">
+      <div class="clipper-rec-icon">💳</div>
+      <div class="clipper-rec-body">
+        <strong>Clipper Card recommendation —</strong> Load <span class="clipper-amount">$20</span> per card.<br>
+        Round-trip BART fare is ~$12–14 per person. The extra buffer covers fare adjustments, a missed tap-out charge, or a local hop. Cards are reloadable — any balance carries over to future trips.<br>
+        <span style="display:block; margin-top:5px; color:#1d4ed8;">⚠ Buying cards fresh at the station? Each physical card costs ~$3. Budget <strong>~$23 per person</strong> for card + initial load. Alternatively, use <strong>Apple Pay or Google Pay</strong> on iPhone/Android — no card fee, works at every BART gate.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRO TIP ── -->
+  <div class="pro-tip">
+    <div class="pro-tip-icon">💡</div>
+    <div class="pro-tip-text">
+      <strong>Pro tip:</strong> Have your Clipper Card or Apple/Google Pay ready for BART — avoid cash machines during morning rush. Tap in at the fare gate and tap out at South San Francisco BART.
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="card-footer">
+    <div>
+      <div class="footer-label">Total transit est.</div>
+      <div class="footer-val">~$41–43</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="footer-label">Labs visited</div>
+      <div class="footer-val">3 stops</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="footer-label">Day wraps up</div>
+      <div class="footer-val">~5:00 PM</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

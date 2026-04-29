@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cohort 2 — Incoming · Week of July 27, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+  }
+
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* ── Page Header ── */
+  .page-header {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
+    border-radius: 20px;
+    padding: 32px 36px 28px;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .page-header .overline {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .page-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .page-header .subline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+  }
+  .header-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .header-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* ── Week nav strip ── */
+  .week-nav {
+    display: flex;
+    gap: 6px;
+    margin: 16px 0 24px;
+    flex-wrap: wrap;
+  }
+  .week-nav a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .week-nav a.active {
+    background: #065f46;
+    color: white;
+  }
+  .week-nav a.inactive {
+    background: white;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+  }
+  .week-nav a.inactive:hover {
+    background: #f3f4f6;
+    color: #374151;
+  }
+
+  /* ── Day Cards ── */
+  .day-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.06);
+    margin-bottom: 14px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .day-date-col {
+    width: 88px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 10px;
+    border-right: 1px solid #f3f4f6;
+  }
+  .day-name {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 4px;
+  }
+  .day-num {
+    font-size: 30px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .day-month {
+    font-size: 11px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .day-date-col.weekend .day-num { color: #9ca3af; }
+
+  .day-content {
+    flex: 1;
+    padding: 18px 22px;
+    min-width: 0;
+  }
+  .day-content-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .day-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.3;
+  }
+  .day-title a { color: inherit; text-decoration: none; }
+  .day-title a:hover { text-decoration: underline; }
+
+  .status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .status-planned { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+  .status-draft   { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .status-tbd     { background: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
+  .status-weekend { background: #f9fafb; color: #9ca3af; border: 1px solid #f3f4f6; }
+
+  .stop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .stop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.4;
+  }
+  .stop-item .s-time {
+    font-size: 11px;
+    font-weight: 600;
+    color: #9ca3af;
+    white-space: nowrap;
+    margin-top: 1px;
+    min-width: 64px;
+  }
+  .stop-item .s-icon { font-size: 14px; flex-shrink: 0; }
+  .stop-item .s-name { font-weight: 600; color: #111827; }
+  .stop-item .s-detail { font-size: 12px; color: #9ca3af; }
+
+  .micro-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .micro-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; color: white;
+  }
+  .mp-uber { background: #111; }
+  .mp-bart { background: #003DA5; }
+  .mp-walk { background: #16a34a; }
+
+  .placeholder-block {
+    border: 1.5px dashed #d1d5db;
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: #9ca3af;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .placeholder-block .ph-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d1d5db;
+    margin-bottom: 4px;
+  }
+  .placeholder-block .ph-row:last-child { margin-bottom: 0; }
+  .placeholder-block .ph-icon { font-size: 15px; }
+  .placeholder-block .ph-line {
+    height: 10px; background: #f3f4f6; border-radius: 6px; flex: 1;
+  }
+  .placeholder-block .ph-line.short { max-width: 120px; }
+  .placeholder-block .ph-line.med   { max-width: 200px; }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #065f46;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-top: 4px;
+    transition: background 0.15s;
+  }
+  .cta-btn:hover { background: #047857; }
+
+  .day-notes {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #f3f4f6;
+    line-height: 1.5;
+  }
+
+  /* ── Week summary footer ── */
+  .week-summary {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.06);
+    padding: 20px 28px;
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 28px;
+    align-items: center;
+  }
+  .ws-item { display: flex; flex-direction: column; gap: 2px; }
+  .ws-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: #9ca3af;
+  }
+  .ws-val { font-size: 15px; font-weight: 700; color: #111827; }
+  .ws-divider { width: 1px; height: 36px; background: #e5e7eb; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="page-header">
+    <div class="overline">NIA REDI · Immersion Week</div>
+    <h1>Cohort 2 — Incoming</h1>
+    <div class="subline">Week of July 27–August 2, 2026 · Berkeley, CA</div>
+    <div class="header-chips">
+      <span class="header-chip">👥 Cohort 2</span>
+      <span class="header-chip">📍 Berkeley → Bay Area</span>
+      <span class="header-chip">📅 7 Days</span>
+      <span class="header-chip">⬜ All Days TBD</span>
+    </div>
+  </div>
+
+  <!-- ── WEEK NAV ── -->
+  <div class="week-nav">
+    <a href="../Cohort %231 outgoing/cohort1_week.html" class="inactive">📋 Cohort 1 · Outgoing &nbsp; Jul 20–26</a>
+    <a href="cohort2_week.html" class="active">📋 Cohort 2 · Incoming &nbsp; Jul 27–Aug 2</a>
+  </div>
+
+  <!-- SUNDAY, JULY 27 -->
+  <div class="day-card">
+    <div class="day-date-col weekend">
+      <div class="day-name">Sun</div>
+      <div class="day-num">27</div>
+      <div class="day-month">Jul</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Arrival / Orientation Day —</div>
+        <span class="status-chip status-tbd">⬜ TBD</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+      </div>
+      <div class="day-notes">Sunday — possible arrival / cohort orientation. Add details if applicable.</div>
+    </div>
+  </div>
+
+  <!-- MONDAY, JULY 28 -->
+  <div class="day-card">
+    <div class="day-date-col">
+      <div class="day-name">Mon</div>
+      <div class="day-num">28</div>
+      <div class="day-month">Jul</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Add Day's Itinerary —</div>
+        <span class="status-chip status-tbd">⬜ TBD</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+      </div>
+      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Monday Jul 28.</div>
+    </div>
+  </div>
+
+  <!-- TUESDAY, JULY 29 -->
+  <div class="day-card">
+    <div class="day-date-col">
+      <div class="day-name">Tue</div>
+      <div class="day-num">29</div>
+      <div class="day-month">Jul</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Add Day's Itinerary —</div>
+        <span class="status-chip status-tbd">⬜ TBD</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+      </div>
+      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Tuesday Jul 29.</div>
+    </div>
+  </div>
+
+  <!-- WEDNESDAY, JULY 30 -->
+  <div class="day-card">
+    <div class="day-date-col">
+      <div class="day-name">Wed</div>
+      <div class="day-num">30</div>
+      <div class="day-month">Jul</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Add Day's Itinerary —</div>
+        <span class="status-chip status-tbd">⬜ TBD</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+      </div>
+      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Wednesday Jul 30.</div>
+    </div>
+  </div>
+
+  <!-- THURSDAY, JULY 31 -->
+  <div class="day-card">
+    <div class="day-date-col">
+      <div class="day-name">Thu</div>
+      <div class="day-num">31</div>
+      <div class="day-month">Jul</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Add Day's Itinerary —</div>
+        <span class="status-chip status-tbd">⬜ TBD</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+      </div>
+      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Thursday Jul 31.</div>
+    </div>
+  </div>
+
+  <!-- FRIDAY, AUGUST 1 -->
+  <div class="day-card">
+    <div class="day-date-col">
+      <div class="day-name">Fri</div>
+      <div class="day-num">1</div>
+      <div class="day-month">Aug</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Add Day's Itinerary —</div>
+        <span class="status-chip status-tbd">⬜ TBD</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+      </div>
+      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Friday Aug 1.</div>
+    </div>
+  </div>
+
+  <!-- SATURDAY, AUGUST 2 -->
+  <div class="day-card">
+    <div class="day-date-col weekend">
+      <div class="day-name">Sat</div>
+      <div class="day-num">2</div>
+      <div class="day-month">Aug</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Weekend / Departure Day —</div>
+        <span class="status-chip status-weekend">🌤 Weekend</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+      </div>
+      <div class="day-notes">Saturday — possible departure or wrap-up day. Add details if applicable.</div>
+    </div>
+  </div>
+
+  <!-- ── WEEK SUMMARY ── -->
+  <div class="week-summary">
+    <div class="ws-item">
+      <div class="ws-label">Planned days</div>
+      <div class="ws-val">0 of 5</div>
+    </div>
+    <div class="ws-divider"></div>
+    <div class="ws-item">
+      <div class="ws-label">TBD days</div>
+      <div class="ws-val">7</div>
+    </div>
+    <div class="ws-divider"></div>
+    <div class="ws-item">
+      <div class="ws-label">Cohort</div>
+      <div class="ws-val">2 · Incoming</div>
+    </div>
+    <div style="flex:1; text-align:right;">
+      <a href="../Cohort %231 outgoing/cohort1_week.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; background:#f3f4f6; border:1px solid #e5e7eb; color:#374151; font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:20px;">
+        ← Cohort 1 · Outgoing
+      </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
