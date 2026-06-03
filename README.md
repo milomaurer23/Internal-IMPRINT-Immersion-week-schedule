@@ -42,6 +42,7 @@ Changes go live on GitHub Pages within ~30 seconds.
 |------|------|-------|
 | Milo Harmon Maurer | Program Coordinator | [mharmonmaurer@berkeley.edu](mailto:mharmonmaurer@berkeley.edu) |
 | Gail Gannon | Director | [gannon@berkeley.edu](mailto:gannon@berkeley.edu) |
+| Wali Jaleel | Research Volunteer | [wfjaleel@berkeley.edu](mailto:wfjaleel@berkeley.edu) |
 
 ---
 
