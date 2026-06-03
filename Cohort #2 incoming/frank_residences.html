@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Silverado Belmont Hills — July 30, 2026</title>
+<title>Frank Residences — July 28, 2026</title>
 <style>
-  /* Use the same styling as innovation_tour.html but adapted for Cohort 2 */
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
@@ -87,9 +86,8 @@
     border-radius: 50%;
     flex-shrink: 0;
   }
-  .dot-uber  { background: #111; }
-  .dot-bart  { background: #CC0000; }
-  .dot-visit { background: #059669; }
+  .dot-uber   { background: #111; }
+  .dot-visit  { background: #059669; }
   .dot-depart { background: #f59e0b; }
 
   /* ── Timeline body ── */
@@ -103,7 +101,6 @@
     position: relative;
   }
 
-  /* left column: icon + line */
   .stop-left {
     display: flex;
     flex-direction: column;
@@ -120,8 +117,7 @@
     position: relative;
     z-index: 1;
   }
-  .icon-home  { background: #fff7ed; border: 2px solid #fed7aa; }
-  .icon-bart  { background: #fff1f2; border: 2px solid #fecdd3; }
+  .icon-home     { background: #fff7ed; border: 2px solid #fed7aa; }
   .icon-facility { background: #f0fdf4; border: 2px solid #a7f3d0; }
 
   .stop-connector {
@@ -132,7 +128,6 @@
     min-height: 12px;
   }
 
-  /* right column: content */
   .stop-content {
     flex: 1;
     padding-bottom: 4px;
@@ -171,35 +166,10 @@
     font-size: 11.5px;
     font-weight: 600;
   }
-  .badge-duration {
-    background: #f0fdf4; color: #16a34a;
-    border: 1px solid #bbf7d0;
-  }
-  .badge-confirmed {
-    background: #ecfdf5; color: #065f46;
-    border: 1px solid #a7f3d0;
-  }
+  .badge-duration  { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .badge-confirmed { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
 
-  /* ── Alert callouts ── */
-  .callout {
-    border-radius: 10px;
-    padding: 9px 13px;
-    font-size: 12.5px;
-    font-weight: 500;
-    line-height: 1.5;
-    margin-bottom: 8px;
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  .callout-green {
-    background: #f0fdf4;
-    border-left: 3px solid #22c55e;
-    color: #15803d;
-  }
-  .callout-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-
-  /* ── Transport pill (between stops) ── */
+  /* ── Transport pill ── */
   .transport-block {
     display: flex;
     gap: 16px;
@@ -234,12 +204,10 @@
     color: white;
     letter-spacing: 0.2px;
   }
-  .pill-uber  { background: #111111; }
-  .pill-bart  { background: #CC0000; }
-  .pill-walk  { background: #16a34a; }
-  .pill-icon  { font-size: 14px; }
+  .pill-uber { background: #111111; }
+  .pill-icon { font-size: 14px; }
 
-  /* ── Section Headers ── */
+  /* ── Section Header ── */
   .section-header {
     display: flex;
     align-items: center;
@@ -255,12 +223,7 @@
     padding: 3px 10px;
     border-radius: 20px;
   }
-  .section-berkeley {
-    color: #92400e;
-    background: #fef3c7;
-    border: 1px solid #fde68a;
-  }
-  .section-peninsula {
+  .section-sf {
     color: #1e3a8a;
     background: #eff6ff;
     border: 1px solid #bfdbfe;
@@ -270,6 +233,25 @@
     height: 1px;
     background: #e5e7eb;
   }
+
+  /* ── Callout ── */
+  .callout {
+    border-radius: 10px;
+    padding: 9px 13px;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .callout-green {
+    background: #f0fdf4;
+    border-left: 3px solid #22c55e;
+    color: #15803d;
+  }
+  .callout-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 
   /* ── Innovation Spotlight ── */
   .innovation-spotlight {
@@ -352,12 +334,12 @@
 
   <!-- ── HEADER ── -->
   <div class="card-header">
-    <div class="label">Memory Care Site Visit</div>
-    <h1><a href="https://www.silverado.com/locations/belmont-hills/" style="color: inherit; text-decoration: none;">Silverado Belmont Hills</a></h1>
-    <div class="date">Thursday, July 30, 2026</div>
+    <div class="label">Assisted Living Site Visit</div>
+    <h1><a href="https://frankresidences.org" style="color: inherit; text-decoration: none;">Frank Residences</a></h1>
+    <div class="date">Tuesday, July 28, 2026</div>
     <div class="route">
       <span>📍</span>
-      <span>Berkeley → Belmont</span>
+      <span>Berkeley → San Francisco</span>
       <span style="opacity:.5">·</span>
       <span>Direct Uber</span>
     </div>
@@ -365,19 +347,13 @@
 
   <!-- ── SUMMARY BAR ── -->
   <div class="summary-bar">
-    <div class="chip"><div class="dot dot-depart"></div> Depart 8:15 AM</div>
-    <div class="chip"><div class="dot dot-visit"></div> 9:00 AM Visit</div>
-    <div class="chip"><div class="dot dot-uber"></div> Uber XL ×2 · ~$55 est.</div>
+    <div class="chip"><div class="dot dot-depart"></div> Depart 11:20 AM</div>
+    <div class="chip"><div class="dot dot-visit"></div> 12:00 PM Visit</div>
+    <div class="chip"><div class="dot dot-uber"></div> Uber XL ×2 · ~$50 est.</div>
   </div>
 
   <!-- ── TIMELINE ── -->
   <div class="timeline">
-
-    <!-- ── SECTION: BERKELEY ── -->
-    <div class="section-header">
-      <span class="section-label section-berkeley">📍 Berkeley</span>
-      <div class="section-line"></div>
-    </div>
 
     <!-- STOP 1: Sigma House -->
     <div class="stop-row">
@@ -385,50 +361,50 @@
         <div class="stop-icon icon-home">🏠</div>
         <div class="stop-connector"></div>
       </div>
-      <div class="stop-content stop-spacer">
-        <div class="stop-time">Depart 8:15 AM</div>
+      <div class="stop-content">
+        <div class="stop-time">Depart 11:20 AM</div>
         <div class="stop-name">Sigma House</div>
         <div class="stop-address">2311 Prospect St, Berkeley, CA</div>
       </div>
     </div>
 
-    <!-- TRANSPORT: Direct Uber to Silverado -->
+    <!-- TRANSPORT: Direct Uber to Frank Residences -->
     <div class="transport-block">
       <div class="transport-line-col">
         <div class="transport-vline"></div>
       </div>
       <div class="transport-pill-col">
         <span class="transport-pill pill-uber">
-          <span class="pill-icon">🚗</span> Uber XL ×2 · ~40 min · ~$55 est.
+          <span class="pill-icon">🚗</span> Uber XL ×2 · ~30 min · ~$50 est.
         </span>
       </div>
     </div>
 
-    <!-- ── SECTION: PENINSULA ── -->
+    <!-- ── SECTION: SAN FRANCISCO ── -->
     <div class="section-header" style="margin-top:16px;">
-      <span class="section-label section-peninsula">🌳 The Peninsula</span>
+      <span class="section-label section-sf">🌁 San Francisco</span>
       <div class="section-line"></div>
     </div>
 
-    <!-- STOP 4: Silverado -->
+    <!-- STOP 2: Frank Residences -->
     <div class="stop-row">
       <div class="stop-left">
-        <div class="stop-icon icon-facility">🌳</div>
+        <div class="stop-icon icon-facility">🏡</div>
       </div>
       <div class="stop-content">
-        <div class="stop-time">9:00 AM – 11:00 AM</div>
-        <div class="stop-name"><a href="https://www.silverado.com/locations/belmont-hills/" style="color: inherit; text-decoration: none;">Silverado Belmont Hills</a></div>
-        <div class="stop-address">1301 Ralston Avenue, Belmont, CA 94002</div>
+        <div class="stop-time">12:00 PM – 2:30 PM</div>
+        <div class="stop-name"><a href="https://frankresidences.org" style="color: inherit; text-decoration: none;">Frank Residences</a></div>
+        <div class="stop-address"><a href="https://maps.apple.com/?address=1+Avalon+Ave,+San+Francisco,+CA+94112" style="color: inherit; text-decoration: none;">1 Avalon Avenue, San Francisco, CA 94112</a></div>
         <div class="badges">
-          <span class="badge badge-duration">⏱ 2 hours</span>
+          <span class="badge badge-duration">⏱ 2.5 hours</span>
           <span class="badge badge-confirmed">✅ Confirmed</span>
         </div>
         <div class="callout callout-green">
-          <span class="callout-icon">🍳</span>
-          <span><strong>Breakfast Provided</strong> — arrive on time for the morning session and tour.</span>
+          <span class="callout-icon">🏛️</span>
+          <span><strong>San Francisco Campus for Jewish Living</strong> — assisted living and memory care community with chef-prepared dining, therapy programs, and on-site skilled nursing.</span>
         </div>
-        <div style="font-size:13px; color:#374151; margin-top:8px;">
-          <strong>Contact:</strong> Marisa Casillas Taylor (415-577-4198)
+        <div style="font-size:13px; color:#374151; margin-top:8px; line-height:1.7;">
+          <strong>Contacts:</strong> Angela Arguelles &amp; Robert Sarison
         </div>
       </div>
     </div>
@@ -442,12 +418,13 @@
       <span class="is-label">Innovation Spotlight</span>
     </div>
     <div class="is-content">
-      <h3>Nexus Program</h3>
-      <p>Focus your questions on their behavioral interventions and the use of therapy animals in dementia care.</p>
+      <h3>Integrated Senior Living Model</h3>
+      <p>Frank Residences is part of the SF Campus for Jewish Living — observe how they integrate assisted living with on-site skilled nursing, rehabilitation, and memory care under one roof.</p>
       <div class="is-tags">
-        <span class="is-tag">🐕 Therapy Animals</span>
-        <span class="is-tag">🧠 Behavioral Health</span>
-        <span class="is-tag">🔬 Research-Backed</span>
+        <span class="is-tag">🏡 Assisted Living</span>
+        <span class="is-tag">🧠 Memory Care</span>
+        <span class="is-tag">🍽️ Chef Dining</span>
+        <span class="is-tag">🔬 Skilled Nursing</span>
       </div>
     </div>
   </div>
@@ -456,15 +433,15 @@
   <div class="card-footer">
     <div>
       <div class="footer-label">Destination</div>
-      <div class="footer-val">Belmont, CA</div>
+      <div class="footer-val">San Francisco, CA</div>
     </div>
     <div style="text-align:center;">
       <div class="footer-label">Facility Type</div>
-      <div class="footer-val">Memory Care</div>
+      <div class="footer-val">Assisted Living</div>
     </div>
     <div style="text-align:right;">
-      <div class="footer-label">Breakfast</div>
-      <div class="footer-val">Provided</div>
+      <div class="footer-label">Transport</div>
+      <div class="footer-val">Direct Uber</div>
     </div>
   </div>
 
