@@ -5,7 +5,7 @@
 
 ## 🌐 Live Site
 
-> **[View the full itinerary hub →](https://milomaurer23.github.io/NIA-REDI-Immersion-Week-July-2026/index.html)**
+> **[View the full itinerary hub →](https://wfjaleel.github.io/NIA-REDI-Immersion-Week-July-2026/index.html)**
 
 Use the tab switcher on the hub page to toggle between **Cohort 1** (navy) and **Cohort 2** (green).
 
