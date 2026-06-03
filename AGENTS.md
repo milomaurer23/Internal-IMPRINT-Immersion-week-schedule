@@ -1,28 +1,21 @@
-# 🧠 AGENTS.md — Copilot Persistent Context
+# 🧠 AGENTS.md — Persistent Project Context
 ## NIA REDI · Immersion Week Planning · July 2026
 
-> This file is automatically read by GitHub Copilot CLI at session start.
-> It gives Copilot full context on this project so no re-explanation is needed.
+> This file is intended to be read by AI assistants (Gemini, Copilot, Claude, etc.) at session start.
+> It provides full context on this project to ensure consistency across different platforms and models.
 
 ---
 
 ## Who is the user?
-Milo — organizing NIA REDI immersion week programming for two cohorts in Berkeley/Bay Area, July 2026. Prefers clean, modern HTML itinerary cards. Is working out of the folder structure below.
+Milo — organizing NIA REDI immersion week programming for two cohorts in Berkeley/Bay Area, July 2026. Prefers clean, modern HTML itinerary cards.
 
 ## Project: What are we building?
 A set of **self-contained HTML itinerary files** for a two-week immersion program:
-- **Week 1 (Jul 20–26):** Cohort 1 — Outgoing
-- **Week 2 (Jul 27–Aug 2):** Cohort 2 — Incoming
+- **index.html:** The unified week hub featuring both Cohort 1 and Cohort 2 itineraries with a tabbed interface.
+- **innovation_tour.html:** Full detail for July 21 (Cohort 1).
+- **silverado_tour.html:** Full detail for July 30 (Cohort 2).
 
-Each week has a **hub file** (`cohort1_week.html` / `cohort2_week.html`) showing all 7 days as cards with status chips. Planned days show a stop-by-stop summary with an **inline expand button** that loads the full detail card inside an iframe — no new tab needed.
-
-Full detail cards (like `innovation_tour.html`) are **boarding-pass style** vertical timeline cards with:
-- Transport pills (Uber = black, BART = dark blue #003DA5, Walk = green)
-- Duration badges, anchored/pending callouts
-- Group cost summary table (10 travelers, Uber XL × 2 cars)
-- Clipper Card recommendation
-- Pro tip footer
-- Hyperlinks on venue names
+Each cohort has a **tabbed view** in `index.html` showing all 7 days as cards with status chips. Planned days show a stop-by-stop summary with a link to the full detail card.
 
 ---
 
@@ -30,14 +23,16 @@ Full detail cards (like `innovation_tour.html`) are **boarding-pass style** vert
 
 ```
 Immersion week planning/
-└── Immersion Week #2, July 2026/       ← parent folder (may still be named without #2 if rename failed)
-    ├── AGENTS.md                        ← YOU ARE HERE (Copilot auto-reads this)
+└── Immersion Week, July 2026/
+    ├── AGENTS.md                        ← YOU ARE HERE (AI Assistant reads this)
     ├── immersion_week.md                ← human-readable progress doc
+    ├── index.html                       ← Unified Hub for both cohorts
     ├── Cohort #1 outgoing/
-    │   ├── cohort1_week.html            ← Week hub Jul 20–26 (dark navy theme)
-    │   └── innovation_tour.html         ← Jul 21 full detail: Innovation Labs Tour ✅
+    │   ├── innovation_tour.html         ← Jul 21 full detail: Innovation Labs Tour ✅
+    │   └── cohort1_week.html            ← (DEPRECATED)
     └── Cohort #2 incoming/
-        └── cohort2_week.html            ← Week hub Jul 27–Aug 2 (forest green theme)
+        ├── silverado_tour.html          ← Jul 30 full detail: Silverado Belmont ✅
+        └── cohort2_week.html            ← (DEPRECATED)
 ```
 
 ---
@@ -50,7 +45,7 @@ Immersion week planning/
 | Header gradient (Cohort 1) | `#1a1a2e → #16213e → #0f3460` (dark navy) |
 | Header gradient (Cohort 2) | `#064e3b → #065f46 → #047857` (forest green) |
 | Uber pill | `background: #111111` |
-| BART pill | `background: #003DA5` |
+| BART pill | background: #CC0000 (Red Line) |
 | Walk pill | `background: #16a34a` |
 | Anchored callout | green `#f0fdf4` border `#22c55e` |
 | Pending callout | red `#fff1f2` border `#f43f5e` |
@@ -93,19 +88,20 @@ Immersion week planning/
 | Wed Jul 22 | ⬜ TBD | No details yet |
 | Thu Jul 23 | ⬜ TBD | No details yet |
 | Fri Jul 24 | ⬜ TBD | No details yet |
-| Sat Jul 25 | 🌤 Weekend | Placeholder |
-| Sun Jul 26 | 🌤 Weekend | Placeholder |
+| Sat Jul 25 | ⏳ **PENDING** | Presentations & Lunch Celebration |
+| Sun Jul 26 | ⏳ **PENDING** | Lunch Celebration (Backup) |
 
 ### Cohort 2 (Jul 27–Aug 2)
 | Day | Status | Notes |
 |---|---|---|
-| Sun Jul 27 | ⬜ TBD | Possible arrival/orientation |
-| Mon Jul 28 | ⬜ TBD | No details yet |
-| Tue Jul 29 | ⬜ TBD | No details yet |
-| Wed Jul 30 | ⬜ TBD | No details yet |
-| Thu Jul 31 | ⬜ TBD | No details yet |
-| Fri Aug 1 | ⬜ TBD | No details yet |
-| Sat Aug 2 | ⬜ TBD | Possible departure day |
+| Sun Jul 26 | ✅ **DONE** | Arrival & Orientation |
+| Mon Jul 27 | ⬜ TBD | No details yet |
+| Tue Jul 28 | ⬜ TBD | No details yet |
+| Wed Jul 29 | ⬜ TBD | No details yet |
+| Thu Jul 30 | ✅ **DONE** | silverado_tour.html fully built |
+| Fri Jul 31 | ⬜ TBD | No details yet |
+| Sat Aug 1 | ⬜ TBD | Possible departure day |
+| Sun Aug 2 | ⬜ TBD | Possible departure day |
 
 ---
 
@@ -119,19 +115,10 @@ When Milo gives you details for a new day, here is the workflow:
    - Add hyperlinks to all venue names
    - Add group cost table for 10 people / Uber XL × 2 cars
 
-2. **Update `cohort1_week.html`** (or cohort2) for that day's card:
+2. **Update index.html** for that day's card:
    - Replace the placeholder block with a stop-list summary
    - Change status chip from `status-tbd` → `status-planned`
    - Add transport micro-pills
-   - Add the expand button pointing to the new detail file:
-     ```html
-     <button class="expand-btn" id="expand-btn-DAYID" onclick="toggleItinerary('DAYID')">
-       <span id="expand-arrow-DAYID">▼</span> Expand Full Itinerary
-     </button>
-     <div id="itinerary-expand-DAYID" class="itinerary-expand">
-       <iframe src="FILENAME.html" class="itinerary-frame" title="DAY TITLE"></iframe>
-     </div>
-     ```
    - Update the week summary footer counts
 
 3. **Update this AGENTS.md** — mark the day as ✅ DONE in the status table
@@ -141,23 +128,11 @@ When Milo gives you details for a new day, here is the workflow:
 ## Known Issues / TODOs
 
 - [ ] Folder rename: "Immersion Week, July 2026" → "Immersion Week #2, July 2026" (bash was broken at time of creation — do manually in Finder or retry next session)
-- [ ] cohort1_week.html summary bar still says "3 Labs Confirmed" / "1 of 5" — update as days are filled in
-- [ ] cohort2_week.html header chip says "⬜ All Days TBD" — update as days are confirmed
+- [ ] index.html summary bar still says "3 Labs Confirmed" / "1 of 5" — update as days are filled in
+- [ ] index.html cohort 2 header chip says "⬜ All Days TBD" — update as days are confirmed
 - [ ] Verify Eli Lilly Gateway Lab appointment once confirmed
 - [ ] Consider adding a Google Maps link for each stop address
 
 ---
 
-## Copilot CLI Tips for This Project
-
-- **`/init`** — initializes instruction files for a repo (useful if this becomes a git repo)
-- **`/skills`** — check available skills that could help (e.g. PDF export)
-- **`/share`** — export this session to markdown or HTML gist
-- **`@ mention`** files directly: e.g. `@innovation_tour.html` to bring a file into context
-- **`! shell command`** — run a quick shell command inline (e.g. `! open cohort1_week.html`)
-- **AGENTS.md is auto-loaded** from cwd — keep this file updated as the project evolves
-- The `$HOME/.copilot/copilot-instructions.md` file sets *global* instructions across all projects
-
----
-
-*Last updated: April 28, 2026 · Built with GitHub Copilot CLI (Claude Sonnet 4.6)*
+*Last updated: April 29, 2026 · Built with AI Collaboration*

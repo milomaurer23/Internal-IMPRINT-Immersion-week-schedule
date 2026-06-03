@@ -139,6 +139,7 @@
     letter-spacing: 0.5px;
   }
   .day-date-col.weekend .day-num { color: #9ca3af; }
+  .day-date-col.highlight-col .day-num { color: #065f46; }
 
   .day-content {
     flex: 1;
@@ -211,7 +212,7 @@
     font-size: 11px; font-weight: 600; color: white;
   }
   .mp-uber { background: #111; }
-  .mp-bart { background: #003DA5; }
+  .mp-bart { background: #CC0000; }
   .mp-walk { background: #16a34a; }
 
   .placeholder-block {
@@ -252,6 +253,42 @@
     transition: background 0.15s;
   }
   .cta-btn:hover { background: #047857; }
+
+  /* Expand Button & Container */
+  .expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #065f46;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 20px;
+    margin-top: 6px;
+    transition: background 0.15s;
+    font-family: inherit;
+    letter-spacing: 0.2px;
+  }
+  .expand-btn:hover { background: #064e3b; }
+  .expand-btn.open { background: #374151; }
+
+  .itinerary-expand {
+    display: none;
+    margin-top: 14px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .itinerary-frame {
+    width: 100%;
+    height: 1080px;
+    border: none;
+    display: block;
+  }
 
   .day-notes {
     font-size: 12px;
@@ -305,32 +342,34 @@
     <a href="cohort2_week.html" class="active">📋 Cohort 2 · Incoming &nbsp; Jul 27–Aug 2</a>
   </div>
 
-  <!-- SUNDAY, JULY 27 -->
+  <!-- SUNDAY, JULY 26 -->
   <div class="day-card">
-    <div class="day-date-col weekend">
+    <div class="day-date-col highlight-col weekend">
       <div class="day-name">Sun</div>
-      <div class="day-num">27</div>
+      <div class="day-num">26</div>
       <div class="day-month">Jul</div>
     </div>
     <div class="day-content">
       <div class="day-content-top">
-        <div class="day-title">— Arrival / Orientation Day —</div>
-        <span class="status-chip status-tbd">⬜ TBD</span>
+        <div class="day-title">👋 Arrival & Orientation</div>
+        <span class="status-chip status-planned">✅ Planned</span>
       </div>
-      <div class="placeholder-block">
-        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+      <div class="stop-list">
+        <div class="stop-item">
+          <span class="s-time">TBD</span>
+          <span class="s-icon">🏠</span>
+          <span><span class="s-name">Arrive at Sigma House</span> <span class="s-detail">· Berkeley · Home Base</span></span>
+        </div>
       </div>
-      <div class="day-notes">Sunday — possible arrival / cohort orientation. Add details if applicable.</div>
+      <div class="day-notes">Welcome to Berkeley! Initial arrival, house orientation, and cohort meet-and-greet.</div>
     </div>
   </div>
 
-  <!-- MONDAY, JULY 28 -->
+  <!-- MONDAY, JULY 27 -->
   <div class="day-card">
     <div class="day-date-col">
       <div class="day-name">Mon</div>
-      <div class="day-num">28</div>
+      <div class="day-num">27</div>
       <div class="day-month">Jul</div>
     </div>
     <div class="day-content">
@@ -341,17 +380,14 @@
       <div class="placeholder-block">
         <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
         <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
       </div>
-      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Monday Jul 28.</div>
     </div>
   </div>
 
-  <!-- TUESDAY, JULY 29 -->
+  <!-- WEDNESDAY, JULY 29 -->
   <div class="day-card">
     <div class="day-date-col">
-      <div class="day-name">Tue</div>
+      <div class="day-name">Wed</div>
       <div class="day-num">29</div>
       <div class="day-month">Jul</div>
     </div>
@@ -366,36 +402,69 @@
         <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
         <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
       </div>
-      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Tuesday Jul 29.</div>
+      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Wednesday Jul 29.</div>
     </div>
   </div>
 
-  <!-- WEDNESDAY, JULY 30 -->
+  <!-- THURSDAY, JULY 30 -->
   <div class="day-card">
-    <div class="day-date-col">
-      <div class="day-name">Wed</div>
+    <div class="day-date-col highlight-col">
+      <div class="day-name">Thu</div>
       <div class="day-num">30</div>
       <div class="day-month">Jul</div>
     </div>
     <div class="day-content">
       <div class="day-content-top">
-        <div class="day-title">— Add Day's Itinerary —</div>
-        <span class="status-chip status-tbd">⬜ TBD</span>
+        <div class="day-title"><a href="https://www.silverado.com/locations/belmont-hills/" target="_blank" style="color: inherit; text-decoration: none;">🌳 Silverado Belmont Hills</a></div>
+        <span class="status-chip status-planned">✅ Planned</span>
       </div>
-      <div class="placeholder-block">
-        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+      <div class="stop-list">
+        <div class="stop-item">
+          <span class="s-time">7:25 AM</span>
+          <span class="s-icon">🏠</span>
+          <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Walk/Uber to BART</span></span>
+        </div>
+        <div class="stop-item">
+          <span class="s-time">7:35 AM</span>
+          <span class="s-icon">🚇</span>
+          <span><span class="s-name">Berkeley BART</span> <span class="s-detail">· Red Line Southbound</span></span>
+        </div>
+        <div class="stop-item">
+          <span class="s-time">8:40 AM</span>
+          <span class="s-icon">🚉</span>
+          <span><span class="s-name">Millbrae BART</span> <span class="s-detail">· Transfer to Uber XL</span></span>
+        </div>
+        <div class="stop-item">
+          <span class="s-time">9:00 AM</span>
+          <span class="s-icon">🍳</span>
+          <span><span class="s-name"><a href="https://www.silverado.com/locations/belmont-hills/" target="_blank" style="color: inherit; text-decoration: underline;">Silverado Belmont Hills</a></span> <span class="s-detail">· Breakfast Provided · 2 hours</span></span>
+        </div>
+        <div class="stop-item">
+          <span class="s-time">11:00 AM</span>
+          <span class="s-icon">🚐</span>
+          <span><span class="s-name">Depart for Next Stop</span> <span class="s-detail">· TBD</span></span>
+        </div>
       </div>
-      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Wednesday Jul 30.</div>
+      <div class="micro-pills">
+        <span class="micro-pill mp-bart">🚇 BART Red Line</span>
+        <span class="micro-pill mp-uber">🚗 Uber XL ×2</span>
+        <span class="micro-pill mp-walk">🚶 Site Tour</span>
+      </div>
+      <a href="silverado_tour.html" class="expand-btn">
+        <span>→</span> View Full Day
+      </a>
+      <div class="day-notes">
+        <strong>Travel Note:</strong> Taking BART to Millbrae bypasses Bay Bridge traffic, ensuring arrival for the 9:00 AM breakfast.
+        <br><strong>Highlights:</strong> Nexus Program for dementia care, therapy animals, and nature-based therapy. 
+        <br><em>Contact: Marisa Taylor (415-577-4198)</em>
+      </div>
     </div>
   </div>
 
-  <!-- THURSDAY, JULY 31 -->
+  <!-- FRIDAY, JULY 31 -->
   <div class="day-card">
     <div class="day-date-col">
-      <div class="day-name">Thu</div>
+      <div class="day-name">Fri</div>
       <div class="day-num">31</div>
       <div class="day-month">Jul</div>
     </div>
@@ -410,37 +479,15 @@
         <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
         <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
       </div>
-      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Thursday Jul 31.</div>
+      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Friday Jul 31.</div>
     </div>
   </div>
 
-  <!-- FRIDAY, AUGUST 1 -->
-  <div class="day-card">
-    <div class="day-date-col">
-      <div class="day-name">Fri</div>
-      <div class="day-num">1</div>
-      <div class="day-month">Aug</div>
-    </div>
-    <div class="day-content">
-      <div class="day-content-top">
-        <div class="day-title">— Add Day's Itinerary —</div>
-        <span class="status-chip status-tbd">⬜ TBD</span>
-      </div>
-      <div class="placeholder-block">
-        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
-        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
-      </div>
-      <div class="day-notes">No stops entered yet. Ask Copilot to fill in details for Friday Aug 1.</div>
-    </div>
-  </div>
-
-  <!-- SATURDAY, AUGUST 2 -->
+  <!-- SATURDAY, AUGUST 1 -->
   <div class="day-card">
     <div class="day-date-col weekend">
       <div class="day-name">Sat</div>
-      <div class="day-num">2</div>
+      <div class="day-num">1</div>
       <div class="day-month">Aug</div>
     </div>
     <div class="day-content">
@@ -457,16 +504,37 @@
     </div>
   </div>
 
+  <!-- SUNDAY, AUGUST 2 -->
+  <div class="day-card">
+    <div class="day-date-col weekend">
+      <div class="day-name">Sun</div>
+      <div class="day-num">2</div>
+      <div class="day-month">Aug</div>
+    </div>
+    <div class="day-content">
+      <div class="day-content-top">
+        <div class="day-title">— Weekend / Departure Day —</div>
+        <span class="status-chip status-weekend">🌤 Weekend</span>
+      </div>
+      <div class="placeholder-block">
+        <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
+        <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line"></div></div>
+      </div>
+      <div class="day-notes">Sunday — possible departure or wrap-up day. Add details if applicable.</div>
+    </div>
+  </div>
+
   <!-- ── WEEK SUMMARY ── -->
   <div class="week-summary">
     <div class="ws-item">
       <div class="ws-label">Planned days</div>
-      <div class="ws-val">0 of 5</div>
+      <div class="ws-val">1 of 5</div>
     </div>
     <div class="ws-divider"></div>
     <div class="ws-item">
       <div class="ws-label">TBD days</div>
-      <div class="ws-val">7</div>
+      <div class="ws-val">6</div>
     </div>
     <div class="ws-divider"></div>
     <div class="ws-item">
@@ -481,5 +549,17 @@
   </div>
 
 </div>
+<script>
+  function toggleItinerary(id) {
+    const panel = document.getElementById('itinerary-expand-' + id);
+    const arrow = document.getElementById('expand-arrow-' + id);
+    const btn   = document.getElementById('expand-btn-' + id);
+    const isOpen = panel.style.display === 'block';
+    panel.style.display = isOpen ? 'none' : 'block';
+    arrow.textContent   = isOpen ? '▼' : '▲';
+    btn.classList.toggle('open', !isOpen);
+    btn.childNodes[2].textContent = isOpen ? ' Expand Full Itinerary' : ' Collapse Itinerary';
+  }
+</script>
 </body>
 </html>
