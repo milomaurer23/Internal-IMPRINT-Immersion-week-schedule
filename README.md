@@ -1,5 +1,5 @@
 # NIA REDI · Immersion Week 2026
-### Berkeley / Bay Area · July 20 – August 2, 2026
+### Berkeley / Bay Area · July 19 – July 31, 2026
 
 ---
 
