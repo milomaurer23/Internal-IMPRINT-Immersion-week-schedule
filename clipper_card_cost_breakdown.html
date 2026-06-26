@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clipper Card Cost Breakdown - Presentation</title>
+  <!-- Google Fonts: Outfit for headings, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #f8fafc;
+      --color-card-bg: #ffffff;
+      --color-text-main: #0f172a;
+      --color-text-sub: #475569;
+      --color-navy-light: #1e1b4b;
+      --color-navy: #1e293b;
+      --color-navy-dark: #0f172a;
+      --gradient-navy: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      --gradient-forest: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+      --gradient-dual: linear-gradient(135deg, #111827 0%, #1e1b4b 40%, #064e3b 100%);
+      --color-green-pill: #16a34a;
+      --color-bart-pill: #CC0000;
+      --color-uber-pill: #111111;
+      --color-accent: #6366f1;
+      --color-border: #e2e8f0;
+      --radius-outer: 24px;
+      --radius-inner: 12px;
+      --shadow-premium: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04);
+      --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* ── Main Presentation Layout ── */
+    header {
+      background: var(--gradient-dual);
+      color: white;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      z-index: 10;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo span {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .header-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-header {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-header:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-header.active {
+      background: white;
+      color: #1e1b4b;
+      border-color: white;
+    }
+
+    /* ── Slide Arena ── */
+    .slide-arena {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+    }
+
+    .slide {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-outer);
+      box-shadow: var(--shadow-premium);
+      width: 100%;
+      max-width: 960px;
+      height: 100%;
+      max-height: 560px;
+      padding: 50px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      position: absolute;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+      transform: scale(0.96) translateY(10px);
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      z-index: 5;
+    }
+
+    /* Slide animation classes */
+    .slide.exit-left {
+      transform: scale(0.96) translateX(-100px);
+      opacity: 0;
+    }
+
+    .slide.exit-right {
+      transform: scale(0.96) translateX(100px);
+      opacity: 0;
+    }
+
+    /* ── Slide Content Typography ── */
+    .slide-header {
+      margin-bottom: 24px;
+    }
+
+    .slide-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .slide-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-text-main);
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+    }
+
+    .slide-body {
+      flex: 1;
+      font-size: 16px;
+      color: var(--color-text-sub);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-footer {
+      border-top: 1px solid var(--color-border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    /* ── Elements & Grid helpers ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stats-card {
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-inner);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.05);
+    }
+
+    .stats-num {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--color-text-main);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stats-num.navy {
+      background: var(--gradient-navy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stats-num.forest {
+      background: var(--gradient-forest);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stats-num.dual {
+      background: var(--gradient-dual);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stats-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stats-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: white;
+    }
+
+    .badge.bart { background: var(--color-bart-pill); }
+    .badge.uber { background: var(--color-uber-pill); }
+    .badge.walk { background: var(--color-green-pill); }
+    .badge.indigo { background: #6366f1; }
+    .badge.navy { background: #1e1b4b; }
+    .badge.forest { background: #064e3b; }
+
+    /* ── Lists & Callouts ── */
+    ul.checklist {
+      list-style-type: none;
+    }
+
+    ul.checklist li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    ul.checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: #dcfce7;
+      color: #15803d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 8px;
+      padding: 15px 20px;
+      font-size: 14.5px;
+      color: #166534;
+      margin-top: 15px;
+    }
+
+    .callout.pending {
+      background: #fff1f2;
+      border-left-color: #f43f5e;
+      color: #9f1239;
+    }
+
+    /* ── Tables ── */
+    .table-container {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-inner);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    table.slide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
+    }
+
+    table.slide-table th {
+      background: #f8fafc;
+      padding: 10px 14px;
+      font-weight: 600;
+      color: var(--color-text-sub);
+      border-bottom: 1.5px solid var(--color-border);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    table.slide-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text-main);
+    }
+
+    table.slide-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.slide-table tr.total-row td {
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    /* ── Slide Specific Styles ── */
+    /* Slide 1 - Title slide styling */
+    .slide-title-card {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .slide-title-card .slide-body {
+      align-items: center;
+      justify-content: center;
+      max-width: 600px;
+    }
+
+    .slide-title-card h1 {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #1e1b4b 0%, #064e3b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .slide-title-card p {
+      font-size: 18px;
+      color: var(--color-text-sub);
+      margin-bottom: 25px;
+    }
+
+    /* Handoff visualizer (Slide 3) */
+    .handoff-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .handoff-box {
+      width: 240px;
+      background: #f8fafc;
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-inner);
+      padding: 20px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .handoff-box.navy-border {
+      border-color: #1e1b4b;
+      background: rgba(30, 27, 75, 0.02);
+    }
+
+    .handoff-box.forest-border {
+      border-color: #064e3b;
+      background: rgba(6, 78, 59, 0.02);
+    }
+
+    .handoff-arrow {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, #1e1b4b, #064e3b);
+      margin: 0 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .handoff-arrow::after {
+      content: '▶';
+      position: absolute;
+      right: -2px;
+      top: -7px;
+      color: #064e3b;
+      font-size: 12px;
+    }
+
+    .handoff-arrow-label {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      white-space: nowrap;
+    }
+
+    /* Interactive Calculator Slider (Slide 6) */
+    .calc-container {
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-inner);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .calc-col {
+      flex: 1;
+    }
+
+    .calc-label {
+      font-weight: 600;
+      font-size: 13.5px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--color-text-main);
+    }
+
+    .calc-label span.val {
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+
+    .calc-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      outline: none;
+    }
+
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.1s ease;
+    }
+
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      background-color: #cbd5e1;
+      border-radius: 12px;
+      transition: background-color 0.2s;
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: white;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    input:checked + .toggle-switch {
+      background-color: var(--color-green-pill);
+    }
+
+    input:checked + .toggle-switch::after {
+      transform: translateX(20px);
+    }
+
+    .calc-result {
+      background: var(--gradient-dual);
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: white;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .calc-result-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      margin-bottom: 2px;
+    }
+
+    .calc-result-val {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .calc-result-sub {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    /* ── Speaker Notes Panel ── */
+    .speaker-notes-panel {
+      position: fixed;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 80px);
+      max-width: 960px;
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: var(--radius-inner);
+      padding: 20px 24px;
+      box-shadow: 0 -10px 25px -5px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.05);
+      z-index: 8;
+      display: none;
+      font-size: 14px;
+      color: #92400e;
+      line-height: 1.5;
+    }
+
+    .speaker-notes-panel.active {
+      display: block;
+    }
+
+    .notes-title {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── Navigation Strip ── */
+    .nav-strip {
+      background: white;
+      border-top: 1px solid var(--color-border);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .progress-bar-container {
+      flex: 1;
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      margin: 0 40px;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--color-accent);
+      border-radius: 2px;
+      width: 0;
+      transition: width 0.3s ease;
+    }
+
+    .progress-dots {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .progress-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      border: 2px solid white;
+      pointer-events: auto;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .progress-dot.active {
+      background: var(--color-accent);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-nav {
+      background: white;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover:not(:disabled) {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .slide-counter {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--color-text-sub);
+    }
+
+    /* Keybinding info overlay */
+    .key-info {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 11px;
+      color: #94a3b8;
+      display: flex;
+      gap: 10px;
+    }
+
+    .key-info kbd {
+      background: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-family: inherit;
+      color: #475569;
+    }
+
+    @media(max-width: 768px) {
+      .slide-arena {
+        padding: 15px;
+      }
+      .slide {
+        padding: 24px;
+        max-height: 90%;
+      }
+      .slide-title {
+        font-size: 24px;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .handoff-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .handoff-arrow {
+        height: 15px;
+        width: 2px;
+        margin: 5px 0;
+      }
+      .handoff-arrow::after {
+        transform: rotate(90deg);
+        bottom: -8px;
+        right: -5px;
+      }
+      .progress-bar-container {
+        margin: 0 15px;
+      }
+      .key-info {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-logo">
+      <span id="header-cohort-badge">Dual Cohorts</span>
+      <div class="header-title">Clipper Card Cost Breakdown</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-header" id="notes-btn" onclick="toggleSpeakerNotes()">
+        <span>💡</span> Show Speaker Notes
+      </button>
+      <a href="index.html" class="btn-header" style="text-decoration:none;">
+        <span>🏠</span> Return to Hub
+      </a>
+    </div>
+  </header>
+
+  <!-- SLIDE ARENA -->
+  <main class="slide-arena">
+
+    <!-- SLIDE 1: TITLE SLIDE -->
+    <div class="slide slide-title-card active" data-slide="1" data-cohort="dual">
+      <div class="slide-header">
+        <span class="slide-tag">NIA REDI · July 2026</span>
+      </div>
+      <div class="slide-body">
+        <h1>Clipper Card Cost Breakdown</h1>
+        <p>A smart, budget-optimized plan for two Berkeley cohorts using public transit. Real 2026 data and logistical strategies.</p>
+        
+        <div class="badge-bar" style="justify-content:center;">
+          <span class="badge bart">BART Red Line Route</span>
+          <span class="badge walk">14 Cards Purchased</span>
+          <span class="badge indigo">10 Cards Reused (Handoff)</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div>Milo Maurer · Program Coordinator</div>
+        <div class="slide-counter">Slide 1 of 7</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: WHAT IS CLIPPER & WHY REDESIGN? -->
+    <div class="slide" data-slide="2" data-cohort="dual">
+      <div class="slide-header">
+        <span class="slide-tag">Concept & Fundamentals</span>
+        <div class="slide-title">Transit Debit Cards vs. Flat Budgets</div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <div style="font-weight:700; margin-bottom:10px; color:var(--color-navy-dark); font-size:17px;">
+              🎫 What is a Clipper Card?
+            </div>
+            <p style="margin-bottom:15px; font-size:14.5px;">
+              Think of Clipper like a reloadable transit gift card. You load it with funds, hand it to a scholar, and they tap at the gate. Balances stay on the card until spent.
+            </p>
+            <div style="font-weight:700; margin-bottom:10px; color:var(--color-navy-dark); font-size:17px;">
+              🔄 Why Not the $30 Budget from 2025?
+            </div>
+            <p style="font-size:14.5px;">
+              In 2025 (IMPRINT), cards were used for <strong>exactly one travel day</strong>. A $30 load covered that single day easily. 
+              This year, we have <strong>multiple travel days across two cohorts</strong>, requiring a strategic shift in load values.
+            </p>
+          </div>
+          <div class="stats-card">
+            <div class="stats-num navy">$30</div>
+            <div class="stats-label">2025 flat budget</div>
+            <div class="stats-sub">Covered 1 BART round-trip + Muni + buffer</div>
+            <div style="margin: 20px 0; border-top: 1px dashed var(--color-border);"></div>
+            <div class="stats-num" style="color:var(--color-accent); font-size:40px;">4 Days</div>
+            <div class="stats-label">2026 MAX TRAVEL DAYS</div>
+            <div class="stats-sub">Requires custom loading sizes to prevent lockouts</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div>Concept Comparison</div>
+        <div class="slide-counter">Slide 2 of 7</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: WHY 14 CARDS? THE MATHEMATICS -->
+    <div class="slide" data-slide="3" data-cohort="dual">
+      <div class="slide-header">
+        <span class="slide-tag">Cohort Math</span>
+        <div class="slide-title">Why 14 Cards for 24 Travelers?</div>
+      </div>
+      <div class="slide-body">
+        <p style="margin-bottom:20px; font-size:15px;">
+          Rather than buying 24 cards (which would waste money on card fees and unused leftovers), we optimize. Cohort 1 is smaller and travels only once. Cohort 2 is larger and travels 3 times. We reuse 10 cards.
+        </p>
+        
+        <div class="grid-3" style="margin-bottom:20px;">
+          <div class="stats-card">
+            <div class="stats-num navy">10</div>
+            <div class="stats-label">Cohort 1 size</div>
+            <div class="stats-sub">July 20–26 (1 Travel Day)</div>
+          </div>
+          <div class="stats-card">
+            <div class="stats-num forest">14</div>
+            <div class="stats-label">Cohort 2 size</div>
+            <div class="stats-sub">July 27–31 (3 Travel Days)</div>
+          </div>
+          <div class="stats-card" style="background:#eef2ff; border-color:#c7d2fe;">
+            <div class="stats-num dual">14</div>
+            <div class="stats-label">TOTAL CARDS PURCHASED</div>
+            <div class="stats-sub">10 dual-use + 4 single-use</div>
+          </div>
+        </div>
+        
+        <div class="callout">
+          <strong>💡 Optimization formula:</strong> 10 cards are purchased, loaded with C1 + C2 travel amounts, used by C1, collected, and handed off to cover 10 of the C2 scholars. The remaining 4 C2 scholars get 4 newly purchased cards loaded just for C2 week.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div>Handoff Strategy</div>
+        <div class="slide-counter">Slide 3 of 7</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: THE HANDOFF LOGISTICS TIMELINE -->
+    <div class="slide" data-slide="4" data-cohort="dual">
+      <div class="slide-header">
+        <span class="slide-tag">Logistical Handoff</span>
+        <div class="slide-title">Handoff Logistics & Timeline</div>
+      </div>
+      <div class="slide-body">
+        <p style="margin-bottom:15px; font-size:15px;">
+          The success of the budget depends on recovering the 10 cards from Cohort 1. Here is the operational timeline:
+        </p>
+        
+        <div class="handoff-container">
+          <div class="handoff-box navy-border">
+            <div class="badge navy" style="margin-bottom:8px;">Jul 19–21 · Phase 1</div>
+            <div style="font-weight:700; font-size:13px; color:#1e1b4b;">Cohort 1 Travel</div>
+            <div style="font-size:11px; color:var(--color-text-sub); margin-top:4px;">10 scholars use cards for JLABS Tour.</div>
+          </div>
+          
+          <div class="handoff-arrow">
+            <span class="handoff-arrow-label">Collect C1 Cards</span>
+          </div>
+          
+          <div class="handoff-box" style="border-color:#7c3aed; background:rgba(124, 58, 237, 0.02); width:200px;">
+            <div class="badge indigo" style="margin-bottom:8px;">Jul 26 · Handoff</div>
+            <div style="font-weight:700; font-size:13px; color:#6d28d9;">Vault & Sort</div>
+            <div style="font-size:11px; color:var(--color-text-sub); margin-top:4px;">Collect cards on departure. Check balances ($42.70 remaining).</div>
+          </div>
+          
+          <div class="handoff-arrow">
+            <span class="handoff-arrow-label">Distribute to C2</span>
+          </div>
+          
+          <div class="handoff-box forest-border">
+            <div class="badge forest" style="margin-bottom:8px;">Jul 27 · Phase 2</div>
+            <div style="font-weight:700; font-size:13px; color:#064e3b;">Cohort 2 Travel</div>
+            <div style="font-size:11px; color:var(--color-text-sub); margin-top:4px;">Distribute 10 reused + 4 fresh cards.</div>
+          </div>
+        </div>
+
+        <div class="callout pending" style="margin-top:10px;">
+          <strong>⚠️ Critical Action Item:</strong> Milo must explicitly request cards back from C1 scholars before they board airport shuttles on Saturday/Sunday. Leftover balances (~$427 in value) will be lost if scholars carry them home.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div>Operations & Logistics</div>
+        <div class="slide-counter">Slide 4 of 7</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: LOAD AMOUNTS: WHY LOAD DIFFERENTLY? -->
+    <div class="slide" data-slide="5" data-cohort="c1">
+      <div class="slide-header">
+        <span class="slide-tag">Financial Calculations</span>
+        <div class="slide-title">Why Load Different Amounts?</div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <div style="margin-bottom:12px;">
+              <span class="badge navy" style="padding:4px 8px;">10 Dual-Cohort Cards</span>
+              <span style="font-weight:700; color:#1e1b4b; font-size:16px; margin-left:10px;">Load $55.00</span>
+              <p style="font-size:13px; margin-top:5px; color:var(--color-text-sub);">
+                Must cover four total round-trips: Cohort 1 JLABS ($12.30) + Cohort 2's three site visits ($36.20). 
+                Total spend = $48.50. Remaining balance = <strong>$6.50 buffer</strong>.
+              </p>
+            </div>
+            <div style="border-top:1px solid var(--color-border); padding-top:12px;">
+              <span class="badge forest" style="padding:4px 8px;">4 Cohort 2 Only Cards</span>
+              <span style="font-weight:700; color:#064e3b; font-size:16px; margin-left:10px;">Load $41.00</span>
+              <p style="font-size:13px; margin-top:5px; color:var(--color-text-sub);">
+                Only cover the three Cohort 2 travel days. JLABS is bypassed.
+                Total spend = $36.20. Remaining balance = <strong>$4.80 buffer</strong>.
+              </p>
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table class="slide-table">
+              <thead>
+                <tr>
+                  <th>Destination (RT)</th>
+                  <th>Clipper Fare</th>
+                  <th>Dual</th>
+                  <th>C2-Only</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>JLABS SSF (C1)</td>
+                  <td style="font-weight:600;">$12.30</td>
+                  <td style="color:#15803d; font-weight:600;">✓</td>
+                  <td style="color:#dc2626;">—</td>
+                </tr>
+                <tr>
+                  <td>Frank Res. (C2)</td>
+                  <td style="font-weight:600;">$11.70</td>
+                  <td style="color:#15803d; font-weight:600;">✓</td>
+                  <td style="color:#15803d; font-weight:600;">✓</td>
+                </tr>
+                <tr>
+                  <td>Inst. on Aging (C2)</td>
+                  <td style="font-weight:600;">$10.60</td>
+                  <td style="color:#15803d; font-weight:600;">✓</td>
+                  <td style="color:#15803d; font-weight:600;">✓</td>
+                </tr>
+                <tr>
+                  <td>Silverado (C2)</td>
+                  <td style="font-weight:600;">$13.90</td>
+                  <td style="color:#15803d; font-weight:600;">✓</td>
+                  <td style="color:#15803d; font-weight:600;">✓</td>
+                </tr>
+                <tr class="total-row">
+                  <td>Total Spent</td>
+                  <td style="font-weight:700;">—</td>
+                  <td>$48.50</td>
+                  <td>$36.20</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div>Fare & Budget Breakdown</div>
+        <div class="slide-counter">Slide 5 of 7</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: INTERACTIVE BUDGET BUILDER -->
+    <div class="slide" data-slide="6" data-cohort="c2">
+      <div class="slide-header">
+        <span class="slide-tag">Interactive Calculator</span>
+        <div class="slide-title">Interactive Budget Calculator</div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="calc-container">
+            <div class="calc-row">
+              <div class="calc-col">
+                <div class="calc-label">
+                  <span>Cohort 1 (Dual-Cohort Cards)</span>
+                  <span class="val" id="c1-val">10 Cards</span>
+                </div>
+                <input type="range" id="c1-slider" min="6" max="15" value="10" class="calc-slider" oninput="calculateTotal()">
+              </div>
+            </div>
+            <div class="calc-row">
+              <div class="calc-col">
+                <div class="calc-label">
+                  <span>Cohort 2 Total Travelers</span>
+                  <span class="val" id="c2-val">14 People</span>
+                </div>
+                <input type="range" id="c2-slider" min="10" max="20" value="14" class="calc-slider" oninput="calculateTotal()">
+              </div>
+            </div>
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #e2e8f0; padding-top:12px;">
+              <div class="toggle-container" onclick="togglePhysicalFee()">
+                <input type="checkbox" id="fee-checkbox" checked style="display:none;">
+                <div class="toggle-switch" id="fee-switch"></div>
+                <span style="font-size:12.5px; font-weight:600; color:var(--color-text-sub);">Apply $3.00 Card Fees</span>
+              </div>
+              <div style="font-size:11.5px; color:#94a3b8;" id="fee-saving-note">
+                Saves $42 if loaded on Mobile Wallet
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="table-container" style="margin-bottom:12px;">
+              <table class="slide-table" style="font-size:12.5px;">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th style="text-align:center;">Qty</th>
+                    <th style="text-align:right;">Load</th>
+                    <th style="text-align:right;">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>🔄 Dual-Cohort Cards ($55)</td>
+                    <td style="text-align:center;" id="calc-dual-qty">10</td>
+                    <td style="text-align:right;">$55.00</td>
+                    <td style="text-align:right;" id="calc-dual-sub">$550.00</td>
+                  </tr>
+                  <tr>
+                    <td>🟢 C2-Only Cards ($41)</td>
+                    <td style="text-align:center;" id="calc-single-qty">4</td>
+                    <td style="text-align:right;">$41.00</td>
+                    <td style="text-align:right;" id="calc-single-sub">$164.00</td>
+                  </tr>
+                  <tr id="fee-table-row">
+                    <td>💳 Physical Card Fees ($3)</td>
+                    <td style="text-align:center;" id="calc-fee-qty">14</td>
+                    <td style="text-align:right;">$3.00</td>
+                    <td style="text-align:right;" id="calc-fee-sub">$42.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="calc-result">
+              <div class="calc-result-title">Optimized Budget Estimate</div>
+              <div class="calc-result-val" id="calc-total">$756.00</div>
+              <div class="calc-result-sub" id="calc-math-desc">10 @ $55 + 4 @ $41 + 14 @ $3 fee</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div>Interactive Budget Sandbox</div>
+        <div class="slide-counter">Slide 6 of 7</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: KEY ACTIONS FOR COORDINATOR -->
+    <div class="slide" data-slide="7" data-cohort="dual">
+      <div class="slide-header">
+        <span class="slide-tag">Action Checklist</span>
+        <div class="slide-title">Key Action Items for Milo</div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="checklist">
+              <li>
+                <strong>Spot-Check Fares:</strong> Verify BART fare estimates at <a href="https://www.bart.gov/tickets/calculator" target="_blank" style="color:var(--color-accent); font-weight:600;">bart.gov</a> before purchasing cards.
+              </li>
+              <li>
+                <strong>Load Differing Pools:</strong> Buy 14 cards. Load 10 with $55 and 4 with $41. Label the $41 cards clearly to avoid handing them out in Week 1.
+              </li>
+              <li>
+                <strong>Setup Calendar Reminder:</strong> Mark Friday July 24 / Saturday July 25 to collect the 10 Cohort 1 cards back.
+              </li>
+              <li>
+                <strong>Use Mobile if Possible:</strong> Load cards directly into scholars' Apple Wallet / Google Wallet to bypass $42 in fees.
+              </li>
+            </ul>
+          </div>
+          <div class="stats-card" style="background:#fef3c7; border-color:#fde68a;">
+            <div style="font-weight:800; font-size:13px; color:#b45309; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">💡 Pro-Tip for JLABS Day (Jul 21)</div>
+            <p style="font-size:13px; line-height:1.6; color:#92400e; text-align:left;">
+              Scholars only tap their Clipper card on BART. The SamTrans Route 130 Bus from South San Francisco BART to JLABS is free. Encourage scholars to keep cards safe — physical replacement is $3 + reload cost.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div>Operational Wrap-up</div>
+        <div class="slide-counter">Slide 7 of 7</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SPEAKER NOTES POPUP -->
+  <div class="speaker-notes-panel" id="speaker-notes">
+    <div class="notes-title"><span>🗣</span> Speaking Points & Notes</div>
+    <div id="notes-content">Notes will populate here.</div>
+  </div>
+
+  <!-- NAVIGATION STRIP -->
+  <footer class="nav-strip">
+    <div class="slide-counter" id="slide-num-indicator">Slide 1 of 7</div>
+    
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+      <div class="progress-dots" id="dots-container">
+        <!-- Generated Dynamically -->
+      </div>
+    </div>
+    
+    <div class="nav-buttons">
+      <button class="btn-nav" id="prev-btn" onclick="changeSlide(-1)" disabled>◀</button>
+      <button class="btn-nav" id="next-btn" onclick="changeSlide(1)">▶</button>
+    </div>
+  </footer>
+
+  <!-- KEYBINDING GUIDE -->
+  <div class="key-info">
+    <span>Use <kbd>←</kbd> and <kbd>→</kbd> keys or <kbd>Space</kbd> to navigate</span>
+  </div>
+
+  <script>
+    // Speaker notes content corresponding to each slide
+    const speakerNotes = {
+      1: "Welcome everybody. Today we are walking through our transit budgeting for the two upcoming Berkeley cohorts in July 2026. This year we have two cohorts, and we are introducing a smart card reuse strategy to optimize our budget. Let's look at the numbers.",
+      2: "First, let's understand how a Clipper card works. It behaves exactly like a transit debit card. In 2025, we used a flat $30 load per person. It worked because the IMPRINT cohort only had one travel day. This year, we have four distinct travel days. If we just loaded $30, scholars would run out of money mid-week, resulting in travel disruptions and gate lockouts. We need a more targeted approach.",
+      3: "Here is the math. Cohort 1 has 10 travelers. Cohort 2 has 14 travelers. Instead of buying 24 separate cards, we buy only 14 cards total. How? We leverage the schedule overlap. Cohort 1's only BART trip is Tuesday, July 21. When they depart, we collect their cards and hand those same 10 cards to Cohort 2. We only buy 4 extra cards to cover the remaining Cohort 2 scholars.",
+      4: "This timeline shows the logistics. Operations are key here. I need to load 10 cards with $55 and 4 with $41 by July 19. On July 21, Cohort 1 uses the 10 cards. The absolute critical point is July 26: we MUST collect those cards from Cohort 1 before they leave. If they take the cards home, we lose $427 in active transit balance.",
+      5: "Why are the load values different? Let's check the fares. A dual-cohort card covers 4 trips: JLABS, Frank Residences, Institute on Aging, and Silverado. This sums to $48.50 in fares. Loading $55 gives them a solid $6.50 safety net. The 4 Cohort-2-only cards don't go to JLABS, so they only need $36.20 in fares. We load $41 for a $4.80 buffer. This saves us about $56 in unnecessary loads.",
+      6: "This is our interactive sandbox. If our cohort size changes, we can adjust these sliders to see the budget change in real-time. For example, if Cohort 1 has 10 travelers and Cohort 2 has 14, our total is $756. If we bypass the physical card fees by using mobile Apple Wallet or Google Wallet, we instantly drop our budget by $42 down to $714. Let's try to encourage scholars to use mobile wallets if they can.",
+      7: "Let's summarize our action items. First, verify the latest BART fares before loading. Second, make sure to load the separate pools: 10 cards at $55 and 4 cards at $41. Label them so we don't mix them up. Third, put a firm reminder in your calendar for Friday July 24 to collect the cards. And finally, let's encourage mobile wallet enrollment to save the $3 activation fee per card."
+    };
+
+    let currentSlide = 1;
+    const totalSlides = 7;
+    let applyPhysicalFee = true;
+
+    // Initialize slide dots
+    const dotsContainer = document.getElementById('dots-container');
+    for (let i = 1; i <= totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = `progress-dot ${i === 1 ? 'active' : ''}`;
+      dot.setAttribute('data-target', i);
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+
+    // Slide navigation functions
+    function updateSlideUI() {
+      // Hide all slides and remove exit classes
+      document.querySelectorAll('.slide').forEach(slide => {
+        slide.classList.remove('active', 'exit-left', 'exit-right');
+      });
+
+      // Show current slide
+      const activeSlideEl = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      activeSlideEl.classList.add('active');
+
+      // Update badge at header based on current slide theme
+      const badge = document.getElementById('header-cohort-badge');
+      const cohortType = activeSlideEl.getAttribute('data-cohort');
+      if (cohortType === 'c1') {
+        badge.textContent = "Cohort 1 Outgoing";
+        badge.className = "badge";
+        badge.style.background = "#1e1b4b";
+      } else if (cohortType === 'c2') {
+        badge.textContent = "Cohort 2 Incoming";
+        badge.className = "badge";
+        badge.style.background = "#064e3b";
+      } else {
+        badge.textContent = "Dual Cohorts";
+        badge.className = "badge";
+        badge.style.background = "#6366f1";
+      }
+
+      // Update speaker notes content
+      document.getElementById('notes-content').textContent = speakerNotes[currentSlide];
+
+      // Update progress bar
+      const fillPercentage = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+      document.getElementById('progress-bar').style.width = `${fillPercentage}%`;
+
+      // Update dots active class
+      document.querySelectorAll('.progress-dot').forEach((dot, idx) => {
+        if (idx + 1 === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+
+      // Update counter and buttons
+      document.getElementById('slide-num-indicator').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+      document.getElementById('prev-btn').disabled = currentSlide === 1;
+      document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+    }
+
+    function changeSlide(direction) {
+      const activeSlideEl = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      if (direction === 1 && currentSlide < totalSlides) {
+        activeSlideEl.classList.add('exit-left');
+        currentSlide++;
+        setTimeout(updateSlideUI, 200);
+      } else if (direction === -1 && currentSlide > 1) {
+        activeSlideEl.classList.add('exit-right');
+        currentSlide--;
+        setTimeout(updateSlideUI, 200);
+      }
+    }
+
+    function goToSlide(slideNum) {
+      if (slideNum >= 1 && slideNum <= totalSlides) {
+        currentSlide = slideNum;
+        updateSlideUI();
+      }
+    }
+
+    // Toggle Speaker Notes Panel
+    function toggleSpeakerNotes() {
+      const panel = document.getElementById('speaker-notes');
+      const btn = document.getElementById('notes-btn');
+      panel.classList.toggle('active');
+      btn.classList.toggle('active');
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        changeSlide(1);
+        e.preventDefault();
+      } else if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+        e.preventDefault();
+      }
+    });
+
+    // Interactive Calculator Logic
+    function togglePhysicalFee() {
+      applyPhysicalFee = !applyPhysicalFee;
+      
+      const switchEl = document.getElementById('fee-switch');
+      const checkboxEl = document.getElementById('fee-checkbox');
+      const feeRow = document.getElementById('fee-table-row');
+      const feeSavingNote = document.getElementById('fee-saving-note');
+      
+      checkboxEl.checked = applyPhysicalFee;
+      if (applyPhysicalFee) {
+        feeRow.style.display = 'table-row';
+        feeSavingNote.style.color = '#94a3b8';
+      } else {
+        feeRow.style.display = 'none';
+        feeSavingNote.style.color = 'var(--color-green-pill)';
+      }
+      
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      const c1Slider = document.getElementById('c1-slider');
+      const c2Slider = document.getElementById('c2-slider');
+      
+      const c1Qty = parseInt(c1Slider.value);
+      const c2Qty = parseInt(c2Slider.value);
+      
+      // Update displays
+      document.getElementById('c1-val').textContent = `${c1Qty} Cards`;
+      document.getElementById('c2-val').textContent = `${c2Qty} People`;
+      
+      // Math details
+      // Dual-cohort cards equals the size of Cohort 1
+      const dualQty = c1Qty;
+      // Single-cohort cards is Cohort 2 minus Cohort 1 size (if Cohort 2 is larger)
+      const singleQty = Math.max(0, c2Qty - c1Qty);
+      const totalCards = dualQty + singleQty;
+      
+      const dualSub = dualQty * 55;
+      const singleSub = singleQty * 41;
+      const feeSub = applyPhysicalFee ? totalCards * 3 : 0;
+      const grandTotal = dualSub + singleSub + feeSub;
+      
+      // Update Table Cells
+      document.getElementById('calc-dual-qty').textContent = dualQty;
+      document.getElementById('calc-dual-sub').textContent = `$${dualSub.toFixed(2)}`;
+      
+      document.getElementById('calc-single-qty').textContent = singleQty;
+      document.getElementById('calc-single-sub').textContent = `$${singleSub.toFixed(2)}`;
+      
+      document.getElementById('calc-fee-qty').textContent = totalCards;
+      document.getElementById('calc-fee-sub').textContent = `$${feeSub.toFixed(2)}`;
+      
+      // Grand Total Display
+      document.getElementById('calc-total').textContent = `$${grandTotal.toFixed(2)}`;
+      
+      // Math Description
+      let desc = `${dualQty} @ $55 + ${singleQty} @ $41`;
+      if (applyPhysicalFee) {
+        desc += ` + ${totalCards} @ $3 fee`;
+      } else {
+        desc += ` (no card fees)`;
+      }
+      document.getElementById('calc-math-desc').textContent = desc;
+    }
+
+    // Initialize UI on load
+    window.onload = () => {
+      updateSlideUI();
+      calculateTotal();
+    };
+  </script>
+</body>
+</html>

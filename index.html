@@ -35,6 +35,9 @@
   .header-cohort2 {
     background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
   }
+  .header-travel {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 60%, #475569 100%);
+  }
 
   .page-header .overline {
     font-size: 11px;
@@ -101,6 +104,93 @@
   .btn-cohort2.active { background: #065f46; color: white; }
   .btn-cohort2.inactive { background: white; color: #6b7280; border: 1px solid #e5e7eb; }
   .btn-cohort2.inactive:hover { background: #f3f4f6; color: #374151; }
+
+  .btn-travel.active { background: #334155; color: white; }
+  .btn-travel.inactive { background: white; color: #6b7280; border: 1px solid #e5e7eb; }
+  .btn-travel.inactive:hover { background: #f3f4f6; color: #374151; }
+
+  .btn-clipper.active { background: #7c3aed; color: white; }
+  .btn-clipper.inactive { background: white; color: #6b7280; border: 1px solid #e5e7eb; }
+  .btn-clipper.inactive:hover { background: #f3f4f6; color: #374151; }
+
+  /* ── Travel Breakdown tab ── */
+  .internal-banner {
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px;
+    padding: 12px 18px; font-size: 12.5px; color: #92400e; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .travel-card {
+    background: white; border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.06);
+    padding: 22px 26px; margin-bottom: 16px;
+  }
+  .travel-card h2 {
+    font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 2px;
+  }
+  .travel-card .travel-card-sub { font-size: 12px; color: #9ca3af; margin-bottom: 14px; }
+  .travel-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .travel-table thead tr th {
+    text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: #9ca3af; padding: 0 8px 8px; border-bottom: 1px solid #f3f4f6;
+  }
+  .travel-table thead tr th:last-child, .travel-table tbody tr td:last-child { text-align: right; }
+  .travel-table tbody tr td {
+    padding: 11px 8px; border-bottom: 1px solid #f9fafb; color: #374151; vertical-align: top;
+  }
+  .travel-table tbody tr:last-child td { border-bottom: none; }
+  .travel-table .tt-visit { font-weight: 700; color: #111827; }
+  .travel-table .tt-visit a { color: inherit; text-decoration: underline; text-decoration-color: #d1d5db; }
+  .travel-table .tt-date { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+  .travel-table .tt-fleet { font-size: 12px; color: #6b7280; }
+  .travel-table .tt-total { font-weight: 700; color: #111827; }
+  .travel-table .tt-pp { font-weight: 800; color: #15803d; }
+  .grand-total-banner {
+    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;
+    padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .grand-total-banner .gt-label { font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #16a34a; }
+  .grand-total-banner .gt-note { font-size: 12px; color: #6b7280; margin-top: 2px; }
+  .grand-total-banner .gt-val { font-size: 24px; font-weight: 800; color: #15803d; letter-spacing: -0.5px; }
+  .assumptions-list { font-size: 12.5px; color: #6b7280; line-height: 1.8; padding-left: 18px; }
+  .assumptions-list li { margin-bottom: 4px; }
+
+  /* ── Itemized visit blocks ── */
+  .visit-block { margin-bottom: 24px; }
+  .visit-block:last-child { margin-bottom: 0; }
+  .visit-block-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding-bottom: 10px; border-bottom: 1px solid #e5e7eb; margin-bottom: 10px;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .visit-block-title { font-size: 14.5px; font-weight: 700; color: #111827; }
+  .visit-block-title a { color: inherit; text-decoration: underline; text-decoration-color: #d1d5db; }
+  .visit-block-meta { font-size: 11.5px; color: #9ca3af; margin-top: 2px; }
+  .status-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .status-pill {
+    font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+    white-space: nowrap; border: 1px solid transparent;
+  }
+  .status-confirmed { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+  .status-estimate { background: #fffbeb; color: #92400e; border-color: #fde68a; }
+  .leg-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 4px; }
+  .leg-table td { padding: 7px 8px; border-bottom: 1px solid #f9fafb; color: #374151; vertical-align: top; }
+  .leg-table td:last-child { text-align: right; font-weight: 600; color: #111827; white-space: nowrap; }
+  .leg-table .leg-mode { font-weight: 600; color: #111827; }
+  .leg-table .leg-basis { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+  .visit-subtotal-row td {
+    font-weight: 700; color: #111827; border-top: 1px solid #e5e7eb; border-bottom: none !important; padding-top: 9px;
+  }
+  .visit-final-row {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #f9fafb; border-radius: 8px; padding: 9px 14px; margin-top: 6px; font-size: 12.5px;
+  }
+  .visit-final-row .vf-total { font-weight: 700; color: #111827; }
+  .visit-final-row .vf-pp { font-weight: 800; color: #15803d; }
+  .visit-flag {
+    font-size: 11.5px; color: #92400e; background: #fffbeb; border: 1px solid #fde68a;
+    border-radius: 8px; padding: 7px 11px; margin-top: 8px; line-height: 1.5;
+  }
 
   /* ── Day Cards ── */
   .day-card {
@@ -337,13 +427,26 @@
       <span class="header-chip">👥 Cohort 1</span>
       <span class="header-chip">📍 Berkeley → Bay Area</span>
       <span class="header-chip">📅 7 Days</span>
-      <span class="header-chip">🔬 3 Labs Confirmed</span>
+      <span class="header-chip">🧬 J&J Lab Tour</span>
+      <span class="header-chip">👥 10 Travelers</span>
     </div>
     <div id="header-chips-c2" class="header-chips" style="display:none;">
       <span class="header-chip">👥 Cohort 2</span>
       <span class="header-chip">📍 Berkeley → Bay Area</span>
       <span class="header-chip">📅 7 Days</span>
-      <span class="header-chip">🌳 Silverado Confirmed</span>
+      <span class="header-chip">🏡 3 Site Visits Confirmed</span>
+      <span class="header-chip">👥 14 Travelers</span>
+    </div>
+    <div id="header-chips-clipper" class="header-chips" style="display:none;">
+      <span class="header-chip">💳 14 Clipper Cards</span>
+      <span class="header-chip">🔄 10 Dual-Cohort · $55</span>
+      <span class="header-chip">🟢 4 Cohort-2-Only · $41</span>
+      <span class="header-chip">💰 Total $714–756</span>
+    </div>
+    <div id="header-chips-travel" class="header-chips" style="display:none;">
+      <span class="header-chip">🔒 Internal Use Only</span>
+      <span class="header-chip">🧮 4 Site Visits</span>
+      <span class="header-chip">💰 Est. ~$810–890 total</span>
     </div>
   </div>
 
@@ -351,6 +454,8 @@
   <div class="week-nav">
     <button id="btn-c1" class="btn-cohort1 active" onclick="showTab('c1')">📋 Cohort 1 · Outgoing &nbsp; Jul 19–26</button>
     <button id="btn-c2" class="btn-cohort2 inactive" onclick="showTab('c2')">📋 Cohort 2 · Incoming &nbsp; Jul 27–31</button>
+    <button id="btn-travel" class="btn-travel inactive" onclick="showTab('travel')">🧮 Travel Budget</button>
+    <button id="btn-clipper" class="btn-clipper inactive" onclick="showTab('clipper')">💳 Clipper Cards</button>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -375,8 +480,16 @@
             <span class="s-icon">🏠</span>
             <span><span class="s-name">Arrive at Sigma House</span> <span class="s-detail">· Berkeley · Home Base</span></span>
           </div>
+          <div class="stop-item">
+            <span class="s-time">10:00 AM</span>
+            <span class="s-icon">💬</span>
+            <span><span class="s-name">Chima — Payer Group</span> <span class="s-detail">· @ Sigma House · 10 AM–12 PM</span></span>
+          </div>
         </div>
-        <div class="day-notes">Welcome to Berkeley! Initial arrival, house orientation, and cohort meet-and-greet.</div>
+        <div class="micro-pills">
+          <span class="micro-pill mp-walk">🏠 On-site · No travel</span>
+        </div>
+        <div class="day-notes">Welcome to Berkeley! Arrival, house orientation, and cohort meet-and-greet. <strong>10 AM–12 PM:</strong> Chima payer-group session — at Sigma House (home base), no travel.</div>
       </div>
     </div>
 
@@ -390,20 +503,15 @@
       <div class="day-content">
         <div class="day-content-top">
           <div class="day-title">
-            <a href="Cohort%20%231%20outgoing/innovation_tour.html">🔬 Innovation Labs Tour</a>
+            <a href="Cohort%20%231%20outgoing/innovation_tour.html">🧬 J&J JLABS Tour</a>
           </div>
           <span class="status-chip status-planned">✅ Planned</span>
         </div>
         <div class="stop-list">
           <div class="stop-item">
-            <span class="s-time">7:50 AM</span>
+            <span class="s-time">9:20 AM</span>
             <span class="s-icon">🏠</span>
-            <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Berkeley</span></span>
-          </div>
-          <div class="stop-item">
-            <span class="s-time">9:00 AM</span>
-            <span class="s-icon">💊</span>
-            <span><span class="s-name">AbbVie</span> <span class="s-detail">· South San Francisco · Pending · 1h 45min</span></span>
+            <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Berkeley · BART Red Line southbound</span></span>
           </div>
           <div class="stop-item">
             <span class="s-time">11:00 AM</span>
@@ -411,24 +519,19 @@
             <span><span class="s-name">JLABS SSF</span> <span class="s-detail">· South San Francisco · Anchored · 3 hours</span></span>
           </div>
           <div class="stop-item">
-            <span class="s-time">2:15 PM</span>
-            <span class="s-icon">🔬</span>
-            <span><span class="s-name">Eli Lilly Gateway Lab</span> <span class="s-detail">· South San Francisco · Pending · ~2h 45min</span></span>
-          </div>
-          <div class="stop-item">
-            <span class="s-time">~5:00 PM</span>
+            <span class="s-time">~3:15 PM</span>
             <span class="s-icon">🏠</span>
             <span><span class="s-name">Return to Berkeley</span> <span class="s-detail">· SSF BART → Berkeley BART</span></span>
           </div>
         </div>
         <div class="micro-pills">
-          <span class="micro-pill mp-uber">🚗 Uber XL ×2</span>
           <span class="micro-pill mp-bart">🚇 BART (Red Line)</span>
-          <span class="micro-pill mp-walk">🚶 12-min walk</span>
+          <span class="micro-pill mp-uber">🚗 Uber XL ×2</span>
         </div>
         <a href="Cohort%20%231%20outgoing/innovation_tour.html" class="expand-btn btn-c1">
           <span>→</span> View Full Day
         </a>
+        <div class="day-notes">11 riders → 2 Uber XL (no regular needed). Est. travel cost ~$23–27/person round trip (BART ~$16–18 + Uber XL share ~$7–9).</div>
       </div>
     </div>
 
@@ -508,9 +611,9 @@
 
     <!-- WEEK SUMMARY C1 -->
     <div class="week-summary">
-      <div class="ws-item"><div class="ws-label">Planned days</div><div class="ws-val">1 of 5</div></div>
+      <div class="ws-item"><div class="ws-label">Planned days</div><div class="ws-val">2 of 5</div></div>
       <div class="ws-divider"></div>
-      <div class="ws-item"><div class="ws-label">Labs confirmed</div><div class="ws-val">3</div></div>
+      <div class="ws-item"><div class="ws-label">Labs confirmed</div><div class="ws-val">1 · J&J</div></div>
       <div class="ws-divider"></div>
       <div class="ws-item"><div class="ws-label">Cohort</div><div class="ws-val">1 · Outgoing</div></div>
       <div style="flex:1; text-align:right;">
@@ -545,30 +648,11 @@
       </div>
     </div>
 
-    <!-- MONDAY, JULY 27 -->
-    <div class="day-card">
-      <div class="day-date-col">
-        <div class="day-name">Mon</div>
-        <div class="day-num">27</div>
-        <div class="day-month">Jul</div>
-      </div>
-      <div class="day-content">
-        <div class="day-content-top">
-          <div class="day-title">— Add Day's Itinerary —</div>
-          <span class="status-chip status-tbd">⬜ TBD</span>
-        </div>
-        <div class="placeholder-block">
-          <div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div>
-          <div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TUESDAY, JULY 28 -->
+    <!-- MONDAY, JULY 27 — FRANK RESIDENCES -->
     <div class="day-card">
       <div class="day-date-col highlight-c2">
-        <div class="day-name">Tue</div>
-        <div class="day-num">28</div>
+        <div class="day-name">Mon</div>
+        <div class="day-num">27</div>
         <div class="day-month">Jul</div>
       </div>
       <div class="day-content">
@@ -580,9 +664,19 @@
         </div>
         <div class="stop-list">
           <div class="stop-item">
-            <span class="s-time">11:20 AM</span>
+            <span class="s-time">10:20 AM</span>
             <span class="s-icon">🏠</span>
-            <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Direct Uber</span></span>
+            <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Walk/Uber to BART</span></span>
+          </div>
+          <div class="stop-item">
+            <span class="s-time">10:45 AM</span>
+            <span class="s-icon">🚇</span>
+            <span><span class="s-name">Downtown Berkeley BART</span> <span class="s-detail">· Red Line → Glen Park</span></span>
+          </div>
+          <div class="stop-item">
+            <span class="s-time">11:30 AM</span>
+            <span class="s-icon">🚉</span>
+            <span><span class="s-name">Glen Park BART</span> <span class="s-detail">· Transfer to Uber XL (~8 min)</span></span>
           </div>
           <div class="stop-item">
             <span class="s-time">12:00 PM</span>
@@ -591,28 +685,68 @@
           </div>
         </div>
         <div class="micro-pills">
-          <span class="micro-pill mp-uber">🚗 Uber XL ×2</span>
+          <span class="micro-pill mp-bart">🚇 BART Red Line · ~45 min</span>
+          <span class="micro-pill mp-uber">🚗 2 XL + 1 Reg · ~8 min</span>
         </div>
         <a href="Cohort%20%232%20incoming/frank_residences.html" class="expand-btn btn-c2">
           <span>→</span> View Full Day
         </a>
+        <div class="day-notes">15 riders → 2 Uber XL + 1 regular for the Glen Park hop. Est. travel ~$15–17/person round trip (BART only, walking Sigma↔BART) or ~$19–22/person with Uber both legs. Contacts: Angela Arguelles &amp; Robert Sarison.</div>
       </div>
     </div>
 
-    <!-- WEDNESDAY, JULY 29 -->
-    <div class="day-card">
-      <div class="day-date-col"><div class="day-name">Wed</div><div class="day-num">29</div><div class="day-month">Jul</div></div>
-      <div class="day-content">
-        <div class="day-content-top"><div class="day-title">— Add Day's Itinerary —</div><span class="status-chip status-tbd">⬜ TBD</span></div>
-        <div class="placeholder-block"><div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div><div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div></div>
-      </div>
-    </div>
-
-    <!-- THURSDAY, JULY 30 -->
+    <!-- TUESDAY, JULY 28 — INSTITUTE ON AGING -->
     <div class="day-card">
       <div class="day-date-col highlight-c2">
-        <div class="day-name">Thu</div>
-        <div class="day-num">30</div>
+        <div class="day-name">Tue</div>
+        <div class="day-num">28</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content">
+        <div class="day-content-top">
+          <div class="day-title">
+            <a href="Cohort%20%232%20incoming/institute_on_aging.html">🧠 Institute on Aging · Adult Day Center</a>
+          </div>
+          <span class="status-chip status-planned">✅ Planned</span>
+        </div>
+        <div class="stop-list">
+          <div class="stop-item">
+            <span class="s-time">12:15 PM</span>
+            <span class="s-icon">🏠</span>
+            <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Walk/Uber to BART</span></span>
+          </div>
+          <div class="stop-item">
+            <span class="s-time">12:40 PM</span>
+            <span class="s-icon">🚇</span>
+            <span><span class="s-name">Downtown Berkeley BART</span> <span class="s-detail">· SF-bound → Embarcadero</span></span>
+          </div>
+          <div class="stop-item">
+            <span class="s-time">1:10 PM</span>
+            <span class="s-icon">🚐</span>
+            <span><span class="s-name">Embarcadero → Presidio</span> <span class="s-detail">· PresidiGo shuttle (free)</span></span>
+          </div>
+          <div class="stop-item">
+            <span class="s-time">2:00 PM</span>
+            <span class="s-icon">🧠</span>
+            <span><span class="s-name"><a href="https://www.ioaging.org/services/adult-day-program/" target="_blank" style="color: inherit; text-decoration: underline; text-decoration-color: #d1d5db; text-underline-offset: 2px;">Institute on Aging Adult Day Center</a></span> <span class="s-detail">· 386 Moraga Ave · closes 3 PM</span></span>
+          </div>
+        </div>
+        <div class="micro-pills">
+          <span class="micro-pill mp-bart">🚇 BART · ~30 min</span>
+          <span class="micro-pill mp-walk">🚐 PresidiGo Shuttle · FREE</span>
+        </div>
+        <a href="Cohort%20%232%20incoming/institute_on_aging.html" class="expand-btn btn-c2">
+          <span>→</span> View Full Day
+        </a>
+        <div class="day-notes">Cheapest visit — 15 riders, ~$10–11/person round trip (BART only; shuttle free). Center closes 3 PM, keep the 2 PM arrival tight. Contact: Clara, 415-990-6140.</div>
+      </div>
+    </div>
+
+    <!-- WEDNESDAY, JULY 29 — SILVERADO BELMONT HILLS -->
+    <div class="day-card">
+      <div class="day-date-col highlight-c2">
+        <div class="day-name">Wed</div>
+        <div class="day-num">29</div>
         <div class="day-month">Jul</div>
       </div>
       <div class="day-content">
@@ -624,9 +758,19 @@
         </div>
         <div class="stop-list">
           <div class="stop-item">
-            <span class="s-time">8:15 AM</span>
+            <span class="s-time">7:20 AM</span>
             <span class="s-icon">🏠</span>
-            <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Direct Uber</span></span>
+            <span><span class="s-name">Depart Sigma House</span> <span class="s-detail">· Walk/Uber to BART</span></span>
+          </div>
+          <div class="stop-item">
+            <span class="s-time">7:35 AM</span>
+            <span class="s-icon">🚇</span>
+            <span><span class="s-name">Downtown Berkeley BART</span> <span class="s-detail">· Red Line → Millbrae</span></span>
+          </div>
+          <div class="stop-item">
+            <span class="s-time">8:35 AM</span>
+            <span class="s-icon">🚉</span>
+            <span><span class="s-name">Millbrae BART</span> <span class="s-detail">· Transfer to Uber XL (~12 min)</span></span>
           </div>
           <div class="stop-item">
             <span class="s-time">9:00 AM</span>
@@ -635,11 +779,22 @@
           </div>
         </div>
         <div class="micro-pills">
-          <span class="micro-pill mp-uber">🚗 Uber XL ×2</span>
+          <span class="micro-pill mp-bart">🚇 BART Red Line · ~55 min</span>
+          <span class="micro-pill mp-uber">🚗 2 XL + 1 Reg · ~12 min</span>
         </div>
         <a href="Cohort%20%232%20incoming/silverado_tour.html" class="expand-btn btn-c2">
           <span>→</span> View Full Day
         </a>
+        <div class="day-notes">BART to Millbrae bypasses Bay Bridge traffic. 15 riders → 2 Uber XL + 1 regular for the Millbrae leg. Est. ~$25–29/person round trip before vouchers (Silverado provides Uber vouchers — confirm amount with Marisa). Contact: Marisa Taylor (415-577-4198).</div>
+      </div>
+    </div>
+
+    <!-- THURSDAY, JULY 30 -->
+    <div class="day-card">
+      <div class="day-date-col"><div class="day-name">Thu</div><div class="day-num">30</div><div class="day-month">Jul</div></div>
+      <div class="day-content">
+        <div class="day-content-top"><div class="day-title">— Add Day's Itinerary —</div><span class="status-chip status-tbd">⬜ TBD</span></div>
+        <div class="placeholder-block"><div class="ph-row"><span class="ph-icon">🕐</span><div class="ph-line short"></div></div><div class="ph-row"><span class="ph-icon">📍</span><div class="ph-line med"></div></div></div>
       </div>
     </div>
 
@@ -665,9 +820,9 @@
 
     <!-- WEEK SUMMARY C2 -->
     <div class="week-summary">
-      <div class="ws-item"><div class="ws-label">Planned days</div><div class="ws-val">2 of 5</div></div>
+      <div class="ws-item"><div class="ws-label">Site visits</div><div class="ws-val">3 confirmed</div></div>
       <div class="ws-divider"></div>
-      <div class="ws-item"><div class="ws-label">TBD days</div><div class="ws-val">5</div></div>
+      <div class="ws-item"><div class="ws-label">TBD days</div><div class="ws-val">2</div></div>
       <div class="ws-divider"></div>
       <div class="ws-item"><div class="ws-label">Cohort</div><div class="ws-val">2 · Incoming</div></div>
       <div style="flex:1; text-align:right;">
@@ -676,6 +831,433 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════
+       TAB 3: TRAVEL BREAKDOWN (INTERNAL)
+  ══════════════════════════════════════ -->
+  <div id="tab-travel" class="tab-content">
+
+    <div class="internal-banner">
+      <span>🔒</span>
+      <span><strong>Internal use only</strong> — budget planning view, not for scholar-facing distribution. BART fares are 2026 estimates (bart.gov blocks automated verification); spot-check at bart.gov/tickets/calculator before finalizing.</span>
+    </div>
+
+    <!-- GRAND TOTAL -->
+    <div class="travel-card">
+      <div class="grand-total-banner">
+        <div>
+          <div class="gt-label">Program Total (4 site visits, both cohorts)</div>
+          <div class="gt-note">Walking the optional Sigma House ↔ BART hop where possible · before Silverado vouchers</div>
+        </div>
+        <div class="gt-val">~$810–890</div>
+      </div>
+    </div>
+
+    <!-- COHORT 1 -->
+    <div class="travel-card">
+      <h2>Cohort 1 — Outgoing</h2>
+      <div class="travel-card-sub">10 travelers (incl. Milo &amp; Gail) · fleet rule: 2 XL (12 seats, comfort buffer)</div>
+
+      <div class="visit-block">
+        <div class="visit-block-header">
+          <div>
+            <div class="visit-block-title"><a href="Cohort%20%231%20outgoing/innovation_tour.html">🧬 J&J JLABS Tour</a></div>
+            <div class="visit-block-meta">Tue Jul 21, 2026 · Berkeley → Millbrae · 10 travelers</div>
+          </div>
+          <div class="status-pills">
+            <span class="status-pill status-confirmed">✅ Visit Confirmed</span>
+            <span class="status-pill status-estimate">📐 Cost: Estimated</span>
+          </div>
+        </div>
+        <table class="leg-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="leg-mode">🚗 Sigma House → Downtown Berkeley BART</div>
+                <div class="leg-basis">Uber XL ×2 · ~7 min · rate basis: Uber fare estimate, ~$11–14/car</div>
+              </td>
+              <td>~$22–28</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚇 Downtown Berkeley ↔ South San Francisco BART (round trip)</div>
+                <div class="leg-basis">10 riders · rate basis: Clipper card official fare · $6.15/person one way</div>
+              </td>
+              <td>$123.00</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚌 South San Francisco BART ↔ JLABS (round trip)</div>
+                <div class="leg-basis">SamTrans Route 130 · 13 stops · free, no fleet needed · walk 4 min to destination</div>
+              </td>
+              <td>$0</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="visit-final-row">
+          <span>Subtotals: BART $123.00 · Uber ~$22–28</span>
+          <span><span class="vf-total">Total ~$145.00–151.00</span> &nbsp;·&nbsp; <span class="vf-pp">~$15/person</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COHORT 2 -->
+    <div class="travel-card">
+      <h2>Cohort 2 — Incoming</h2>
+      <div class="travel-card-sub">14 travelers (incl. Milo &amp; Gail) · fleet rule: fill Uber XL (6 seats) first, cover remainder ≤4 with one regular Uber → 14 riders = 2 XL + 1 regular (16 seats, 2 spare)</div>
+
+      <div class="visit-block">
+        <div class="visit-block-header">
+          <div>
+            <div class="visit-block-title"><a href="Cohort%20%232%20incoming/frank_residences.html">🏡 Frank Residences</a></div>
+            <div class="visit-block-meta">Mon Jul 27, 2026 · Berkeley → San Francisco (Glen Park) · 14 travelers</div>
+          </div>
+          <div class="status-pills">
+            <span class="status-pill status-confirmed">✅ Visit Confirmed</span>
+            <span class="status-pill status-estimate">📐 Cost: Estimated</span>
+          </div>
+        </div>
+        <table class="leg-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="leg-mode">🚶 Sigma House ↔ Downtown Berkeley BART <span style="color:#9ca3af;font-weight:500;">(optional, assumed walked)</span></div>
+                <div class="leg-basis">~7 min walk · $0 if walked · if Uber: 2 XL + 1 regular, ~$30–38/leg</div>
+              </td>
+              <td>$0</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚇 Downtown Berkeley ↔ Glen Park BART (round trip)</div>
+                <div class="leg-basis">14 riders · rate basis: Clipper card official fare · $5.70/person one way</div>
+              </td>
+              <td>$159.60</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚗 Glen Park BART ↔ Frank Residences (round trip)</div>
+                <div class="leg-basis">2 Uber XL + 1 regular each way · ~8 min/leg · rate basis: Uber fare estimate, XL ~$11–14 / regular ~$8–10 per car</div>
+              </td>
+              <td>~$60–76</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="visit-final-row">
+          <span>Subtotals: BART $159.60 · Uber ~$60–76</span>
+          <span><span class="vf-total">Total ~$219.60–235.60</span> &nbsp;·&nbsp; <span class="vf-pp">~$16–17/person</span></span>
+        </div>
+      </div>
+
+      <div class="visit-block">
+        <div class="visit-block-header">
+          <div>
+            <div class="visit-block-title"><a href="Cohort%20%232%20incoming/institute_on_aging.html">🧠 Institute on Aging · Adult Day Center</a></div>
+            <div class="visit-block-meta">Tue Jul 28, 2026 · Berkeley → Presidio, SF (Embarcadero) · 14 travelers</div>
+          </div>
+          <div class="status-pills">
+            <span class="status-pill status-confirmed">✅ Visit Confirmed</span>
+            <span class="status-pill status-estimate">📐 Cost: Estimated</span>
+          </div>
+        </div>
+        <table class="leg-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="leg-mode">🚶 Sigma House ↔ Downtown Berkeley BART <span style="color:#9ca3af;font-weight:500;">(optional, assumed walked)</span></div>
+                <div class="leg-basis">~7 min walk · $0 if walked · if Uber: 2 XL + 1 regular, ~$30–38/leg</div>
+              </td>
+              <td>$0</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚇 Downtown Berkeley ↔ Embarcadero BART (round trip)</div>
+                <div class="leg-basis">14 riders · rate basis: BART published fare schedule + confirmed 6.2% fare increase effective Jan 1, 2026 · ~$5–5.50/person each way</div>
+              </td>
+              <td>~$140–154</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚐 Embarcadero ↔ Presidio (round trip)</div>
+                <div class="leg-basis">PresidiGo Downtown Shuttle · free, no fleet needed · backup: 30-Stockton Muni bus, $2.50/person each way</div>
+              </td>
+              <td>$0</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="visit-final-row">
+          <span>Subtotals: BART ~$140–154 · Uber $0</span>
+          <span><span class="vf-total">Total ~$140–154</span> &nbsp;·&nbsp; <span class="vf-pp">~$10–11/person</span></span>
+        </div>
+      </div>
+
+      <div class="visit-block">
+        <div class="visit-block-header">
+          <div>
+            <div class="visit-block-title"><a href="Cohort%20%232%20incoming/silverado_tour.html">🌳 Silverado Belmont Hills</a></div>
+            <div class="visit-block-meta">Wed Jul 29, 2026 · Berkeley → Belmont (Millbrae) · 14 travelers</div>
+          </div>
+          <div class="status-pills">
+            <span class="status-pill status-confirmed">✅ Visit Confirmed</span>
+            <span class="status-pill status-estimate">📐 Cost: Estimated</span>
+          </div>
+        </div>
+        <table class="leg-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="leg-mode">🚶 Sigma House ↔ Downtown Berkeley BART <span style="color:#9ca3af;font-weight:500;">(optional, assumed walked)</span></div>
+                <div class="leg-basis">~7 min walk · $0 if walked · if Uber: 2 XL + 1 regular, ~$30–38/leg</div>
+              </td>
+              <td>$0</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚇 Downtown Berkeley ↔ Millbrae BART (round trip)</div>
+                <div class="leg-basis">14 riders · rate basis: Clipper card official fare · $6.95/person one way</div>
+              </td>
+              <td>$194.60</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="leg-mode">🚗 Millbrae BART ↔ Silverado Belmont Hills (round trip)</div>
+                <div class="leg-basis">2 Uber XL + 1 regular each way · ~12 min/leg · rate basis: Uber fare estimate, XL ~$19–24 / regular ~$14–17 per car · before Silverado-provided vouchers</div>
+              </td>
+              <td>~$104–130</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="visit-final-row">
+          <span>Subtotals: BART $194.60 · Uber ~$104–130 (pre-voucher)</span>
+          <span><span class="vf-total">Total ~$298.60–324.60</span> &nbsp;·&nbsp; <span class="vf-pp">~$21–23/person</span></span>
+        </div>
+        <div class="visit-flag">⚠️ <strong>Open item:</strong> Silverado provides Uber vouchers for the Millbrae ↔ Belmont leg. Voucher amount unconfirmed — actual cost will be lower once netted against the ~$104–130 Uber subtotal above. Confirm with Marisa Casillas Taylor (415-577-4198).</div>
+      </div>
+    </div>
+
+    <!-- CLIPPER CARDS SUMMARY -->
+    <div class="travel-card">
+      <h2>💳 Clipper Card Plan</h2>
+      <div class="travel-card-sub">Budget: 14 cards total · 10 dual-cohort, 4 fresh Cohort-2-only</div>
+      <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:12px; padding:16px 20px; font-size:13px; color:#374151; line-height:1.6;">
+        <p style="margin: 0 0 10px 0;">We are utilizing a smart reuse strategy to keep the budget optimized: 10 cards will be shared across both cohorts, and 4 cards will be designated for Cohort-2-only travelers.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <strong style="color:#111827;">Total Clipper budget: $714</strong> (no physical card fees, mobile wallets) or <strong>$756</strong> (with physical card fees).
+          </div>
+          <button onclick="showTab('clipper')" style="cursor:pointer; background:#7c3aed; color:white; font-size:12px; font-weight:600; padding:8px 16px; border-radius:20px; border:none; transition: background 0.15s;">
+            Go to Clipper Tab →
+          </button>
+        </div>
+      </div>
+    </div>
+
+<div class="travel-card">
+      <h2>Assumptions &amp; Open Items</h2>
+      <div class="travel-card-sub">What these numbers are based on, and what still needs confirming</div>
+      <ul class="assumptions-list">
+        <li><strong>Uber fleet sizing:</strong> fill Uber XL cars (6 seats) first; cover a remainder of ≤4 with one regular Uber (4 seats), else add another XL. 10 riders → 2 XL (Cohort 1, comfortable spacing). 14 riders → 2 XL + 1 regular (Cohort 2).</li>
+        <li><strong>BART fares</strong> reflect the confirmed 6.2% system-wide increase effective Jan 1, 2026, applied to historical fare tables — not pulled live (bart.gov returns 403 to automated requests). Recommend a manual spot-check before this budget is finalized.</li>
+        <li><strong>Sigma House ↔ Downtown Berkeley BART</strong> is walkable (~7–12 min) and assumed free by default on the Frank/IOA/Silverado totals above; each detail page shows the Uber-instead cost as an add-on.</li>
+        <li><strong>Silverado Uber vouchers</strong> — Silverado provides vouchers for the Millbrae ↔ Belmont leg. Voucher amount unconfirmed; the ~$374–430 total does not yet net this out. Confirm with Marisa Casillas Taylor (415-577-4198).</li>
+        <li><strong>Surge pricing</strong> is not included in any Uber estimate.</li>
+      </ul>
+    </div>
+
+  </div><!-- end #tab-travel -->
+
+  <!-- ══════════════════════════════════════
+       TAB 4: CLIPPER CARDS
+  ══════════════════════════════════════ -->
+  <div id="tab-clipper" class="tab-content">
+
+    <div class="internal-banner">
+      <span>🔒</span>
+      <span><strong>Internal use only</strong> — budget planning view. BART fares are 2026 planning estimates; spot-check at bart.gov/tickets/calculator before finalizing. Reference: IMPRINT 2025 used $30/card for 1 BART day · this year’s higher loads reflect multiple days and card reuse across two cohorts.</span>
+    </div>
+
+    <div class="travel-card">
+      <h2>💳 Clipper Card Plan</h2>
+      <div class="travel-card-sub">14 cards total · 10 dual-cohort cards reused across both cohorts · 4 fresh Cohort-2-only cards</div>
+
+      <!-- LINK TO PRESENTATION -->
+      <div style="margin: 10px 0 20px 0;">
+        <a href="clipper_card_cost_breakdown.html" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%); color: white; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 20px; text-decoration: none; box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.2); transition: all 0.2s ease;">
+          <span>🎤</span> Open Slide Presentation (Talk)
+        </a>
+      </div>
+
+      <!-- WHY NOT $30 -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:13px 16px; font-size:12.5px; color:#1e3a8a; line-height:1.7; margin-bottom:16px;">
+        <strong>📌 Why not $30 this year?</strong> In 2025 (IMPRINT), $30/card covered one round-trip BART day (~$11.40 Berkeley↔Powell) + Muni + $13.60 buffer. This year, 10 cards are reused across <strong>both</strong> cohorts — Cohort 1 spends $12.30 (Berkeley↔South San Francisco for JLABS), then after collection the same card covers 3 more Cohort 2 BART days ($36.20). Total per dual-cohort card = $48.50 → load <strong>$55</strong> for a conservative $6.50 buffer. The 4 Cohort-2-only cards cover 3 days ($36.20) → load <strong>$41</strong> for a conservative $4.80 buffer.
+      </div>
+
+      <!-- DUAL-COHORT CARD -->
+      <div style="border:1px solid #e5e7eb; border-radius:14px; padding:18px 20px; margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:12px; flex-wrap:wrap;">
+          <div>
+            <div style="font-size:14px; font-weight:700; color:#111827;">🔄 Dual-Cohort Card <span style="font-weight:400; color:#6b7280; font-size:12px;">× 10 cards</span></div>
+            <div style="font-size:12px; color:#6b7280; margin-top:2px;">Used by Cohort 1 → collected Jul 26 → redistributed to Cohort 2</div>
+          </div>
+          <div style="text-align:right; flex-shrink:0;">
+            <span style="display:inline-block; background:#1a1a2e; color:white; font-weight:800; font-size:16px; padding:6px 18px; border-radius:20px;">Load $55</span>
+            <div style="font-size:11px; color:#9ca3af; margin-top:3px;">~$5 buffer after all trips</div>
+          </div>
+        </div>
+        <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
+          <thead>
+            <tr style="border-bottom:2px solid #f3f4f6;">
+              <th style="text-align:left; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 8px 8px 0; white-space:nowrap;">When</th>
+              <th style="text-align:left; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 8px 8px;">Trip</th>
+              <th style="text-align:right; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 0 8px 8px;">Spent</th>
+              <th style="text-align:right; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 0 8px 8px;">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px;">Load</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">You load the card before handing to C1 scholar</td>
+              <td style="padding:8px 0 8px 8px; text-align:right;"></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#15803d;">$55.00</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px; white-space:nowrap;">C1 · Jul 21</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">🚇 Berkeley ↔ South San Francisco (round trip)<br><span style="font-size:11px;color:#9ca3af;">Clipper $6.15 each way · J&amp;J JLABS Tour</span></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; color:#dc2626; font-weight:600;">−$12.30</td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#374151;">~$42.70</td>
+            </tr>
+            <tr style="border-bottom:2px solid #e5e7eb;">
+              <td colspan="4" style="padding:7px 10px;"><div style="background:#fffbeb; border-radius:6px; padding:7px 10px; font-size:11.5px; color:#92400e;">🔁 <strong>Card collected from C1 scholar (Jul 26) · redistributed to a C2 scholar (Jul 27)</strong> · ~$42.70 still on card — no reload needed</div></td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px; white-space:nowrap;">C2 · Jul 27</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">🚇 Berkeley ↔ Glen Park (round trip)<br><span style="font-size:11px;color:#9ca3af;">Clipper $11.70 round trip · Frank Residences</span></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; color:#dc2626; font-weight:600;">−$11.70</td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#374151;">~$31.00</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px; white-space:nowrap;">C2 · Jul 28</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">🚇 Berkeley ↔ Embarcadero (round trip)<br><span style="font-size:11px;color:#9ca3af;">Clipper $5.30 each way · Institute on Aging</span></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; color:#dc2626; font-weight:600;">−$10.60</td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#374151;">~$20.40</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px; white-space:nowrap;">C2 · Jul 29</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">🚇 Berkeley ↔ Millbrae (round trip)<br><span style="font-size:11px;color:#9ca3af;">Clipper $6.95 each way · Silverado Belmont Hills</span></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; color:#dc2626; font-weight:600;">−$13.90</td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#15803d;">~$6.50 left ✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- C2-ONLY CARD -->
+      <div style="border:1px solid #e5e7eb; border-radius:14px; padding:18px 20px; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:12px; flex-wrap:wrap;">
+          <div>
+            <div style="font-size:14px; font-weight:700; color:#111827;">🟢 Cohort 2 Only Card <span style="font-weight:400; color:#6b7280; font-size:12px;">× 4 cards</span></div>
+            <div style="font-size:12px; color:#6b7280; margin-top:2px;">Go directly to the 4 remaining Cohort 2 scholars — never used by C1</div>
+          </div>
+          <div style="text-align:right; flex-shrink:0;">
+            <span style="display:inline-block; background:#065f46; color:white; font-weight:800; font-size:16px; padding:6px 18px; border-radius:20px;">Load $41</span>
+            <div style="font-size:11px; color:#9ca3af; margin-top:3px;">~$5 buffer after all trips</div>
+          </div>
+        </div>
+        <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
+          <thead>
+            <tr style="border-bottom:2px solid #f3f4f6;">
+              <th style="text-align:left; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 8px 8px 0; white-space:nowrap;">When</th>
+              <th style="text-align:left; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 8px 8px;">Trip</th>
+              <th style="text-align:right; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 0 8px 8px;">Spent</th>
+              <th style="text-align:right; color:#9ca3af; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0 0 8px 8px;">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px;">Load</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">You load the card before Cohort 2 week starts</td>
+              <td style="padding:8px 0 8px 8px; text-align:right;"></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#15803d;">$41.00</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px; white-space:nowrap;">C2 · Jul 27</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">🚇 Berkeley ↔ Glen Park (round trip)<br><span style="font-size:11px;color:#9ca3af;">Clipper $11.70 round trip · Frank Residences</span></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; color:#dc2626; font-weight:600;">−$11.70</td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#374151;">~$29.30</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px; white-space:nowrap;">C2 · Jul 28</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">🚇 Berkeley ↔ Embarcadero (round trip)<br><span style="font-size:11px;color:#9ca3af;">Clipper $5.30 each way · Institute on Aging</span></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; color:#dc2626; font-weight:600;">−$10.60</td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#374151;">~$18.70</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 8px 8px 0; color:#9ca3af; font-size:11px; white-space:nowrap;">C2 · Jul 29</td>
+              <td style="padding:8px; color:#374151; font-size:12px;">🚇 Berkeley ↔ Millbrae (round trip)<br><span style="font-size:11px;color:#9ca3af;">Clipper $6.95 each way · Silverado Belmont Hills</span></td>
+              <td style="padding:8px 0 8px 8px; text-align:right; color:#dc2626; font-weight:600;">−$13.90</td>
+              <td style="padding:8px 0 8px 8px; text-align:right; font-weight:700; color:#15803d;">~$4.80 left ✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BUDGET CALCULATION TABLE (WITH FEES) -->
+      <div style="border:1px solid #e5e7eb; border-radius:14px; padding:18px 20px; margin-bottom:16px; background:#f9fafb;">
+        <div style="font-size:14px; font-weight:700; color:#111827; margin-bottom:12px;">📊 Clipper Card Cost Summary (with $3.00 Activation Fee)</div>
+        <table style="width:100%; border-collapse:collapse; font-size:12.5px; text-align:left;">
+          <thead>
+            <tr style="border-bottom:2px solid #e5e7eb; color:#4b5563; font-weight:600;">
+              <th style="padding:6px 8px;">Card Type</th>
+              <th style="padding:6px 8px; text-align:center;">Qty</th>
+              <th style="padding:6px 8px; text-align:right;">Load</th>
+              <th style="padding:6px 8px; text-align:right;">Fee</th>
+              <th style="padding:6px 8px; text-align:right;">Per Card</th>
+              <th style="padding:6px 8px; text-align:right; font-weight:700;">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #e5e7eb;">
+              <td style="padding:8px; color:#374151;">🔄 Dual-Cohort (C1 JLABS + C2 3 Trips)</td>
+              <td style="padding:8px; text-align:center; color:#374151;">10</td>
+              <td style="padding:8px; text-align:right; color:#374151;">$55.00</td>
+              <td style="padding:8px; text-align:right; color:#6b7280;">$3.00</td>
+              <td style="padding:8px; text-align:right; color:#374151;">$58.00</td>
+              <td style="padding:8px; text-align:right; font-weight:700; color:#111827;">$580.00</td>
+            </tr>
+            <tr style="border-bottom:2px solid #e5e7eb;">
+              <td style="padding:8px; color:#374151;">🟢 Cohort 2 Only (C2 3 Trips)</td>
+              <td style="padding:8px; text-align:center; color:#374151;">4</td>
+              <td style="padding:8px; text-align:right; color:#374151;">$41.00</td>
+              <td style="padding:8px; text-align:right; color:#6b7280;">$3.00</td>
+              <td style="padding:8px; text-align:right; color:#374151;">$44.00</td>
+              <td style="padding:8px; text-align:right; font-weight:700; color:#111827;">$176.00</td>
+            </tr>
+            <tr style="background:rgba(16,185,129,0.05);">
+              <td colspan="5" style="padding:10px 8px; font-weight:700; color:#065f46;">🧾 Grand Total (with physical card fees)</td>
+              <td style="padding:10px 8px; text-align:right; font-weight:800; color:#065f46; font-size:14px;">$756.00</td>
+            </tr>
+            <tr style="background:rgba(124,58,237,0.05); border-top:1px dashed #e5e7eb;">
+              <td colspan="5" style="padding:10px 8px; font-weight:600; color:#6d28d9;">📱 Total if using Mobile Wallet (Apple/Google Pay - $0 fee)</td>
+              <td style="padding:10px 8px; text-align:right; font-weight:700; color:#6d28d9; font-size:14px;">$714.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRAND TOTAL -->
+      <div class="grand-total-banner" style="margin-bottom:14px;">
+        <div>
+          <div class="gt-label">Total Clipper Budget · 14 cards</div>
+          <div class="gt-note">10 cards × $55 + 4 cards × $41 · add ~$3/card for physical card stock if not using Apple/Google Pay · 2025 IMPRINT reference: $30/card × 12 = $360 for 1 BART day</div>
+        </div>
+        <div class="gt-val">$714</div>
+      </div>
+
+      <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px 16px; font-size:12.5px; color:#92400e; line-height:1.6;">
+        <strong>⚠️ Card logistics:</strong> After Cohort 1 wraps (Jul 26), collect all 10 dual-cohort cards before Cohort 2 arrives. Each card will have ~$41.10 remaining — enough for all 3 C2 BART days with ~$5.20 to spare. No reload needed. Recommend Apple Pay / Google Pay to skip the ~$3 physical card fee.
+      </div>
+    </div>
+
+  </div><!-- end #tab-clipper -->
+
 </div>
 
 <script>
@@ -683,34 +1265,61 @@
     // Update buttons
     const btn1 = document.getElementById('btn-c1');
     const btn2 = document.getElementById('btn-c2');
+    const btn3 = document.getElementById('btn-travel');
+    const btn4 = document.getElementById('btn-clipper');
     const tab1 = document.getElementById('tab-c1');
     const tab2 = document.getElementById('tab-c2');
+    const tab3 = document.getElementById('tab-travel');
+    const tab4 = document.getElementById('tab-clipper');
     const header = document.getElementById('page-header');
     const title = document.getElementById('header-title');
     const subline = document.getElementById('header-subline');
     const chips1 = document.getElementById('header-chips-c1');
     const chips2 = document.getElementById('header-chips-c2');
+    const chips3 = document.getElementById('header-chips-travel');
+    const chips4 = document.getElementById('header-chips-clipper');
+
+    btn1.className = 'btn-cohort1 inactive';
+    btn2.className = 'btn-cohort2 inactive';
+    btn3.className = 'btn-travel inactive';
+    btn4.className = 'btn-clipper inactive';
+    tab1.className = 'tab-content';
+    tab2.className = 'tab-content';
+    tab3.className = 'tab-content';
+    tab4.className = 'tab-content';
+    chips1.style.display = 'none';
+    chips2.style.display = 'none';
+    chips3.style.display = 'none';
+    chips4.style.display = 'none';
 
     if (cohort === 'c1') {
       btn1.className = 'btn-cohort1 active';
-      btn2.className = 'btn-cohort2 inactive';
       tab1.className = 'tab-content active';
-      tab2.className = 'tab-content';
       header.className = 'page-header header-cohort1';
       title.textContent = 'Cohort 1 — Outgoing';
       subline.textContent = 'Week of July 19–26, 2026 · Berkeley, CA';
       chips1.style.display = 'flex';
-      chips2.style.display = 'none';
-    } else {
-      btn1.className = 'btn-cohort1 inactive';
+    } else if (cohort === 'c2') {
       btn2.className = 'btn-cohort2 active';
-      tab1.className = 'tab-content';
       tab2.className = 'tab-content active';
       header.className = 'page-header header-cohort2';
       title.textContent = 'Cohort 2 — Incoming';
       subline.textContent = 'Week of July 27–31, 2026 · Berkeley, CA';
-      chips1.style.display = 'none';
       chips2.style.display = 'flex';
+    } else if (cohort === 'travel') {
+      btn3.className = 'btn-travel active';
+      tab3.className = 'tab-content active';
+      header.className = 'page-header header-travel';
+      title.textContent = 'Travel Budget Breakdown';
+      subline.textContent = 'Both cohorts · transit cost planning · internal use only';
+      chips3.style.display = 'flex';
+    } else if (cohort === 'clipper') {
+      btn4.className = 'btn-clipper active';
+      tab4.className = 'tab-content active';
+      header.className = 'page-header header-travel';
+      title.textContent = 'Clipper Card Plan';
+      subline.textContent = '14 cards · 10 dual-cohort ($55) + 4 Cohort-2-only ($41) · internal use only';
+      chips4.style.display = 'flex';
     }
   }
 </script>

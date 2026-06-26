@@ -6,115 +6,93 @@
 ## 📌 What This File Is
 
 A human-readable progress doc for the immersion week HTML itinerary project.
-The companion `AGENTS.md` file (same folder) is the machine-readable version that
-GitHub Copilot CLI automatically loads at session start for persistent AI context.
+The companion `AGENTS.md` file (same folder) is the machine-readable version that AI assistants load at session start for persistent context.
 
 ---
 
 ## ✅ What's Been Built
 
-### `innovation_tour.html` — July 21, Cohort 1
-The flagship detail card. Fully complete. Features:
-- Vertical timeline with 6 stops (Sigma House → Berkeley BART → SSF BART → AbbVie → JLABS → Eli Lilly)
-- Transport pills: Uber XL (black), BART Red Line (dark blue), Walk (green)
-- 3 timeline sections: Berkeley / South San Francisco / Return to Berkeley
-- Duration badges, anchored callout (JLABS), pending callout (Eli Lilly)
-- Group cost summary table: 10 travelers, Uber XL × 2 cars, ~$272–330 total, ~$27–33/person
-- Clipper Card recommendation: load $20/card (~$23 if buying fresh with $3 card fee)
-- Hyperlinks on AbbVie, JLABS SSF, Eli Lilly Gateway Lab
-- Pro tip footer about Clipper Card / Apple Pay
+### Unified Master Hub (`index.html`)
+- **Tabbed Interface:** Toggles between Cohort 1 Outgoing (Navy theme), Cohort 2 Incoming (Forest Green theme), Travel Budget (internal tool), and the Clipper Card Plan (internal tool).
+- **Embedded Details:** Allows inline expansion of specific tour detail HTML files via clean iframes.
 
-### `silverado_tour.html` — July 30, Cohort 2
-Specialized memory care visit. Features:
-- **Innovation Spotlight:** Dedicated card for the Nexus Program (Therapy Animals & Behavioral Health).
-- **Hyperlinks:** Direct links to the official Silverado Belmont Hills website.
-- **Logistics:** Optimized BART-to-Uber route via Millbrae Station to bypass bridge traffic.
+### Cohort 1 — Outgoing Details (July 20–26)
+- **`innovation_tour.html` (July 21):**
+  - **Route:** Sigma House → Berkeley BART → Millbrae BART → SamTrans Route 130 Bus (13 stops) → Walk to JLABS SSF.
+  - **Costs:** 10 travelers, Uber XL × 2 (Berkeley leg only) + round-trip BART + free SamTrans. Group total ~$161–167 (~$16–17/person).
 
-### `index.html` — Unified Master Hub
-- **Tabbed Interface:** Toggle between Cohort 1 (Navy) and Cohort 2 (Green) seamlessly.
-- **Agnostic Architecture:** Model-neutral `AGENTS.md` context for use with Gemini, Claude, or Copilot.
-
----
-
-## 📂 File Structure
-
-```
-Immersion week planning/
-└── Immersion Week, July 2026/
-    ├── AGENTS.md                    ← Persistent Context (AI Assistant reads this)
-    ├── immersion_week.md            ← This file (Human-readable progress)
-    ├── index.html                   ← Unified Master Itinerary (MAIN HUB)
-    ├── Cohort #1 outgoing/
-    │   └── innovation_tour.html     ← Jul 21 full detail
-    └── Cohort #2 incoming/
-        └── silverado_tour.html      ← Jul 30 full detail
-```
+### Cohort 2 — Incoming Details (July 26–August 2)
+- **`frank_residences.html` (July 27):**
+  - **Route:** BART to Glen Park, then Uber XL × 2 + Regular × 1 to Avalon Ave. Return route features an explicit option to ride the Muni Route 52 bus back to Glen Park BART.
+  - **Costs:** 14 travelers. Group total ~$214–244 (~$15–17/person).
+- **`institute_on_aging.html` (July 28):**
+  - **Route:** BART to Embarcadero, then free PresidiGo Downtown Shuttle into the Presidio.
+  - **Contacts:** Clara (Program Coordinator, 415-990-6140) & Emmanuel (Program Coordinator).
+  - **Costs:** 14 travelers. Group total ~$140–154 (~$10–11/person, cheapest visit of the week).
+- **`silverado_tour.html` (July 29):**
+  - **Route:** BART to Millbrae, then Uber XL × 2 + Regular × 1 to Belmont Hills. Return route specifies departing Silverado at 11:00 AM to board the 11:19 AM Richmond-bound BART train.
+  - **Costs:** 14 travelers. Group total ~$298.60–324.60 (~$21–23/person, before Silverado vouchers).
 
 ---
 
-## 🗓 Day-by-Day Status
+## 📅 Day-by-Day Status
 
 ### Cohort 1 — Outgoing (Jul 20–26)
 
 | Day | Title | Status | File |
 |---|---|---|---|
-| Mon Jul 20 | TBD | ⬜ Empty | — |
-| **Tue Jul 21** | **Innovation Labs Tour** | ✅ **Complete** | `innovation_tour.html` |
+| Mon Jul 20 | Orientation & Chima Payer Group | ✅ Planned | — |
+| **Tue Jul 21** | **Innovation Labs Tour (JLABS)** | ✅ **Complete** | `innovation_tour.html` |
 | Wed Jul 22 | TBD | ⬜ Empty | — |
 | Thu Jul 23 | TBD | ⬜ Empty | — |
 | Fri Jul 24 | TBD | ⬜ Empty | — |
-| Sat Jul 25 | Presentations & Lunch | ⏳ Pending | — |
-| Sun Jul 26 | Lunch Celebration | ⏳ Pending | — |
+| Sat Jul 25 | Presentations & Lunch Celebration | ⏳ Pending | — |
+| Sun Jul 26 | Lunch Celebration (Backup) | ⏳ Pending | — |
 
-### Cohort 2 — Incoming (Jul 27–Aug 2)
+### Cohort 2 — Incoming (Jul 26–Aug 2)
 
 | Day | Title | Status | File |
 |---|---|---|---|
 | Sun Jul 26 | Arrival & Orientation | ✅ Planned | — |
-| Mon Jul 27 | TBD | ⬜ Empty | — |
-| Tue Jul 28 | TBD | ⬜ Empty | — |
-| Wed Jul 29 | TBD | ⬜ Empty | — |
-| Thu Jul 30 | Silverado Belmont Hills | ✅ Complete | `silverado_tour.html` |
+| **Mon Jul 27** | **Frank Residences** | ✅ **Complete** | `frank_residences.html` |
+| **Tue Jul 28** | **Institute on Aging Adult Day Center** | ✅ **Complete** | `institute_on_aging.html` |
+| **Wed Jul 29** | **Silverado Belmont Hills** | ✅ **Complete** | `silverado_tour.html` |
+| Thu Jul 30 | TBD | ⬜ Empty | — |
 | Fri Jul 31 | TBD | ⬜ Empty | — |
-| Sat Aug 1 | Weekend | 🌤 Placeholder | — |
-| Sun Aug 2 | Weekend | 🌤 Placeholder | — |
+| Sat Aug 1 / Sun Aug 2 | Weekend / Departure | 🌤 Weekend | — |
 
 ---
 
-## 🔜 Next Steps (in priority order)
+## 💳 Clipper Card Budget Summary
 
-1. **Fill in remaining Cohort 1 days** — Milo to provide stop details for Mon, Wed, Thu, Fri
-2. **Fill in remaining Cohort 2 days** — Milo to provide details for Mon, Tue, Wed, Fri
-3. **Build detail HTML files** for each new confirmed day
-4. **Clean up directory** — Optionally delete `cohort1_week.html` and `cohort2_week.html` (now deprecated by `index.html`)
-5. **Rename parent folder** to "Immersion Week #2, July 2026"
-6. **Optional:** Add Google Maps links to each stop address
+A detailed budget spreadsheet and checklist has been generated at [Clipper_Card_Budget_NIA_REDI_2026.docx](file:///Users/mharmonmaurer/Downloads/Neurotech%20Collider%20Lab/NIA%20REDI/Immersion%20week%20planning/Immersion%20Week,%20July%202026/Clipper_Card_Budget_NIA_REDI_2026.docx).
 
----
+### 🎤 Presentation & Talk
+- **Interactive Slides:** [clipper_card_cost_breakdown.html](file:///Users/mharmonmaurer/Downloads/Neurotech%20Collider%20Lab/NIA%20REDI/Immersion%20week%20planning/Immersion%20Week,%20July%202026/clipper_card_cost_breakdown.html) (HTML-based slideshow with interactive budget sliders and speaker notes panel)
+- **Talk Outline & Script:** [clipper_card_cost_breakdown.md](file:///Users/mharmonmaurer/Downloads/Neurotech%20Collider%20Lab/NIA%20REDI/Immersion%20week%20planning/Immersion%20Week,%20July%202026/clipper_card_cost_breakdown.md) (Full written script and slide layouts for presenting the plan)
 
-## 🧠 Key Decisions Made
-
-| Decision | Choice | Reason |
-|---|---|---|
-| Architecture | **Unified Tabbed index.html** | Easier navigation; reduced file duplication |
-| AI Context | **Model-Agnostic AGENTS.md** | Ensures portability between Gemini, Claude, and Copilot |
-| BART line | **Red Line** (Richmond–Millbrae) | Verified on bart.gov |
-| Group transport | **Uber XL × 2 cars** | 10 people total |
+- **Total Cards Required:** 14 cards (10 dual-cohort reused cards, 4 Cohort-2-only cards).
+- **Load Amounts:**
+  - 10 Dual-Cohort Cards: Load **$55** (Covers JLABS, Frank, IOA, and Silverado BART round trips + ~$5.20 buffer).
+  - 4 Cohort-2-Only Cards: Load **$41** (Covers Frank, IOA, and Silverado BART round trips + ~$5.10 buffer).
+- **Total Budget:** **$714** (using mobile Apple Pay/Google Pay to avoid the $3 card fee) or **$756** (with physical card stock).
 
 ---
 
 ## 📎 Confirmed Venue Info
 
-| Venue | Address | Website |
-|---|---|---|
-| Sigma House | 2311 Prospect St, Berkeley, CA | — |
-| Downtown Berkeley BART | 2160 Shattuck Ave, Berkeley | bart.gov |
-| South San Francisco BART | 1333 Mission Rd, SSF | bart.gov |
-| AbbVie | 1000 Gateway Blvd, SSF | abbvie.com |
-| JLABS SSF | 329 Oyster Point Blvd, 3rd Fl, SSF | jlabs.jnjinnovation.com |
-| Eli Lilly Gateway Lab | 201 Haskins Way, SSF | lilly.com/gateway-labs |
-| Silverado Belmont Hills | 1301 Ralston Ave, Belmont, CA | [Link](https://www.silverado.com/locations/belmont-hills/) |
+| Venue | Address | Contact | Website |
+|---|---|---|---|
+| Sigma House | 2311 Prospect St, Berkeley, CA | — | — |
+| Downtown Berkeley BART | 2160 Shattuck Ave, Berkeley | — | bart.gov |
+| JLABS SSF | 329 Oyster Point Blvd, 3rd Fl, SSF | — | [Link](https://jlabs.jnjinnovation.com/locations/jlabs-ssf) |
+| Glen Park BART | 2901 Diamond St, SF | — | bart.gov |
+| Frank Residences | 1 Avalon Ave, SF | Angela Arguelles & Robert Sarison | [Link](https://frankresidences.org) |
+| Embarcadero BART | 298 Market St, SF | — | bart.gov |
+| Institute on Aging | 386 Moraga Ave, SF | Clara & Emmanuel | [Link](https://www.ioaging.org/services/adult-day-program/) |
+| Millbrae BART | 200 N Rollins Rd, Millbrae | — | bart.gov |
+| Silverado Belmont Hills | 1301 Ralston Ave, Belmont | Marisa Casillas Taylor (415-577-4198) | [Link](https://www.silverado.com/locations/belmont-hills/) |
 
 ---
 
-*Last updated: April 29, 2026*
+*Last updated: June 25, 2026 · Milo Maurer / NIA REDI*

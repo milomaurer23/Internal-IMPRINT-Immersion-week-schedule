@@ -119,6 +119,7 @@
   }
   .icon-home     { background: #fff7ed; border: 2px solid #fed7aa; }
   .icon-facility { background: #f0fdf4; border: 2px solid #a7f3d0; }
+  .icon-bart     { background: #fff1f2; border: 2px solid #fecdd3; }
 
   .stop-connector {
     flex: 1;
@@ -205,6 +206,8 @@
     letter-spacing: 0.2px;
   }
   .pill-uber { background: #111111; }
+  .pill-bart { background: #CC0000; }
+  .pill-walk { background: #16a34a; }
   .pill-icon { font-size: 14px; }
 
   /* ── Section Header ── */
@@ -228,6 +231,12 @@
     background: #eff6ff;
     border: 1px solid #bfdbfe;
   }
+  .section-berkeley {
+    color: #92400e;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+  }
+  .dot-bart { background: #CC0000; }
   .section-header .section-line {
     flex: 1;
     height: 1px;
@@ -302,6 +311,49 @@
     color: #4b5563;
   }
 
+  /* ── Cost Summary ── */
+  .cost-summary { margin: 0 32px 24px; }
+  .cost-summary-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .cost-summary-header .cs-title { font-size: 13px; font-weight: 700; color: #111827; white-space: nowrap; }
+  .cost-summary-header .cs-line { flex: 1; height: 1px; background: #e5e7eb; }
+  .cost-summary-header .cs-badge {
+    font-size: 11px; font-weight: 700; background: #f3f4f6; border: 1px solid #e5e7eb;
+    border-radius: 20px; padding: 2px 9px; color: #374151; white-space: nowrap;
+  }
+  .cost-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .cost-table thead tr th {
+    text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: #9ca3af; padding: 0 8px 8px; border-bottom: 1px solid #f3f4f6;
+  }
+  .cost-table thead tr th:last-child { text-align: right; }
+  .cost-table tbody tr td { padding: 9px 8px; border-bottom: 1px solid #f9fafb; color: #374151; vertical-align: top; }
+  .cost-table tbody tr td:last-child { text-align: right; font-weight: 600; color: #111827; white-space: nowrap; }
+  .cost-table tbody tr:last-child td { border-bottom: none; }
+  .cost-table .leg-name { font-weight: 500; }
+  .cost-table .leg-note { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+  .cost-table .mode-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; vertical-align: middle; flex-shrink: 0; }
+  .cost-divider td { padding: 0 !important; border-bottom: 2px solid #e5e7eb !important; }
+  .cost-total-row td { padding-top: 11px !important; font-weight: 700 !important; font-size: 14px !important; color: #111827 !important; border-bottom: none !important; }
+  .cost-total-row td:last-child { color: #111827 !important; }
+  .cost-per-person {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px 16px; margin-top: 14px;
+  }
+  .cpp-left .cpp-label { font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #16a34a; margin-bottom: 2px; }
+  .cpp-left .cpp-note { font-size: 12px; color: #6b7280; }
+  .cpp-right { font-size: 22px; font-weight: 800; color: #15803d; letter-spacing: -0.5px; }
+  .clipper-rec {
+    margin-top: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+    padding: 13px 16px; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .clipper-rec-icon { font-size: 20px; flex-shrink: 0; }
+  .clipper-rec-body { font-size: 13px; color: #1e3a8a; line-height: 1.5; }
+  .clipper-rec-body strong { font-weight: 700; }
+  .clipper-rec-body .clipper-amount {
+    display: inline-block; background: #003DA5; color: white; font-size: 13px; font-weight: 700;
+    border-radius: 6px; padding: 1px 8px; margin: 0 2px;
+  }
+
   /* ── Footer ── */
   .card-footer {
     background: #f8f9fb;
@@ -336,46 +388,78 @@
   <div class="card-header">
     <div class="label">Assisted Living Site Visit</div>
     <h1><a href="https://frankresidences.org" style="color: inherit; text-decoration: none;">Frank Residences</a></h1>
-    <div class="date">Tuesday, July 28, 2026</div>
+    <div class="date">Monday, July 27, 2026</div>
     <div class="route">
       <span>📍</span>
       <span>Berkeley → San Francisco</span>
       <span style="opacity:.5">·</span>
-      <span>Direct Uber</span>
+      <span>BART + Uber</span>
     </div>
   </div>
 
   <!-- ── SUMMARY BAR ── -->
   <div class="summary-bar">
-    <div class="chip"><div class="dot dot-depart"></div> Depart 11:20 AM</div>
+    <div class="chip"><div class="dot dot-depart"></div> Depart 10:20 AM</div>
     <div class="chip"><div class="dot dot-visit"></div> 12:00 PM Visit</div>
-    <div class="chip"><div class="dot dot-uber"></div> Uber XL ×2 · ~$50 est.</div>
+    <div class="chip"><div class="dot dot-bart"></div> BART → Glen Park</div>
+    <div class="chip"><div class="dot dot-uber"></div> Uber XL ×2 + Reg ×1 · ~$15–17/pp</div>
   </div>
 
   <!-- ── TIMELINE ── -->
   <div class="timeline">
 
-    <!-- STOP 1: Departure (TBD) -->
+    <!-- ── SECTION: BERKELEY ── -->
+    <div class="section-header">
+      <span class="section-label section-berkeley">📍 Berkeley</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- STOP 1: Sigma House -->
     <div class="stop-row">
       <div class="stop-left">
-        <div class="stop-icon icon-home">📍</div>
+        <div class="stop-icon icon-home">🏠</div>
         <div class="stop-connector"></div>
       </div>
       <div class="stop-content">
-        <div class="stop-time">Depart TBD</div>
-        <div class="stop-name">Departure Location TBD</div>
-        <div class="stop-address">Earlier activities may affect pickup point · Uber XL ×2</div>
+        <div class="stop-time">Depart 10:20 AM</div>
+        <div class="stop-name">Sigma House</div>
+        <div class="stop-address">2311 Prospect St, Berkeley, CA</div>
       </div>
     </div>
 
-    <!-- TRANSPORT: Direct Uber to Frank Residences -->
+    <!-- TRANSPORT: Walk/Uber to BART -->
     <div class="transport-block">
       <div class="transport-line-col">
         <div class="transport-vline"></div>
       </div>
       <div class="transport-pill-col">
-        <span class="transport-pill pill-uber">
-          <span class="pill-icon">🚗</span> Uber XL ×2 · ~30 min · ~$50 est.
+        <span class="transport-pill pill-walk">
+          <span class="pill-icon">🚶</span> Walk / short Uber · ~7 min
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 2: Downtown Berkeley BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚇</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">Board ~10:45 AM</div>
+        <div class="stop-name">Downtown Berkeley BART</div>
+        <div class="stop-address">2160 Shattuck Ave, Berkeley, CA · Red Line southbound → Glen Park</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: BART -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-bart">
+          <span class="pill-icon">🚇</span> BART · ~45 min · Clipper $5.70/person
         </span>
       </div>
     </div>
@@ -386,10 +470,36 @@
       <div class="section-line"></div>
     </div>
 
+    <!-- STOP 3: Glen Park BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚉</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">Arrive ~11:30 AM</div>
+        <div class="stop-name">Glen Park BART</div>
+        <div class="stop-address">2901 Diamond St, San Francisco, CA · Transfer to Uber XL</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: Uber to Frank Residences -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-uber">
+          <span class="pill-icon">🚗</span> Uber XL ×2 + Regular ×1 · ~8 min
+        </span>
+      </div>
+    </div>
+
     <!-- STOP 2: Frank Residences -->
     <div class="stop-row">
       <div class="stop-left">
         <div class="stop-icon icon-facility">🏡</div>
+        <div class="stop-connector"></div>
       </div>
       <div class="stop-content">
         <div class="stop-time">12:00 PM – 2:30 PM</div>
@@ -409,7 +519,163 @@
       </div>
     </div>
 
+    <!-- ── SECTION: RETURN ── -->
+    <div class="section-header" style="margin-top:16px;">
+      <span class="section-label section-berkeley">🔁 Return to Berkeley</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- TRANSPORT: 52 Bus option -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-walk" style="background:#7c3aed;">
+          <span class="pill-icon">🚌</span> Muni Route 52 · Silver Ave & Mission St → Bosworth St & Diamond St (Glen Park BART) · ~10 min
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 5: Return to Glen Park BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚉</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">~2:40 PM</div>
+        <div class="stop-name">Glen Park BART</div>
+        <div class="stop-address">Board Red Line northbound → Downtown Berkeley · ~45 min</div>
+        <div class="badges">
+          <span class="badge badge-duration" style="background:#fef3c7; color:#92400e; border-color:#fde68a;">🚌 Muni Route 52 or Uber XL ×2 + Regular ×1 from Frank Residences</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: BART home -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+          <span class="transport-pill pill-bart">
+            <span class="pill-icon">🚇</span> BART Red Line northbound · ~45 min · Clipper $6.00/person
+          </span>
+      </div>
+    </div>
+
+    <!-- STOP 6: Downtown Berkeley BART (Return) -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-home">🏠</div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">~3:30 PM</div>
+        <div class="stop-name">Downtown Berkeley BART</div>
+        <div class="stop-address">Walk or short Uber back to Sigma House · ~7 min</div>
+      </div>
+    </div>
+
   </div><!-- end .timeline -->
+
+  <!-- ── GROUP COST SUMMARY ── -->
+  <div class="cost-summary">
+    <div class="cost-summary-header">
+      <span class="cs-title">💰 Group Cost Estimate</span>
+      <div class="cs-line"></div>
+      <span class="cs-badge">👥 14 Travelers</span>
+    </div>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Leg</th>
+          <th style="text-align:center;">Cars</th>
+          <th>Est. per car</th>
+          <th>Leg total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#16a34a;"></span>Sigma House → Berkeley BART <span style="font-size:11px;color:#9ca3af;">(optional — walk is free)</span></div>
+            <div class="leg-note">If Uber: 14 riders → 2 XL + 1 regular · ~7 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
+          <td style="color:#6b7280;">$11–14 / $8–10</td>
+          <td>~$30–38</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Glen Park BART → Frank Residences</div>
+            <div class="leg-note">14 riders → 2 XL + 1 regular · ~8 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
+          <td style="color:#6b7280;">$11–14 / $8–10</td>
+          <td>~$30–38</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Frank Residences → Glen Park BART <span style="font-size:11px;color:#9ca3af;">(return)</span></div>
+            <div class="leg-note">14 riders → 2 XL + 1 regular · ~8 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
+          <td style="color:#6b7280;">$11–14 / $8–10</td>
+          <td>~$30–38</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">
+            Uber subtotal &nbsp;<span style="font-size:11px;">(Glen Park legs only — Sigma↔BART assumed walked; surge not included)</span>
+          </td>
+          <td style="font-weight:700; color:#111827; padding-top:5px; padding-bottom:7px;">~$60–76</td>
+        </tr>
+        <tr class="cost-divider"><td colspan="4"></td></tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>Berkeley BART → Glen Park BART</div>
+            <div class="leg-note">14 riders · outbound</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
+          <td style="color:#6b7280;">$5.70 / person</td>
+          <td>$79.80</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>Glen Park BART → Berkeley BART</div>
+            <div class="leg-note">14 riders · return</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
+          <td style="color:#6b7280;">$6.00 / person</td>
+          <td>$84.00</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">BART subtotal (round trip · 14 riders · official fare)</td>
+          <td style="font-weight:700; color:#003DA5; padding-top:5px; padding-bottom:7px;">$163.80</td>
+        </tr>
+        <tr class="cost-divider"><td colspan="4"></td></tr>
+        <tr class="cost-total-row">
+          <td colspan="3">🧾 Grand Total (group, walking Sigma↔BART)</td>
+          <td>~$223.80–239.80</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cost-per-person">
+      <div class="cpp-left">
+        <div class="cpp-label">Per Person</div>
+        <div class="cpp-note">Uber share ÷ 14 + round-trip BART</div>
+      </div>
+      <div class="cpp-right">~$16–17</div>
+    </div>
+
+    <div class="clipper-rec">
+      <div class="clipper-rec-icon">💳</div>
+      <div class="clipper-rec-body">
+        <strong>If Uber used for the Sigma↔BART hop too:</strong> add ~$60–76 to the group total (~$19–22/person instead). Walking saves the group ~$60–76.
+      </div>
+    </div>
+  </div>
 
   <!-- ── INNOVATION SPOTLIGHT ── -->
   <div class="innovation-spotlight">
@@ -441,7 +707,7 @@
     </div>
     <div style="text-align:right;">
       <div class="footer-label">Transport</div>
-      <div class="footer-val">Direct Uber</div>
+      <div class="footer-val">BART + Uber</div>
     </div>
   </div>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Silverado Belmont Hills — July 30, 2026</title>
+<title>Silverado Belmont Hills — July 29, 2026</title>
 <style>
   /* Use the same styling as innovation_tour.html but adapted for Cohort 2 */
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -340,6 +340,45 @@
     color: #374151;
     font-weight: 600;
   }
+
+  /* ── Cost Summary ── */
+  .cost-summary { margin: 0 32px 24px; }
+  .cost-summary-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .cost-summary-header .cs-title { font-size: 13px; font-weight: 700; color: #111827; white-space: nowrap; }
+  .cost-summary-header .cs-line { flex: 1; height: 1px; background: #e5e7eb; }
+  .cost-summary-header .cs-badge {
+    font-size: 11px; font-weight: 700; background: #f3f4f6; border: 1px solid #e5e7eb;
+    border-radius: 20px; padding: 2px 9px; color: #374151; white-space: nowrap;
+  }
+  .cost-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .cost-table thead tr th {
+    text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: #9ca3af; padding: 0 8px 8px; border-bottom: 1px solid #f3f4f6;
+  }
+  .cost-table thead tr th:last-child { text-align: right; }
+  .cost-table tbody tr td { padding: 9px 8px; border-bottom: 1px solid #f9fafb; color: #374151; vertical-align: top; }
+  .cost-table tbody tr td:last-child { text-align: right; font-weight: 600; color: #111827; white-space: nowrap; }
+  .cost-table tbody tr:last-child td { border-bottom: none; }
+  .cost-table .leg-name { font-weight: 500; }
+  .cost-table .leg-note { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+  .cost-table .mode-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; vertical-align: middle; flex-shrink: 0; }
+  .cost-divider td { padding: 0 !important; border-bottom: 2px solid #e5e7eb !important; }
+  .cost-total-row td { padding-top: 11px !important; font-weight: 700 !important; font-size: 14px !important; color: #111827 !important; border-bottom: none !important; }
+  .cost-total-row td:last-child { color: #111827 !important; }
+  .cost-per-person {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px 16px; margin-top: 14px;
+  }
+  .cpp-left .cpp-label { font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #16a34a; margin-bottom: 2px; }
+  .cpp-left .cpp-note { font-size: 12px; color: #6b7280; }
+  .cpp-right { font-size: 22px; font-weight: 800; color: #15803d; letter-spacing: -0.5px; }
+  .clipper-rec {
+    margin-top: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+    padding: 13px 16px; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .clipper-rec-icon { font-size: 20px; flex-shrink: 0; }
+  .clipper-rec-body { font-size: 13px; color: #1e3a8a; line-height: 1.5; }
+  .clipper-rec-body strong { font-weight: 700; }
 </style>
 </head>
 <body>
@@ -354,20 +393,21 @@
   <div class="card-header">
     <div class="label">Memory Care Site Visit</div>
     <h1><a href="https://www.silverado.com/locations/belmont-hills/" style="color: inherit; text-decoration: none;">Silverado Belmont Hills</a></h1>
-    <div class="date">Thursday, July 30, 2026</div>
+    <div class="date">Wednesday, July 29, 2026</div>
     <div class="route">
       <span>📍</span>
       <span>Berkeley → Belmont</span>
       <span style="opacity:.5">·</span>
-      <span>Direct Uber</span>
+      <span>BART + Uber</span>
     </div>
   </div>
 
   <!-- ── SUMMARY BAR ── -->
   <div class="summary-bar">
-    <div class="chip"><div class="dot dot-depart"></div> Depart 8:15 AM</div>
+    <div class="chip"><div class="dot dot-depart"></div> Depart 7:20 AM</div>
     <div class="chip"><div class="dot dot-visit"></div> 9:00 AM Visit</div>
-    <div class="chip"><div class="dot dot-uber"></div> Uber XL ×2 · ~$55 est.</div>
+    <div class="chip"><div class="dot dot-bart"></div> BART → Millbrae</div>
+    <div class="chip"><div class="dot dot-uber"></div> Uber XL ×2 + Reg ×1 · ~$25–29/pp</div>
   </div>
 
   <!-- ── TIMELINE ── -->
@@ -386,20 +426,48 @@
         <div class="stop-connector"></div>
       </div>
       <div class="stop-content stop-spacer">
-        <div class="stop-time">Depart 8:15 AM</div>
+        <div class="stop-time">Depart 7:20 AM</div>
         <div class="stop-name">Sigma House</div>
         <div class="stop-address">2311 Prospect St, Berkeley, CA</div>
       </div>
     </div>
 
-    <!-- TRANSPORT: Direct Uber to Silverado -->
+    <!-- TRANSPORT: Walk/Uber to BART -->
     <div class="transport-block">
       <div class="transport-line-col">
         <div class="transport-vline"></div>
       </div>
       <div class="transport-pill-col">
-        <span class="transport-pill pill-uber">
-          <span class="pill-icon">🚗</span> Uber XL ×2 · ~40 min · ~$55 est.
+        <span class="transport-pill pill-walk">
+          <span class="pill-icon">🚶</span> Walk / short Uber · ~7 min
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 2: Downtown Berkeley BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚇</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content stop-spacer">
+        <div class="stop-time">Board ~7:35 AM</div>
+        <div class="stop-name">Downtown Berkeley BART</div>
+        <div class="stop-address">2160 Shattuck Ave, Berkeley, CA</div>
+        <div class="badges">
+          <span class="badge badge-duration">🔴 Red Line southbound · Millbrae</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: BART -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-bart">
+          <span class="pill-icon">🚇</span> BART · ~55 min · Clipper $6.95/person
         </span>
       </div>
     </div>
@@ -410,10 +478,36 @@
       <div class="section-line"></div>
     </div>
 
+    <!-- STOP 3: Millbrae BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚉</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content stop-spacer">
+        <div class="stop-time">Arrive ~8:30 AM</div>
+        <div class="stop-name">Millbrae BART</div>
+        <div class="stop-address">200 N Rollins Rd, Millbrae, CA · Transfer to Uber XL</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: Uber to Silverado -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-uber">
+          <span class="pill-icon">🚗</span> Uber XL ×2 + Regular ×1 · ~12 min
+        </span>
+      </div>
+    </div>
+
     <!-- STOP 4: Silverado -->
     <div class="stop-row">
       <div class="stop-left">
         <div class="stop-icon icon-facility">🌳</div>
+        <div class="stop-connector"></div>
       </div>
       <div class="stop-content">
         <div class="stop-time">9:00 AM – 11:00 AM</div>
@@ -433,7 +527,164 @@
       </div>
     </div>
 
+    <!-- ── SECTION: RETURN ── -->
+    <div class="section-header" style="margin-top:16px;">
+      <span class="section-label section-berkeley">🔁 Return to Berkeley</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- TRANSPORT: Uber or bus back to Millbrae -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-uber">
+          <span class="pill-icon">🚗</span> Uber XL ×2 + Regular ×1 (or local bus) → Millbrae BART · ~12 min
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 5: Millbrae BART (Return) -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚉</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">11:19 AM</div>
+        <div class="stop-name">Millbrae BART</div>
+        <div class="stop-address">200 N Rollins Rd, Millbrae, CA · Board Red Line northbound (Richmond train) at 11:19 AM</div>
+        <div class="badges">
+          <span class="badge badge-duration" style="background:#fef3c7; color:#92400e; border-color:#fde68a;">🎟️ Vouchers may apply — confirm with Marisa</span>
+          <span class="badge badge-confirmed">⏱ 11:19 AM Departure</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: BART home -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-bart">
+          <span class="pill-icon">🚇</span> BART Red Line northbound · ~55 min · Clipper $6.95/person
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 6: Downtown Berkeley BART (Return) -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-home">🏠</div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">~12:15 PM</div>
+        <div class="stop-name">Downtown Berkeley BART</div>
+        <div class="stop-address">Walk or short Uber back to Sigma House · ~7 min</div>
+      </div>
+    </div>
+
   </div><!-- end .timeline -->
+
+  <!-- ── GROUP COST SUMMARY ── -->
+  <div class="cost-summary">
+    <div class="cost-summary-header">
+      <span class="cs-title">💰 Group Cost Estimate</span>
+      <div class="cs-line"></div>
+      <span class="cs-badge">👥 14 Travelers</span>
+    </div>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Leg</th>
+          <th style="text-align:center;">Cars</th>
+          <th>Est. per car</th>
+          <th>Leg total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#16a34a;"></span>Sigma House → Berkeley BART <span style="font-size:11px;color:#9ca3af;">(optional — walk is free)</span></div>
+            <div class="leg-note">If Uber: 14 riders → 2 XL + 1 regular · ~7 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
+          <td style="color:#6b7280;">$11–14 / $8–10</td>
+          <td>~$30–38</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Millbrae BART → Silverado</div>
+            <div class="leg-note">14 riders → 2 XL + 1 regular · ~12 min · vouchers available</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
+          <td style="color:#6b7280;">$19–24 / $14–17</td>
+          <td>~$52–65</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Silverado → Millbrae BART <span style="font-size:11px;color:#9ca3af;">(return)</span></div>
+            <div class="leg-note">14 riders → 2 XL + 1 regular · ~12 min</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
+          <td style="color:#6b7280;">$19–24 / $14–17</td>
+          <td>~$52–65</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">
+            Uber subtotal &nbsp;<span style="font-size:11px;">(Millbrae↔Silverado legs · before vouchers · surge not included)</span>
+          </td>
+          <td style="font-weight:700; color:#111827; padding-top:5px; padding-bottom:7px;">~$104–130</td>
+        </tr>
+        <tr class="cost-divider"><td colspan="4"></td></tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>Berkeley BART → Millbrae BART</div>
+            <div class="leg-note">14 riders · outbound</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
+          <td style="color:#6b7280;">$6.95 / person</td>
+          <td>$97.30</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>Millbrae BART → Berkeley BART</div>
+            <div class="leg-note">14 riders · return</div>
+          </td>
+          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
+          <td style="color:#6b7280;">$6.95 / person</td>
+          <td>$97.30</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">BART subtotal (round trip · 14 riders · official fare)</td>
+          <td style="font-weight:700; color:#003DA5; padding-top:5px; padding-bottom:7px;">$194.60</td>
+        </tr>
+        <tr class="cost-divider"><td colspan="4"></td></tr>
+        <tr class="cost-total-row">
+          <td colspan="3">🧾 Grand Total (group, walking Sigma↔BART, before vouchers)</td>
+          <td>~$298.60–324.60</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cost-per-person">
+      <div class="cpp-left">
+        <div class="cpp-label">Per Person</div>
+        <div class="cpp-note">Uber share ÷ 14 + round-trip BART · before vouchers</div>
+      </div>
+      <div class="cpp-right">~$21–23</div>
+    </div>
+
+    <div class="clipper-rec">
+      <div class="clipper-rec-icon">🎟️</div>
+      <div class="clipper-rec-body">
+        <strong>Silverado provides Uber vouchers</strong> for the Millbrae ↔ Silverado leg — confirm the voucher amount with Marisa Taylor; it should net against the ~$104–130 Uber subtotal above. If Uber is also used for the optional Sigma↔BART hop, add ~$60–76 to the group total (~$29–34/person instead of ~$25–29).
+      </div>
+    </div>
+  </div>
 
   <!-- ── INNOVATION SPOTLIGHT ── -->
   <div class="innovation-spotlight">

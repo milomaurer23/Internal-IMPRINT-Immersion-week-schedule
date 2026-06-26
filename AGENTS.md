@@ -16,7 +16,7 @@ A set of **self-contained HTML itinerary files** for a two-week immersion progra
 - **`Cohort #2 incoming/cohort2_week.html`:** Week hub for Jul 27–31 (forest green theme), 7-day card layout.
 - **`Cohort #1 outgoing/innovation_tour.html`:** Full detail for July 21 (Innovation Labs Tour ✅).
 - **`Cohort #2 incoming/silverado_tour.html`:** Full detail for July 30 (Silverado Belmont Hills ✅).
-- **`Cohort #2 incoming/frank_residences.html`:** Frank Residences detail card (in progress).
+- **`Cohort #2 incoming/frank_residences.html`:** Frank Residences detail card (done ✅).
 
 Each cohort hub shows all 7 days as cards with status chips. Planned days show a stop-by-stop summary with an **inline expand button** (loads detail HTML in an iframe — no new tab).
 
@@ -30,6 +30,8 @@ Immersion week planning/
     ├── AGENTS.md                        ← YOU ARE HERE (AI Assistant reads this)
     ├── immersion_week.md                ← human-readable progress doc
     ├── index.html                       ← Landing hub → links to cohort week files
+    ├── clipper_card_cost_breakdown.html ← Interactive Clipper presentation slide deck (talk) ✅
+    ├── clipper_card_cost_breakdown.md   ← Presentation outline & speaker script (talk text) ✅
     ├── Cohort #1 outgoing/
     │   ├── cohort1_week.html            ← Week hub Jul 20–26 (dark navy)
     │   └── innovation_tour.html         ← Jul 21 full detail: Innovation Labs Tour ✅
@@ -60,25 +62,34 @@ Immersion week planning/
 
 ## Confirmed Facts (verified, do not change)
 
-- **BART line: RED LINE** (Richmond–Millbrae). Downtown Berkeley BART → South San Francisco BART. Confirmed via bart.gov live schedule. NOT Yellow Line.
-- **Group size:** 10 travelers
-- **Transport:** Uber XL (seats 6) → need **2 cars** for 10 people
-- **BART fare:** ~$6–7 per person one-way, ~$12–14 round trip
-- **Clipper Card recommendation:** Load $20/card. Physical card costs ~$3 at station. Suggest Apple/Google Pay to avoid the fee.
-- **Uber XL estimates:** Berkeley → Berkeley BART ~$20–25, SSF BART → AbbVie ~$18–22, JLABS → Eli Lilly ~$20–26
+- **BART line: RED LINE** (Richmond–Millbrae). Downtown Berkeley BART ↔ Millbrae BART.
+- **Group size: Cohort 1 = 10 travelers · Cohort 2 = 14 travelers** (updated June 2026 — do not use the old "11 travelers" or "15 travelers" figures)
+- **Uber fleet-sizing rule (Milo's rule, confirmed June 2026):** fill Uber XL cars (6 seats each) first; if the remainder after filling XLs is ≤4, cover it with **one regular Uber** (4 seats); if the remainder is 5–6, add **another XL** instead.
+  - 10 people → 2× Uber XL (12 seats, 2 spare) — no regular needed
+  - 14 people → 2× Uber XL + 1× regular Uber (16 seats, 2 spare) — this covers the Glen Park and Millbrae legs
+- **BART fares are 2026 estimates** (BART fares rose 6.2% system-wide on Jan 1, 2026 — confirmed via official BART press release). bart.gov blocks automated fetches (403 on live schedule + fare-calculator pages, including static PDFs), so exact fares could not be pulled live — **recommend a manual spot-check at bart.gov/tickets/calculator** before finalizing a budget for distribution.
+  - DBRK ↔ South San Francisco: $6.15 one-way (Clipper official fare, confirmed June 2026)
+  - DBRK ↔ Millbrae: $6.95 one-way (Clipper official fare, confirmed June 2026)
+  - DBRK ↔ Glen Park: $5.70 outbound / $6.00 return ($11.70 round-trip Clipper official fare, confirmed June 2026)
+  - DBRK ↔ Embarcadero: $5.30 one-way / $10.60 round-trip (Clipper official fare, confirmed June 2026)
+- **Clipper Card budget details:** Load **$55.00** for the 10 Dual-Cohort cards and **$41.00** for the 4 Cohort-2-only cards. This leaves a **~$5.00** buffer left on each card after all planned BART trips (exactly $6.50 buffer for dual-cohort and $4.80 for Cohort-2-only). Physical card stock costs **$3.00** per card (for a grand total of **$756.00** with fees, or **$714.00** if using Apple/Google Pay mobile wallets to avoid the fee).
+- **Uber per-car estimates (one-way):** Sigma House ↔ Downtown Berkeley BART (~7 min) — XL ~$11–14, regular ~$8–10. SSF BART ↔ JLABS (~10 min) — XL ~$14–17, regular ~$10–12. Glen Park BART ↔ Frank Residences (~8 min) — XL ~$11–14, regular ~$8–10. Millbrae BART ↔ Silverado Belmont Hills (~12 min) — XL ~$19–24, regular ~$14–17 (Silverado provides Uber vouchers for this leg — confirm voucher amount with Marisa Taylor to net against this cost). PresidiGo shuttle (Embarcadero → Presidio) is FREE.
 
 ---
 
-## Jul 21 — Innovation Labs Tour (FULLY BUILT ✅)
+## Jul 21 — J&J JLABS Tour (FULLY BUILT ✅)
+
+> **Updated June 2026:** AbbVie and Eli Lilly tours **REMOVED** — not happening; exploring alternatives. **J&J / JLABS SSF is now the only stop.** Do NOT re-add AbbVie or Eli Lilly.
 
 | Stop | Time | Address | Notes |
 |---|---|---|---|
-| Sigma House | Depart 7:50 AM | 2311 Prospect St, Berkeley | Home base |
-| Downtown Berkeley BART | ~7:57 AM | 2160 Shattuck Ave | Red Line southbound ~8:00 AM |
-| SSF BART | ~8:48 AM | 1333 Mission Rd, SSF | Uber from here |
-| AbbVie | 9:00–10:45 AM | 1000 Gateway Blvd, SSF | 1h 45min · [abbvie.com](https://www.abbvie.com) |
-| JLABS SSF | 11:00 AM–2:00 PM | 329 Oyster Point Blvd 3rd Fl | **ANCHORED** · [jnjinnovation.com](https://jlabs.jnjinnovation.com/locations/jlabs-ssf) |
-| Eli Lilly Gateway Lab | 2:15–5:00 PM | 201 Haskins Way, SSF | **PENDING CONFIRMATION** · [lilly.com](https://www.lilly.com/gateway-labs) |
+| Sigma House | Depart 9:20 AM | 2311 Prospect St, Berkeley | Home base |
+| Downtown Berkeley BART | ~9:30 AM | 2160 Shattuck Ave | Red Line southbound ~9:36 AM |
+| South San Francisco BART | ~10:35 AM | 1333 Mission Rd, SSF | SamTrans Route 130 bus from here (~18 min) |
+| JLABS SSF (J&J) | 11:00 AM–2:00 PM | 329 Oyster Point Blvd 3rd Fl | **ANCHORED · only stop** · [jnjinnovation.com](https://jlabs.jnjinnovation.com/locations/jlabs-ssf) |
+| Return to Berkeley | ~3:15 PM | — | Reverse route · South San Francisco BART → Berkeley BART |
+
+Group cost ~$145–151 · per person ~$15.
 
 ---
 
@@ -87,23 +98,26 @@ Immersion week planning/
 ### Cohort 1 (Jul 20–26)
 | Day | Status | Notes |
 |---|---|---|
-| Mon Jul 20 | ⬜ TBD | No details yet |
-| **Tue Jul 21** | ✅ **DONE** | innovation_tour.html fully built |
+| **Mon Jul 20** | ✅ **PLANNED** | Arrival & Orientation + **Chima Payer Group 10 AM–12 PM @ Sigma House** (no travel) |
+| **Tue Jul 21** | ✅ **DONE** | innovation_tour.html (J&J JLABS only — AbbVie + Eli Lilly removed) |
 | Wed Jul 22 | ⬜ TBD | No details yet |
 | Thu Jul 23 | ⬜ TBD | No details yet |
 | Fri Jul 24 | ⬜ TBD | No details yet |
 | Sat Jul 25 | ⏳ **PENDING** | Presentations & Lunch Celebration |
 | Sun Jul 26 | ⏳ **PENDING** | Lunch Celebration (Backup) |
 
-### Cohort 2 (Jul 27–31)
+### Cohort 2 (Jul 26–Aug 2) — site-visit dates per Milo (June 2026)
 | Day | Status | Notes |
 |---|---|---|
-| Sun Jul 27 | ⬜ TBD | Possible arrival/orientation |
-| Mon Jul 28 | ⬜ TBD | No details yet |
-| Tue Jul 29 | ⬜ TBD | No details yet |
-| Wed Jul 30 | ⬜ TBD | No details yet |
-| Thu Jul 31 | ✅ **DONE** | silverado_tour.html fully built |
-| Fri Aug 1 | 🔧 WIP | frank_residences.html (departure placeholder) |
+| Sun Jul 26 | ✅ PLANNED | Arrival & Orientation @ Sigma House |
+| **Mon Jul 27** | ✅ **DONE** | **Frank Residences** 12 PM · frank_residences.html · BART → Glen Park + Uber XL/regular (return has Muni 52 option) |
+| **Tue Jul 28** | ✅ **DONE** | **Institute on Aging Adult Day Center** 2 PM · institute_on_aging.html · BART → Embarcadero + free PresidiGo shuttle (closes 3 PM) |
+| **Wed Jul 29** | ✅ **DONE** | **Silverado Belmont Hills** 9 AM · silverado_tour.html · BART → Millbrae + Uber XL/regular (vouchers avail · explicit 11:19 AM Richmond BART train) |
+| Thu Jul 30 | ⬜ TBD | No details yet (Silverado MOVED off this date) |
+| Fri Jul 31 | ⬜ TBD | No details yet |
+| Sat Aug 1 / Sun Aug 2 | 🌤 Weekend | Departure / wrap-up |
+
+> **Date note:** the site-visit tracking sheet listed Silverado=Jul27 / Frank=Jul28 / IOA=Jul29, but Milo confirmed the correct mapping is **Frank=Jul27, IOA=Jul28, Silverado=Jul29**. Use these.
 
 ---
 
@@ -136,14 +150,15 @@ When Milo gives you details for a new day, here is the workflow:
 
 ## Known Issues / TODOs
 
-- [ ] `frank_residences.html` — departure placeholder, needs full detail filled in
-- [ ] `cohort1_week.html` summary bar: update "1 of 5" count as days are confirmed
-- [ ] `cohort2_week.html` header chip: update "⬜ All Days TBD" as days are confirmed
-- [ ] Verify Eli Lilly Gateway Lab appointment — update pending callout once confirmed
-- [ ] Fill in Cohort 2 schedule details (Mon–Wed, Jul 28–30)
+- [x] ~~`frank_residences.html` departure placeholder~~ — DONE, full BART+Uber route built (Jul 27)
+- [x] ~~`cohort2_week.html` header chip "All Days TBD"~~ — now "3 Site Visits Confirmed"
+- [x] ~~Eli Lilly / AbbVie~~ — REMOVED from Jul 21; J&J only (do not re-add)
+- [x] ~~Fill in Cohort 2 schedule details~~ — Frank/IOA/Silverado built with travel charted
+- [ ] Confirm BART/Uber travel-time + cost estimates against live schedules before printing (current figures are planning estimates)
+- [ ] Fill Cohort 1 Wed–Fri (Jul 22–24) and Cohort 2 Thu–Fri (Jul 30–31)
 - [ ] Consider adding Google Maps links for each stop address
 - [ ] `NIA-REDI-Immersion-Week-July-2026/` subfolder inside this repo is an **untracked orphan** (incomplete Copilot reorganization, never committed, missing silverado + frank files) — delete via Finder when convenient
 
 ---
 
-*Last updated: June 11, 2026 · Merged from fork by Copilot CLI*
+*Last updated: June 25, 2026 · Cohort sizes corrected (10/14); SamTrans bus on July 21; Muni 52 and Millbrae 11:19 AM return routed.*

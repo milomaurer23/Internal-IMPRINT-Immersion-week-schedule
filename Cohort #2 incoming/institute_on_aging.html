@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institute on Aging — Adult Day Center — July 28, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 40px rgba(0,0,0,0.08);
+    max-width: 620px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* ── Header (Forest Green for Cohort 2) ── */
+  .card-header {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
+    padding: 28px 32px 24px;
+    color: white;
+  }
+  .card-header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 6px;
+  }
+  .card-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .card-header .date {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 400;
+  }
+  .card-header .route {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ── Summary Bar ── */
+  .summary-bar {
+    background: #f8f9fb;
+    border-bottom: 1px solid #eaedf0;
+    padding: 14px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    align-items: center;
+  }
+  .summary-bar .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #444;
+  }
+  .summary-bar .chip .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-uber   { background: #111; }
+  .dot-bart   { background: #CC0000; }
+  .dot-shuttle{ background: #16a34a; }
+  .dot-visit  { background: #059669; }
+  .dot-depart { background: #f59e0b; }
+
+  /* ── Timeline body ── */
+  .timeline {
+    padding: 28px 32px 24px;
+  }
+
+  .stop-row {
+    display: flex;
+    gap: 16px;
+    position: relative;
+  }
+
+  .stop-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+  }
+  .stop-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .icon-home     { background: #fff7ed; border: 2px solid #fed7aa; }
+  .icon-facility { background: #f0fdf4; border: 2px solid #a7f3d0; }
+  .icon-bart     { background: #fff1f2; border: 2px solid #fecdd3; }
+  .icon-shuttle  { background: #f0fdf4; border: 2px solid #bbf7d0; }
+
+  .stop-connector {
+    flex: 1;
+    width: 2px;
+    background: #e5e7eb;
+    margin: 4px 0;
+    min-height: 12px;
+  }
+
+  .stop-content {
+    flex: 1;
+    padding-bottom: 4px;
+  }
+  .stop-time {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .stop-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .stop-address {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .badge-duration  { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .badge-confirmed { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+  .badge-warn      { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+
+  /* ── Transport pill ── */
+  .transport-block {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  .transport-line-col {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .transport-vline {
+    width: 2px;
+    background: #e5e7eb;
+    flex: 1;
+    min-height: 8px;
+  }
+  .transport-pill-col {
+    flex: 1;
+    padding: 10px 0 10px;
+  }
+  .transport-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.2px;
+  }
+  .pill-uber { background: #111111; }
+  .pill-bart { background: #CC0000; }
+  .pill-walk { background: #16a34a; }
+  .pill-icon { font-size: 14px; }
+
+  /* ── Section Header ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 20px;
+  }
+  .section-header .section-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .section-sf {
+    color: #1e3a8a;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+  }
+  .section-berkeley {
+    color: #92400e;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+  }
+  .section-header .section-line {
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+  }
+
+  /* ── Callout ── */
+  .callout {
+    border-radius: 10px;
+    padding: 9px 13px;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .callout-green {
+    background: #f0fdf4;
+    border-left: 3px solid #22c55e;
+    color: #15803d;
+  }
+  .callout-amber {
+    background: #fffbeb;
+    border-left: 3px solid #f59e0b;
+    color: #92400e;
+  }
+  .callout-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── Innovation Spotlight ── */
+  .innovation-spotlight {
+    background: linear-gradient(to right, #f0fdf4, #ffffff);
+    border: 1px solid #bbf7d0;
+    border-radius: 16px;
+    margin: 20px 32px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  }
+  .is-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .is-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #16a34a;
+  }
+  .is-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+  .is-content p {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #374151;
+    margin-bottom: 12px;
+  }
+  .is-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .is-tag {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4b5563;
+  }
+
+  /* ── Footer ── */
+  .card-footer {
+    background: #f8f9fb;
+    border-top: 1px solid #eaedf0;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-footer .footer-label {
+    font-size: 11px;
+    color: #9ca3af;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .card-footer .footer-val {
+    font-size: 12px;
+    color: #374151;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div style="max-width:620px; width:100%; margin-bottom: 12px; display: flex; justify-content: flex-start;">
+  <a href="cohort2_week.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#065f46; color:white; font-size:13px; font-weight:600; padding:8px 18px; border-radius:20px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    ← Back to Week Schedule
+  </a>
+</div>
+<div class="card">
+
+  <!-- ── HEADER ── -->
+  <div class="card-header">
+    <div class="label">Adult Day Program Site Visit</div>
+    <h1><a href="https://www.ioaging.org/services/adult-day-program/" style="color: inherit; text-decoration: none;">Institute on Aging · Adult Day Center</a></h1>
+    <div class="date">Tuesday, July 28, 2026</div>
+    <div class="route">
+      <span>📍</span>
+      <span>Berkeley → Presidio, SF</span>
+      <span style="opacity:.5">·</span>
+      <span>BART + Free Shuttle</span>
+    </div>
+  </div>
+
+  <!-- ── SUMMARY BAR ── -->
+  <div class="summary-bar">
+    <div class="chip"><div class="dot dot-depart"></div> Depart 12:15 PM</div>
+    <div class="chip"><div class="dot dot-visit"></div> 2:00 PM Visit</div>
+    <div class="chip"><div class="dot dot-bart"></div> BART → Embarcadero</div>
+    <div class="chip"><div class="dot dot-shuttle"></div> PresidiGo · FREE</div>
+  </div>
+
+  <!-- ── TIMELINE ── -->
+  <div class="timeline">
+
+    <!-- ── SECTION: BERKELEY ── -->
+    <div class="section-header">
+      <span class="section-label section-berkeley">📍 Berkeley</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- STOP 1: Sigma House -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-home">🏠</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">Depart 12:15 PM</div>
+        <div class="stop-name">Sigma House</div>
+        <div class="stop-address">2311 Prospect St, Berkeley, CA</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: Walk/Uber to BART -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-walk">
+          <span class="pill-icon">🚶</span> Walk / short Uber · ~7 min
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 2: Downtown Berkeley BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚇</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">Board ~12:40 PM</div>
+        <div class="stop-name">Downtown Berkeley BART</div>
+        <div class="stop-address">2160 Shattuck Ave, Berkeley, CA · SF-bound → Embarcadero</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: BART -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+          <span class="transport-pill pill-bart">
+            <span class="pill-icon">🚇</span> BART · ~30 min · Clipper $5.30/person
+          </span>
+      </div>
+    </div>
+
+    <!-- ── SECTION: SAN FRANCISCO ── -->
+    <div class="section-header" style="margin-top:16px;">
+      <span class="section-label section-sf">🌁 San Francisco · The Presidio</span>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- STOP 3: Embarcadero BART -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-bart">🚉</div>
+        <div class="stop-connector"></div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">Arrive ~1:10 PM</div>
+        <div class="stop-name">Embarcadero Station</div>
+        <div class="stop-address">298 Market St, San Francisco, CA · Transfer to PresidiGo shuttle</div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT: PresidiGo Shuttle -->
+    <div class="transport-block">
+      <div class="transport-line-col">
+        <div class="transport-vline"></div>
+      </div>
+      <div class="transport-pill-col">
+        <span class="transport-pill pill-walk">
+          <span class="pill-icon">🚐</span> PresidiGo Downtown Shuttle · ~35 min · FREE
+        </span>
+      </div>
+    </div>
+
+    <!-- STOP 4: Institute on Aging -->
+    <div class="stop-row">
+      <div class="stop-left">
+        <div class="stop-icon icon-facility">🧠</div>
+      </div>
+      <div class="stop-content">
+        <div class="stop-time">2:00 PM – 3:00 PM</div>
+        <div class="stop-name"><a href="https://www.ioaging.org/services/adult-day-program/" target="_blank" style="color: inherit; text-decoration: underline;">Institute on Aging · Adult Day Center</a></div>
+        <div class="stop-address"><a href="https://maps.apple.com/?address=386+Moraga+Ave,+San+Francisco,+CA+94129" style="color:inherit;text-decoration:none;">386 Moraga Ave, San Francisco, CA 94129 (Presidio)</a></div>
+        <div class="badges">
+          <span class="badge badge-duration">⏱ ~1 hour</span>
+          <span class="badge badge-confirmed">✅ Confirmed</span>
+          <span class="badge badge-warn">⚠ Closes 3 PM</span>
+        </div>
+        <div class="callout callout-amber">
+          <span class="callout-icon">⏰</span>
+          <span><strong>Tight window</strong> — facility hours are 9 AM–3 PM. Keep the 2:00 PM arrival on schedule to get a full hour on site.</span>
+        </div>
+        <div style="font-size:13px; color:#374151; margin-top:8px; line-height:1.7;">
+          <strong>Contacts:</strong> Clara, Program Coordinator · 415-990-6140<br>
+          Emmanuel, Program Coordinator
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .timeline -->
+
+  <!-- ── GROUP COST SUMMARY ── -->
+  <div style="margin: 0 32px 8px;">
+    <div class="callout callout-green">
+      <span class="callout-icon">💳</span>
+      <span><strong>Cheapest visit of the week — 14 travelers, Clipper $5.30/person each way, $10.60 round trip.</strong> Group BART total = <strong>$148.40</strong> (14 × $10.60 RT). No Uber needed for the visit itself — the PresidiGo Downtown shuttle is free; the 30-Stockton Muni bus ($2.50/person) is the backup if the shuttle's running behind. Per-person cost: <strong>$10.60</strong> (or ~$14–16 if Uber is used for the optional Sigma House ↔ BART hop, +$60–76 to the group total for 2 XL + 1 regular each way).</span>
+    </div>
+  </div>
+
+  <!-- ── INNOVATION SPOTLIGHT ── -->
+  <div class="innovation-spotlight">
+    <div class="is-header">
+      <span class="is-icon">🧪</span>
+      <span class="is-label">Innovation Spotlight</span>
+    </div>
+    <div class="is-content">
+      <h3>Community-Based Adult Day Care</h3>
+      <p>The Institute on Aging Adult Day Center supports older adults living with dementia and chronic conditions through socialization, therapeutic activities, and caregiver respite. Ask about their care model and how technology supports engagement and caregiver coordination.</p>
+      <div class="is-tags">
+        <span class="is-tag">🧠 Dementia Care</span>
+        <span class="is-tag">🤝 Caregiver Respite</span>
+        <span class="is-tag">🎨 Therapeutic Activities</span>
+        <span class="is-tag">🏘️ Community-Based</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="card-footer">
+    <div>
+      <div class="footer-label">Destination</div>
+      <div class="footer-val">Presidio, SF</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="footer-label">Program Type</div>
+      <div class="footer-val">Adult Day Center</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="footer-label">Transport</div>
+      <div class="footer-val">BART + Free Shuttle</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
