@@ -161,4 +161,65 @@ When Milo gives you details for a new day, here is the workflow:
 
 ---
 
+---
+
+## Site Visit Itinerary — Formatting Spec (template, reference only)
+
+When building a new site-visit detail page or inline chat widget, follow this structure exactly.
+
+### Title block
+- Page title: `[Activity type] — [Facility name]`
+- Subtitle: `[Day, Month DD, YYYY]`
+- Pills: `Origin → Destination · Transport mode · # travelers · Depart [time] · Return ~[time]`
+
+### Travel legs (outbound and return)
+Each leg:
+```
+[Time]
+[Location name]
+[Full street address, City, State ZIP]
+[Mode badge] [Transport description] · [duration] · [cost if applicable]
+```
+- Never skip the full address on any leg
+- Every mode change (BART → Uber, Muni → walk) is its own leg — never combine two modes in one entry
+- Badge colors: BART = blue · Uber/rideshare = amber · Walk = gray · Muni/bus = green
+- BART badges show exact Clipper fare per person AND group total (fare × # travelers)
+- Uber badges show vehicle config (e.g. 2 XL + 1 regular), estimated duration, estimated group cost range
+- Walk badges show estimated minutes
+- If there's an alternate return mode (Muni OR Uber), show both badges on the same leg
+- Every leg shows both depart AND arrive times
+
+### Visit card
+- Facility name
+- Time range + duration (e.g. `12:00 PM – 2:30 PM · 2.5 hrs`)
+- Full address
+- Confirmed / Unconfirmed status badge
+- 2–3 sentence description of what scholars will observe
+- Contacts: [Name(s)]
+
+### Budget table — exactly three sections
+1. **BART fares** — one row per direction; columns: Leg · Mode · Rate (per person) · Total (rate × # travelers); show subtotal
+2. **Uber fares** — one row per leg (outbound + return separately); columns: Leg · Vehicle config · Rate per car · Total range; label "surge not included"; show subtotal
+3. **Optional legs** (e.g. walk-or-Uber segments) — show the Uber cost if taken and note that walking is free
+
+Then two Grand Total rows: walking-optional-leg scenario, and Uber-all-legs scenario.
+Footer note: what walking saves, that Clipper fares are exact (not estimates), Uber estimates may vary ±20%.
+
+### Summary cells (3 across)
+Per-person cost (walking scenario) · Per-person cost (Uber all legs) · BART round trip per person
+
+### General rules
+- Every location needs a full street address — never just a neighborhood/station name
+- Never write "TBD" without a follow-up note on what's pending and who owns it
+- Flag unconfirmed items with a visible warning badge
+- All fares must be sourced or labeled as estimates — never present a guess as confirmed
+- BART fares: official published Clipper rates, not estimates. Uber fares: always a range (e.g. $30–38), never a single number
+- Group size stated once at the top, carried through every calculation
+- Walking alternatives always called out explicitly — never assume everyone Ubers
+
+### Input needed to format a new visit
+Facility name + address · visit date + time window · depart location + address · group size · transport mode(s) · confirmed contacts · known fare/cost data (or flag unknown)
+
+---
+
 *Last updated: June 25, 2026 · Cohort sizes corrected (10/14); SamTrans bus on July 21; Muni 52 and Millbrae 11:19 AM return routed.*
