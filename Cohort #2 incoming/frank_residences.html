@@ -3,377 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Frank Residences — July 28, 2026</title>
+<title>Site Visit — Frank Residences — July 27, 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: #f0f2f5;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center;
     padding: 20px;
   }
-
   .card {
-    background: #ffffff;
-    border-radius: 20px;
+    background: #ffffff; border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 40px rgba(0,0,0,0.08);
-    max-width: 620px;
-    width: 100%;
-    overflow: hidden;
+    max-width: 620px; width: 100%; overflow: hidden;
   }
-
-  /* ── Header (Forest Green for Cohort 2) ── */
   .card-header {
     background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
-    padding: 28px 32px 24px;
-    color: white;
+    padding: 28px 32px 24px; color: white;
   }
   .card-header .label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 6px;
   }
-  .card-header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 4px;
+  .card-header h1 { font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 4px; }
+  .card-header h1 a { color: inherit; text-decoration: none; }
+  .card-header .date { font-size: 14px; color: rgba(255,255,255,0.65); font-weight: 400; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.1); border-radius: 20px; padding: 5px 12px;
+    font-size: 12px; color: rgba(255,255,255,0.9); font-weight: 500;
   }
-  .card-header .date {
-    font-size: 14px;
-    color: rgba(255,255,255,0.65);
-    font-weight: 400;
+  .body-pad { padding: 28px 32px 24px; }
+  .section-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+    color: #9ca3af; margin: 22px 0 10px;
   }
-  .card-header .route {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 12px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.85);
-  }
-
-  /* ── Summary Bar ── */
-  .summary-bar {
-    background: #f8f9fb;
-    border-bottom: 1px solid #eaedf0;
-    padding: 14px 32px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 20px;
-    align-items: center;
-  }
-  .summary-bar .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12.5px;
-    font-weight: 500;
-    color: #444;
-  }
-  .summary-bar .chip .dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .dot-uber   { background: #111; }
-  .dot-visit  { background: #059669; }
-  .dot-depart { background: #f59e0b; }
-
-  /* ── Timeline body ── */
-  .timeline {
-    padding: 28px 32px 24px;
-  }
-
-  .stop-row {
-    display: flex;
-    gap: 16px;
-    position: relative;
-  }
-
-  .stop-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-    width: 40px;
-  }
-  .stop-icon {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
-  }
-  .icon-home     { background: #fff7ed; border: 2px solid #fed7aa; }
-  .icon-facility { background: #f0fdf4; border: 2px solid #a7f3d0; }
-  .icon-bart     { background: #fff1f2; border: 2px solid #fecdd3; }
-
-  .stop-connector {
-    flex: 1;
-    width: 2px;
-    background: #e5e7eb;
-    margin: 4px 0;
-    min-height: 12px;
-  }
-
-  .stop-content {
-    flex: 1;
-    padding-bottom: 4px;
-  }
-  .stop-time {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    color: #9ca3af;
-    text-transform: uppercase;
-    margin-bottom: 2px;
-  }
-  .stop-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 2px;
-    line-height: 1.3;
-  }
-  .stop-address {
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-  .badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 8px;
-  }
+  .section-title:first-child { margin-top: 0; }
+  .leg { padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+  .leg:last-child { border-bottom: none; }
+  .leg-time { font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #9ca3af; margin-bottom: 3px; }
+  .leg-loc { font-size: 15px; font-weight: 700; color: #111827; }
+  .leg-loc a { color: inherit; text-decoration: underline; text-decoration-color: #d1d5db; }
+  .leg-address { font-size: 12px; color: #9ca3af; margin: 2px 0 8px; }
+  .leg-badges { display: flex; flex-wrap: wrap; gap: 6px; }
   .badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-size: 11.5px;
-    font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
+    border-radius: 20px; font-size: 12px; font-weight: 600;
   }
-  .badge-duration  { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
-  .badge-confirmed { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-
-  /* ── Transport pill ── */
-  .transport-block {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-  .transport-line-col {
-    width: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-  }
-  .transport-vline {
-    width: 2px;
-    background: #e5e7eb;
-    flex: 1;
-    min-height: 8px;
-  }
-  .transport-pill-col {
-    flex: 1;
-    padding: 10px 0 10px;
-  }
-  .transport-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    color: white;
-    letter-spacing: 0.2px;
-  }
-  .pill-uber { background: #111111; }
-  .pill-bart { background: #CC0000; }
-  .pill-walk { background: #16a34a; }
-  .pill-icon { font-size: 14px; }
-
-  /* ── Section Header ── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 8px 0 20px;
-  }
-  .section-header .section-label {
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    padding: 3px 10px;
-    border-radius: 20px;
-  }
-  .section-sf {
-    color: #1e3a8a;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-  }
-  .section-berkeley {
-    color: #92400e;
-    background: #fef3c7;
-    border: 1px solid #fde68a;
-  }
-  .dot-bart { background: #CC0000; }
-  .section-header .section-line {
-    flex: 1;
-    height: 1px;
-    background: #e5e7eb;
-  }
-
-  /* ── Callout ── */
-  .callout {
-    border-radius: 10px;
-    padding: 9px 13px;
-    font-size: 12.5px;
-    font-weight: 500;
-    line-height: 1.5;
-    margin-bottom: 8px;
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  .callout-green {
-    background: #f0fdf4;
-    border-left: 3px solid #22c55e;
-    color: #15803d;
-  }
-  .callout-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-
-  /* ── Innovation Spotlight ── */
+  .badge-bart { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .badge-uber { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .badge-walk { background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb; }
+  .badge-bus  { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+  .visit-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 18px 0; }
+  .visit-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+  .visit-name { font-size: 17px; font-weight: 700; color: #111827; }
+  .visit-name a { color: inherit; text-decoration: underline; text-decoration-color: #d1d5db; }
+  .visit-time, .visit-address { font-size: 12.5px; color: #6b7280; margin-top: 2px; }
+  .visit-address a { color: inherit; text-decoration: underline; text-decoration-color: #d1d5db; }
+  .status-pill { font-size: 10.5px; font-weight: 700; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .status-confirmed { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+  .status-unconfirmed { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .visit-desc { font-size: 13.5px; color: #374151; line-height: 1.6; margin-top: 12px; }
+  .visit-contacts { font-size: 12.5px; color: #374151; margin-top: 10px; }
   .innovation-spotlight {
-    background: linear-gradient(to right, #f0fdf4, #ffffff);
-    border: 1px solid #bbf7d0;
-    border-radius: 16px;
-    margin: 20px 32px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    background: linear-gradient(to right, #f0fdf4, #ffffff); border: 1px solid #bbf7d0;
+    border-radius: 16px; margin: 18px 0; padding: 18px;
   }
-  .is-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .is-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: #16a34a;
-  }
-  .is-content h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 6px;
-  }
-  .is-content p {
-    font-size: 13.5px;
-    line-height: 1.5;
-    color: #374151;
-    margin-bottom: 12px;
-  }
-  .is-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .is-tag {
-    background: white;
-    border: 1px solid #e5e7eb;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #4b5563;
-  }
-
-  /* ── Cost Summary ── */
-  .cost-summary { margin: 0 32px 24px; }
-  .cost-summary-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-  .cost-summary-header .cs-title { font-size: 13px; font-weight: 700; color: #111827; white-space: nowrap; }
-  .cost-summary-header .cs-line { flex: 1; height: 1px; background: #e5e7eb; }
-  .cost-summary-header .cs-badge {
-    font-size: 11px; font-weight: 700; background: #f3f4f6; border: 1px solid #e5e7eb;
-    border-radius: 20px; padding: 2px 9px; color: #374151; white-space: nowrap;
-  }
-  .cost-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .cost-table thead tr th {
-    text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; color: #9ca3af; padding: 0 8px 8px; border-bottom: 1px solid #f3f4f6;
-  }
-  .cost-table thead tr th:last-child { text-align: right; }
-  .cost-table tbody tr td { padding: 9px 8px; border-bottom: 1px solid #f9fafb; color: #374151; vertical-align: top; }
-  .cost-table tbody tr td:last-child { text-align: right; font-weight: 600; color: #111827; white-space: nowrap; }
-  .cost-table tbody tr:last-child td { border-bottom: none; }
-  .cost-table .leg-name { font-weight: 500; }
-  .cost-table .leg-note { font-size: 11px; color: #9ca3af; margin-top: 1px; }
-  .cost-table .mode-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; vertical-align: middle; flex-shrink: 0; }
-  .cost-divider td { padding: 0 !important; border-bottom: 2px solid #e5e7eb !important; }
-  .cost-total-row td { padding-top: 11px !important; font-weight: 700 !important; font-size: 14px !important; color: #111827 !important; border-bottom: none !important; }
-  .cost-total-row td:last-child { color: #111827 !important; }
-  .cost-per-person {
-    display: flex; align-items: center; justify-content: space-between;
-    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px 16px; margin-top: 14px;
-  }
-  .cpp-left .cpp-label { font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #16a34a; margin-bottom: 2px; }
-  .cpp-left .cpp-note { font-size: 12px; color: #6b7280; }
-  .cpp-right { font-size: 22px; font-weight: 800; color: #15803d; letter-spacing: -0.5px; }
-  .clipper-rec {
-    margin-top: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
-    padding: 13px 16px; display: flex; gap: 10px; align-items: flex-start;
-  }
-  .clipper-rec-icon { font-size: 20px; flex-shrink: 0; }
-  .clipper-rec-body { font-size: 13px; color: #1e3a8a; line-height: 1.5; }
-  .clipper-rec-body strong { font-weight: 700; }
-  .clipper-rec-body .clipper-amount {
-    display: inline-block; background: #003DA5; color: white; font-size: 13px; font-weight: 700;
-    border-radius: 6px; padding: 1px 8px; margin: 0 2px;
-  }
-
-  /* ── Footer ── */
+  .is-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #16a34a; margin-bottom: 8px; }
+  .is-content h3 { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 6px; }
+  .is-content p { font-size: 13px; line-height: 1.5; color: #374151; margin-bottom: 10px; }
+  .is-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .is-tag { background: white; border: 1px solid #e5e7eb; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; color: #4b5563; }
+  .budget-section { margin-top: 26px; }
+  .budget-section h2 { font-size: 14px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+  .budget-section .budget-sub { font-size: 11px; color: #9ca3af; margin-bottom: 14px; }
+  .budget-h3 { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #6b7280; margin: 16px 0 8px; }
+  .budget-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; }
+  .budget-table th { text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #9ca3af; padding: 0 8px 8px; border-bottom: 1px solid #f3f4f6; }
+  .budget-table th:last-child, .budget-table td:last-child { text-align: right; }
+  .budget-table td { padding: 8px; border-bottom: 1px solid #f9fafb; color: #374151; vertical-align: top; }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table td:last-child { font-weight: 600; color: #111827; white-space: nowrap; }
+  .budget-subtotal td { font-weight: 700 !important; color: #111827 !important; border-top: 1px solid #e5e7eb; }
+  .opt-note { font-size: 11px; color: #9ca3af; }
+  .grand-total { display: flex; justify-content: space-between; align-items: center; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+  .grand-total .gt-label { font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #16a34a; }
+  .grand-total .gt-val { font-size: 18px; font-weight: 800; color: #15803d; }
+  .budget-footnote { font-size: 11.5px; color: #9ca3af; line-height: 1.6; margin-top: 10px; }
+  .summary-cells { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 18px; }
+  .summary-cell { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 8px; text-align: center; }
+  .summary-cell .sc-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: #9ca3af; margin-bottom: 6px; line-height: 1.3; }
+  .summary-cell .sc-val { font-size: 16px; font-weight: 800; color: #111827; }
   .card-footer {
-    background: #f8f9fb;
-    border-top: 1px solid #eaedf0;
-    padding: 14px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #f8f9fb; border-top: 1px solid #eaedf0; padding: 14px 32px;
+    display: flex; justify-content: space-between; align-items: center;
   }
-  .card-footer .footer-label {
-    font-size: 11px;
-    color: #9ca3af;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
-  .card-footer .footer-val {
-    font-size: 12px;
-    color: #374151;
-    font-weight: 600;
-  }
+  .card-footer .footer-label { font-size: 11px; color: #9ca3af; font-weight: 500; letter-spacing: 0.5px; }
+  .card-footer .footer-val { font-size: 12px; color: #374151; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -387,313 +114,168 @@
   <!-- ── HEADER ── -->
   <div class="card-header">
     <div class="label">Assisted Living Site Visit</div>
-    <h1><a href="https://frankresidences.org" style="color: inherit; text-decoration: none;">Frank Residences</a></h1>
+    <h1><a href="https://frankresidences.org" target="_blank">Frank Residences</a></h1>
     <div class="date">Monday, July 27, 2026</div>
-    <div class="route">
-      <span>📍</span>
-      <span>Berkeley → San Francisco</span>
-      <span style="opacity:.5">·</span>
-      <span>BART + Uber</span>
+    <div class="pill-row">
+      <span class="pill">📍 Berkeley → San Francisco</span>
+      <span class="pill">🚇 BART + Uber</span>
+      <span class="pill">👥 14 travelers</span>
+      <span class="pill">🛫 Depart 10:20 AM</span>
+      <span class="pill">🛬 Return ~3:30 PM</span>
     </div>
   </div>
 
-  <!-- ── SUMMARY BAR ── -->
-  <div class="summary-bar">
-    <div class="chip"><div class="dot dot-depart"></div> Depart 10:20 AM</div>
-    <div class="chip"><div class="dot dot-visit"></div> 12:00 PM Visit</div>
-    <div class="chip"><div class="dot dot-bart"></div> BART → Glen Park</div>
-    <div class="chip"><div class="dot dot-uber"></div> Uber XL ×2 + Reg ×1 · ~$15–17/pp</div>
-  </div>
+  <div class="body-pad">
 
-  <!-- ── TIMELINE ── -->
-  <div class="timeline">
+    <!-- ── OUTBOUND LEGS ── -->
+    <div class="section-title">Outbound</div>
 
-    <!-- ── SECTION: BERKELEY ── -->
-    <div class="section-header">
-      <span class="section-label section-berkeley">📍 Berkeley</span>
-      <div class="section-line"></div>
-    </div>
-
-    <!-- STOP 1: Sigma House -->
-    <div class="stop-row">
-      <div class="stop-left">
-        <div class="stop-icon icon-home">🏠</div>
-        <div class="stop-connector"></div>
-      </div>
-      <div class="stop-content">
-        <div class="stop-time">Depart 10:20 AM</div>
-        <div class="stop-name">Sigma House</div>
-        <div class="stop-address">2311 Prospect St, Berkeley, CA</div>
+    <div class="leg">
+      <div class="leg-time">Depart 10:20 AM → Arrive ~10:27 AM</div>
+      <div class="leg-loc">Sigma House</div>
+      <div class="leg-address">2311 Prospect St, Berkeley, CA 94704</div>
+      <div class="leg-badges">
+        <span class="badge badge-walk">🚶 Walk · ~7 min</span>
+        <span class="badge badge-uber">🚗 Or short Uber · ~7 min</span>
       </div>
     </div>
 
-    <!-- TRANSPORT: Walk/Uber to BART -->
-    <div class="transport-block">
-      <div class="transport-line-col">
-        <div class="transport-vline"></div>
-      </div>
-      <div class="transport-pill-col">
-        <span class="transport-pill pill-walk">
-          <span class="pill-icon">🚶</span> Walk / short Uber · ~7 min
-        </span>
+    <div class="leg">
+      <div class="leg-time">Board ~10:45 AM</div>
+      <div class="leg-loc">Downtown Berkeley BART</div>
+      <div class="leg-address">2160 Shattuck Ave, Berkeley, CA 94704</div>
+      <div class="leg-badges">
+        <span class="badge badge-bart">🚇 BART Red Line southbound → Glen Park · ~45 min · $5.70/person (group $79.80)</span>
       </div>
     </div>
 
-    <!-- STOP 2: Downtown Berkeley BART -->
-    <div class="stop-row">
-      <div class="stop-left">
-        <div class="stop-icon icon-bart">🚇</div>
-        <div class="stop-connector"></div>
-      </div>
-      <div class="stop-content">
-        <div class="stop-time">Board ~10:45 AM</div>
-        <div class="stop-name">Downtown Berkeley BART</div>
-        <div class="stop-address">2160 Shattuck Ave, Berkeley, CA · Red Line southbound → Glen Park</div>
+    <div class="leg">
+      <div class="leg-time">Arrive ~11:30 AM</div>
+      <div class="leg-loc">Glen Park BART</div>
+      <div class="leg-address">2901 Diamond St, San Francisco, CA 94131</div>
+      <div class="leg-badges">
+        <span class="badge badge-uber">🚗 Uber XL ×2 + Regular ×1 · ~8 min · ~$30–38 (group)</span>
       </div>
     </div>
 
-    <!-- TRANSPORT: BART -->
-    <div class="transport-block">
-      <div class="transport-line-col">
-        <div class="transport-vline"></div>
-      </div>
-      <div class="transport-pill-col">
-        <span class="transport-pill pill-bart">
-          <span class="pill-icon">🚇</span> BART · ~45 min · Clipper $5.70/person
-        </span>
-      </div>
-    </div>
-
-    <!-- ── SECTION: SAN FRANCISCO ── -->
-    <div class="section-header" style="margin-top:16px;">
-      <span class="section-label section-sf">🌁 San Francisco</span>
-      <div class="section-line"></div>
-    </div>
-
-    <!-- STOP 3: Glen Park BART -->
-    <div class="stop-row">
-      <div class="stop-left">
-        <div class="stop-icon icon-bart">🚉</div>
-        <div class="stop-connector"></div>
-      </div>
-      <div class="stop-content">
-        <div class="stop-time">Arrive ~11:30 AM</div>
-        <div class="stop-name">Glen Park BART</div>
-        <div class="stop-address">2901 Diamond St, San Francisco, CA · Transfer to Uber XL</div>
-      </div>
-    </div>
-
-    <!-- TRANSPORT: Uber to Frank Residences -->
-    <div class="transport-block">
-      <div class="transport-line-col">
-        <div class="transport-vline"></div>
-      </div>
-      <div class="transport-pill-col">
-        <span class="transport-pill pill-uber">
-          <span class="pill-icon">🚗</span> Uber XL ×2 + Regular ×1 · ~8 min
-        </span>
-      </div>
-    </div>
-
-    <!-- STOP 2: Frank Residences -->
-    <div class="stop-row">
-      <div class="stop-left">
-        <div class="stop-icon icon-facility">🏡</div>
-        <div class="stop-connector"></div>
-      </div>
-      <div class="stop-content">
-        <div class="stop-time">12:00 PM – 2:30 PM</div>
-        <div class="stop-name"><a href="https://frankresidences.org" style="color: inherit; text-decoration: none;">Frank Residences</a></div>
-        <div class="stop-address"><a href="https://maps.apple.com/?address=1+Avalon+Ave,+San+Francisco,+CA+94112" style="color: inherit; text-decoration: none;">1 Avalon Avenue, San Francisco, CA 94112</a></div>
-        <div class="badges">
-          <span class="badge badge-duration">⏱ 2.5 hours</span>
-          <span class="badge badge-confirmed">✅ Confirmed</span>
+    <!-- ── VISIT CARD ── -->
+    <div class="visit-card">
+      <div class="visit-card-top">
+        <div>
+          <div class="visit-name"><a href="https://frankresidences.org" target="_blank">Frank Residences</a></div>
+          <div class="visit-time">12:00 PM – 2:30 PM · 2.5 hrs</div>
+          <div class="visit-address"><a href="https://maps.apple.com/?address=1+Avalon+Ave,+San+Francisco,+CA+94112" target="_blank">1 Avalon Avenue, San Francisco, CA 94112</a></div>
         </div>
-        <div class="callout callout-green">
-          <span class="callout-icon">🏛️</span>
-          <span><strong>San Francisco Campus for Jewish Living</strong> — assisted living and memory care community with chef-prepared dining, therapy programs, and on-site skilled nursing.</span>
-        </div>
-        <div style="font-size:13px; color:#374151; margin-top:8px; line-height:1.7;">
-          <strong>Contacts:</strong> Angela Arguelles &amp; Robert Sarison
+        <span class="status-pill status-confirmed">✅ Confirmed</span>
+      </div>
+      <p class="visit-desc">San Francisco Campus for Jewish Living — an assisted living and memory care community with chef-prepared dining, therapy programs, and on-site skilled nursing. Scholars will observe how the campus integrates assisted living with rehabilitation and memory care under one roof.</p>
+      <div class="visit-contacts"><strong>Contacts:</strong> Angela Arguelles &amp; Robert Sarison</div>
+    </div>
+
+    <!-- ── INNOVATION SPOTLIGHT ── -->
+    <div class="innovation-spotlight">
+      <div class="is-label">🧪 Innovation Spotlight</div>
+      <div class="is-content">
+        <h3>Integrated Senior Living Model</h3>
+        <p>Observe how Frank Residences integrates assisted living with on-site skilled nursing, rehabilitation, and memory care under one roof.</p>
+        <div class="is-tags">
+          <span class="is-tag">🏡 Assisted Living</span>
+          <span class="is-tag">🧠 Memory Care</span>
+          <span class="is-tag">🍽️ Chef Dining</span>
+          <span class="is-tag">🔬 Skilled Nursing</span>
         </div>
       </div>
     </div>
 
-    <!-- ── SECTION: RETURN ── -->
-    <div class="section-header" style="margin-top:16px;">
-      <span class="section-label section-berkeley">🔁 Return to Berkeley</span>
-      <div class="section-line"></div>
-    </div>
+    <!-- ── RETURN LEGS ── -->
+    <div class="section-title">Return</div>
 
-    <!-- TRANSPORT: 52 Bus option -->
-    <div class="transport-block">
-      <div class="transport-line-col">
-        <div class="transport-vline"></div>
-      </div>
-      <div class="transport-pill-col">
-        <span class="transport-pill pill-walk" style="background:#7c3aed;">
-          <span class="pill-icon">🚌</span> Muni Route 52 · Silver Ave & Mission St → Bosworth St & Diamond St (Glen Park BART) · ~10 min
-        </span>
+    <div class="leg">
+      <div class="leg-time">Depart ~2:30 PM → Arrive ~2:40 PM</div>
+      <div class="leg-loc">Glen Park BART</div>
+      <div class="leg-address">2901 Diamond St, San Francisco, CA 94131</div>
+      <div class="leg-badges">
+        <span class="badge badge-uber">🚗 Uber XL ×2 + Regular ×1 · ~8 min · ~$30–38 (group)</span>
+        <span class="badge badge-bus">🚌 Or Muni Route 52 · Silver Ave &amp; Mission St → Bosworth St &amp; Diamond St · ~10 min</span>
       </div>
     </div>
 
-    <!-- STOP 5: Return to Glen Park BART -->
-    <div class="stop-row">
-      <div class="stop-left">
-        <div class="stop-icon icon-bart">🚉</div>
-        <div class="stop-connector"></div>
-      </div>
-      <div class="stop-content">
-        <div class="stop-time">~2:40 PM</div>
-        <div class="stop-name">Glen Park BART</div>
-        <div class="stop-address">Board Red Line northbound → Downtown Berkeley · ~45 min</div>
-        <div class="badges">
-          <span class="badge badge-duration" style="background:#fef3c7; color:#92400e; border-color:#fde68a;">🚌 Muni Route 52 or Uber XL ×2 + Regular ×1 from Frank Residences</span>
-        </div>
+    <div class="leg">
+      <div class="leg-time">Board ~2:40 PM → Arrive ~3:25 PM</div>
+      <div class="leg-loc">Downtown Berkeley BART</div>
+      <div class="leg-address">2160 Shattuck Ave, Berkeley, CA 94704</div>
+      <div class="leg-badges">
+        <span class="badge badge-bart">🚇 BART Red Line northbound · ~45 min · $6.00/person (group $84.00)</span>
       </div>
     </div>
 
-    <!-- TRANSPORT: BART home -->
-    <div class="transport-block">
-      <div class="transport-line-col">
-        <div class="transport-vline"></div>
-      </div>
-      <div class="transport-pill-col">
-          <span class="transport-pill pill-bart">
-            <span class="pill-icon">🚇</span> BART Red Line northbound · ~45 min · Clipper $6.00/person
-          </span>
+    <div class="leg">
+      <div class="leg-time">~3:25 PM → Arrive ~3:32 PM</div>
+      <div class="leg-loc">Sigma House</div>
+      <div class="leg-address">2311 Prospect St, Berkeley, CA 94704</div>
+      <div class="leg-badges">
+        <span class="badge badge-walk">🚶 Walk · ~7 min</span>
+        <span class="badge badge-uber">🚗 Or short Uber · ~7 min</span>
       </div>
     </div>
 
-    <!-- STOP 6: Downtown Berkeley BART (Return) -->
-    <div class="stop-row">
-      <div class="stop-left">
-        <div class="stop-icon icon-home">🏠</div>
+    <!-- ── BUDGET TABLE ── -->
+    <div class="budget-section">
+      <h2>💰 Budget — 14 Travelers</h2>
+      <div class="budget-sub">Frank Residences · July 27, 2026</div>
+
+      <div class="budget-h3">1. BART Fares</div>
+      <table class="budget-table">
+        <thead><tr><th>Leg</th><th>Mode</th><th>Rate (pp)</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>Berkeley → Glen Park</td><td>Red Line</td><td>$5.70</td><td>$79.80</td></tr>
+          <tr><td>Glen Park → Berkeley</td><td>Red Line</td><td>$6.00</td><td>$84.00</td></tr>
+          <tr class="budget-subtotal"><td colspan="3">BART subtotal (round trip · official Clipper fare)</td><td>$163.80</td></tr>
+        </tbody>
+      </table>
+
+      <div class="budget-h3">2. Uber Fares</div>
+      <table class="budget-table">
+        <thead><tr><th>Leg</th><th>Vehicle config</th><th>Rate/car</th><th>Total range</th></tr></thead>
+        <tbody>
+          <tr><td>Glen Park BART → Frank Residences</td><td>2 XL + 1 reg</td><td>$11–14 / $8–10</td><td>~$30–38</td></tr>
+          <tr><td>Frank Residences → Glen Park BART (return)</td><td>2 XL + 1 reg</td><td>$11–14 / $8–10</td><td>~$30–38</td></tr>
+          <tr class="budget-subtotal"><td colspan="3">Uber subtotal (Glen Park legs · surge not included)</td><td>~$60–76</td></tr>
+        </tbody>
+      </table>
+
+      <div class="budget-h3">3. Optional Legs</div>
+      <table class="budget-table">
+        <thead><tr><th>Leg</th><th colspan="3"></th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Sigma House ↔ Berkeley BART (round trip)</td>
+            <td colspan="2" class="opt-note">2 XL + 1 reg · ~$11–14 / $8–10 per car · surge not included</td>
+            <td>~$60–76 if Uber</td>
+          </tr>
+          <tr><td colspan="3" class="opt-note">Walking instead (~7 min each way)</td><td>Free</td></tr>
+        </tbody>
+      </table>
+
+      <div class="grand-total">
+        <span class="gt-label">Grand total — walking optional leg</span>
+        <span class="gt-val">~$223.80–239.80</span>
       </div>
-      <div class="stop-content">
-        <div class="stop-time">~3:30 PM</div>
-        <div class="stop-name">Downtown Berkeley BART</div>
-        <div class="stop-address">Walk or short Uber back to Sigma House · ~7 min</div>
+      <div class="grand-total">
+        <span class="gt-label">Grand total — Uber all legs</span>
+        <span class="gt-val">~$283.80–315.80</span>
       </div>
+      <p class="budget-footnote">Walking the Sigma House ↔ BART hop saves the group ~$60–76. Clipper/BART fares above are official published rates; Uber estimates are ranges and may vary ±20% with surge pricing.</p>
     </div>
 
-  </div><!-- end .timeline -->
-
-  <!-- ── GROUP COST SUMMARY ── -->
-  <div class="cost-summary">
-    <div class="cost-summary-header">
-      <span class="cs-title">💰 Group Cost Estimate</span>
-      <div class="cs-line"></div>
-      <span class="cs-badge">👥 14 Travelers</span>
+    <!-- ── SUMMARY CELLS ── -->
+    <div class="summary-cells">
+      <div class="summary-cell"><div class="sc-label">Per Person (Walking)</div><div class="sc-val">~$16–17</div></div>
+      <div class="summary-cell"><div class="sc-label">Per Person (Uber All)</div><div class="sc-val">~$20–23</div></div>
+      <div class="summary-cell"><div class="sc-label">BART Round Trip pp</div><div class="sc-val">$11.70</div></div>
     </div>
 
-    <table class="cost-table">
-      <thead>
-        <tr>
-          <th>Leg</th>
-          <th style="text-align:center;">Cars</th>
-          <th>Est. per car</th>
-          <th>Leg total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="leg-name"><span class="mode-dot" style="background:#16a34a;"></span>Sigma House → Berkeley BART <span style="font-size:11px;color:#9ca3af;">(optional — walk is free)</span></div>
-            <div class="leg-note">If Uber: 14 riders → 2 XL + 1 regular · ~7 min</div>
-          </td>
-          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
-          <td style="color:#6b7280;">$11–14 / $8–10</td>
-          <td>~$30–38</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Glen Park BART → Frank Residences</div>
-            <div class="leg-note">14 riders → 2 XL + 1 regular · ~8 min</div>
-          </td>
-          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
-          <td style="color:#6b7280;">$11–14 / $8–10</td>
-          <td>~$30–38</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="leg-name"><span class="mode-dot" style="background:#111;"></span>Frank Residences → Glen Park BART <span style="font-size:11px;color:#9ca3af;">(return)</span></div>
-            <div class="leg-note">14 riders → 2 XL + 1 regular · ~8 min</div>
-          </td>
-          <td style="text-align:center; color:#6b7280; font-size:12px;">2 XL + 1 reg</td>
-          <td style="color:#6b7280;">$11–14 / $8–10</td>
-          <td>~$30–38</td>
-        </tr>
-        <tr>
-          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">
-            Uber subtotal &nbsp;<span style="font-size:11px;">(Glen Park legs only — Sigma↔BART assumed walked; surge not included)</span>
-          </td>
-          <td style="font-weight:700; color:#111827; padding-top:5px; padding-bottom:7px;">~$60–76</td>
-        </tr>
-        <tr class="cost-divider"><td colspan="4"></td></tr>
-        <tr>
-          <td>
-            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>Berkeley BART → Glen Park BART</div>
-            <div class="leg-note">14 riders · outbound</div>
-          </td>
-          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
-          <td style="color:#6b7280;">$5.70 / person</td>
-          <td>$79.80</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="leg-name"><span class="mode-dot" style="background:#003DA5;"></span>Glen Park BART → Berkeley BART</div>
-            <div class="leg-note">14 riders · return</div>
-          </td>
-          <td style="text-align:center; color:#6b7280; font-size:12px;">—</td>
-          <td style="color:#6b7280;">$6.00 / person</td>
-          <td>$84.00</td>
-        </tr>
-        <tr>
-          <td colspan="3" style="color:#6b7280; font-size:12px; padding-top:5px; padding-bottom:7px;">BART subtotal (round trip · 14 riders · official fare)</td>
-          <td style="font-weight:700; color:#003DA5; padding-top:5px; padding-bottom:7px;">$163.80</td>
-        </tr>
-        <tr class="cost-divider"><td colspan="4"></td></tr>
-        <tr class="cost-total-row">
-          <td colspan="3">🧾 Grand Total (group, walking Sigma↔BART)</td>
-          <td>~$223.80–239.80</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="cost-per-person">
-      <div class="cpp-left">
-        <div class="cpp-label">Per Person</div>
-        <div class="cpp-note">Uber share ÷ 14 + round-trip BART</div>
-      </div>
-      <div class="cpp-right">~$16–17</div>
-    </div>
-
-    <div class="clipper-rec">
-      <div class="clipper-rec-icon">💳</div>
-      <div class="clipper-rec-body">
-        <strong>If Uber used for the Sigma↔BART hop too:</strong> add ~$60–76 to the group total (~$19–22/person instead). Walking saves the group ~$60–76.
-      </div>
-    </div>
-  </div>
-
-  <!-- ── INNOVATION SPOTLIGHT ── -->
-  <div class="innovation-spotlight">
-    <div class="is-header">
-      <span class="is-icon">🧪</span>
-      <span class="is-label">Innovation Spotlight</span>
-    </div>
-    <div class="is-content">
-      <h3>Integrated Senior Living Model</h3>
-      <p>Frank Residences is part of the SF Campus for Jewish Living — observe how they integrate assisted living with on-site skilled nursing, rehabilitation, and memory care under one roof.</p>
-      <div class="is-tags">
-        <span class="is-tag">🏡 Assisted Living</span>
-        <span class="is-tag">🧠 Memory Care</span>
-        <span class="is-tag">🍽️ Chef Dining</span>
-        <span class="is-tag">🔬 Skilled Nursing</span>
-      </div>
-    </div>
-  </div>
+  </div><!-- end .body-pad -->
 
   <!-- ── FOOTER ── -->
   <div class="card-footer">
